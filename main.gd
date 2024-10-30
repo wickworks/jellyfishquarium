@@ -3,8 +3,8 @@ class_name Main
 
 const FISH_SCENE:PackedScene = preload("res://entity/fish.tscn")
 const JELLYFISH_SCENE:PackedScene = preload("res://entity/jellyfish.tscn")
-const STARTING_FISH:int = 10
 const STARTING_JELLYFISH:int = 5
+const STARTING_FISH:int = 30
 
 static var mouse_position:Vector2
 
