@@ -26,8 +26,13 @@ func _exit_tree() -> void:
 func bloop() -> void:
 	bloop_tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	bloop_tween.tween_property(self, 'accel', Vector2(randf_range(-0.1, 0.1), -ACCEL), 0.3)
-	bloop_tween.tween_property(self, 'accel', Vector2(0.0, 0), 0.3)
+	bloop_tween.tween_property($Sprite, 'frame', 1, 0.4)
+	bloop_tween.parallel().tween_property($Sprite, 'frame', 3, 0.3)
+	bloop_tween.chain().tween_property(self, 'accel', Vector2(0.0, 0), 0.3)
+	bloop_tween.tween_property($Sprite, 'frame', 0, 0).set_delay(1.1)
+	
 	bloop_tween.tween_interval(randf_range(3, 7))
+	bloop_tween.tween_property($Sprite, 'frame', 0, 0)
 	bloop_tween.tween_callback(bloop)
 
 func _ready() -> void:

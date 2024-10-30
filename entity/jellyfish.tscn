@@ -1,12 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk5xnhrtci2b2"]
+[gd_scene load_steps=8 format=3 uid="uid://bk5xnhrtci2b2"]
 
 [ext_resource type="Script" path="res://entity/jellyfish.gd" id="1_qx2it"]
+[ext_resource type="Texture2D" uid="uid://baepuhvs4qej" path="res://entity/jellyfish.png" id="2_eh41o"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ylfm4"]
-size = Vector2(10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fujhg"]
+atlas = ExtResource("2_eh41o")
+region = Rect2(32, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4qp3"]
+atlas = ExtResource("2_eh41o")
+region = Rect2(16, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iatvc"]
+atlas = ExtResource("2_eh41o")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcore"]
+atlas = ExtResource("2_eh41o")
+region = Rect2(48, 0, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4s1o1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fujhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4qp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iatvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcore")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Jellyfish" type="Node2D"]
 script = ExtResource("1_qx2it")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_ylfm4")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4s1o1")
