@@ -7,22 +7,12 @@ var direction:float = randf_range(0, TAU)
 var speed:float = 1.0
 
 func _process(delta: float) -> void:
-	position += vector(speed, direction)
+	position += Util.vector_from_angle(speed, direction)
 
-	# WRAP
-	var window_size := get_viewport().get_visible_rect().size
-	if position.x > window_size.x: position.x -= window_size.x
-	if position.y > window_size.y: position.y -= window_size.y
-	if position.x < 0: position.x += window_size.x
-	if position.y < 0: position.y += window_size.y
+	Util.wrap_screen(self)
 
 
 
-static func vector(v_speed:float, v_angle:float) -> Vector2:
-	return Vector2(
-		v_speed * cos(v_angle),
-		v_speed * sin(v_angle)
-	)
 
 
 func coherence() -> Vector2:

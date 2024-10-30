@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://bk5xnhrtci2b2"]
+[gd_scene load_steps=2 format=3 uid="uid://bk5xnhrtci2b2"]
+
+[ext_resource type="Script" path="res://entity/jellyfish.gd" id="1_qx2it"]
 
 [node name="Jellyfish" type="Node2D"]
+script = ExtResource("1_qx2it")
