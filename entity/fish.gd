@@ -58,4 +58,7 @@ func _process(delta: float) -> void:
 		velocity += mouse_diff * MOUSE_FORCE
 
 	velocity = velocity.limit_length(SPEED_MAX)
+	
+	$Sprite.frame = posmod(round(velocity.angle() * 8 / TAU), 8) 
+	#$Label.text = "%s %s" % [posmod(round(velocity.angle() * 8 / TAU), 8) $Sprite.frame]
 	position += velocity
