@@ -5,7 +5,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ylfm4"]
 size = Vector2(10, 10)
 
-[node name="Jellyfish" type="Node2D"]
+[node name="Jellyfish" type="Node2D" groups=["jellyfish"]]
 script = ExtResource("1_qx2it")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

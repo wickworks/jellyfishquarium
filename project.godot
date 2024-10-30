@@ -31,6 +31,8 @@ project/assembly_name="Jellyfishquarium"
 [global_group]
 
 fish=""
+jellyfish=""
+larvae=""
 
 [rendering]
 
