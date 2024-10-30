@@ -1,6 +1,11 @@
 extends Node2D
 class_name Fish
 
+const EAT_DIST:float = 10
+const EAT_TO_LAY_TIME:float = 1.5
+#const LAY_MAX:int = 3
+const FISH_SCENE:PackedScene = preload("res://entity/fish.tscn")
+
 const PERCEPTION_RADIUS:float = 40
 const SEPARATION_DISTANCE:float = 25
 const SPEED_MAX:float = 1.0
@@ -14,6 +19,11 @@ const MOUSE_FORCE:float = .002
 
 var direction:float = randf_range(0, TAU)
 @onready var velocity:Vector2 = Util.vector_from_angle(SPEED_MAX, direction)
+
+var eat_tweens:Array[Tween] = []
+
+func _exit_tree() -> void:
+	for tween:Tween in eat_tweens: tween.kill()
 
 func _process(delta: float) -> void:
 	Util.wrap_screen(self)
@@ -62,3 +72,21 @@ func _process(delta: float) -> void:
 	$Sprite.frame = posmod(round(velocity.angle() * 8 / TAU), 8) 
 	#$Label.text = "%s %s" % [posmod(round(velocity.angle() * 8 / TAU), 8) $Sprite.frame]
 	position += velocity
+
+
+	# EAT LARVAE
+	var all_larvae:Array = get_tree().get_nodes_in_group("larvae")
+	for larvae:Larvae in all_larvae:
+		var distance := position.distance_to(larvae.position)
+		if distance < EAT_DIST:
+			larvae.queue_free()
+			var eat_tween = create_tween()
+			eat_tween.tween_callback(lay_fish).set_delay(EAT_TO_LAY_TIME)
+			eat_tweens.append(eat_tween)
+
+func lay_fish() -> void:
+	#for i in randi_range(1, LAY_MAX):
+	var fish:Fish = FISH_SCENE.instantiate()
+	fish.position = position + Vector2(.01,.01)
+	fish.velocity = velocity
+	Main.scene.add_child(fish)
