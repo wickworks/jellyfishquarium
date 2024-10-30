@@ -1,7 +1,7 @@
 extends Node2D
 class_name Fish
 
-const EAT_DIST:float = 10
+const EAT_DIST:float = 2
 const EAT_TO_LAY_TIME:float = 1.5
 #const LAY_MAX:int = 3
 const FISH_SCENE:PackedScene = preload("res://entity/fish.tscn")
