@@ -15,22 +15,22 @@ const COHESION_FORCE:float = .0001
 const SEPARATION_FORCE:float = 2#1.2
 
 const MOUSE_PERCEPTION_RADIUS:float = 100
-const MOUSE_FORCE:float = .002
+const MOUSE_FORCE:float = .0018
 
 var direction:float = randf_range(0, TAU)
 @onready var velocity:Vector2 = Util.vector_from_angle(SPEED_MAX, direction)
 
-#const MAX_LIFESPAN:float = 20
+const MAX_LIFESPAN:float = 40
 
-#var lifespan_tween:Tween
+var lifespan_tween:Tween
 var eat_tweens:Array[Tween] = []
 
 func _exit_tree() -> void:
 	for tween:Tween in eat_tweens: tween.kill()
 
-#func _ready() -> void:
-	#lifespan_tween = create_tween()
-	#lifespan_tween.tween_callback(peacefully_die_of_old_age).set_delay(MAX_LIFESPAN * randf_range(.8,1.0))
+func _ready() -> void:
+	lifespan_tween = create_tween()
+	lifespan_tween.tween_callback(peacefully_die_of_old_age).set_delay(MAX_LIFESPAN * randf_range(.8,1.0))
 
 func _process(delta: float) -> void:
 	Util.wrap_screen(self)
