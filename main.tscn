@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://3kgbntpjxrle"]
+
+[ext_resource type="PackedScene" uid="uid://bxvd8usqdadrs" path="res://entity/fish.tscn" id="1_ngjq6"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Fish" parent="." instance=ExtResource("1_ngjq6")]
+position = Vector2(102, 80)
+
+[node name="Fish2" parent="." instance=ExtResource("1_ngjq6")]
+position = Vector2(187, 142)
+
+[node name="Fish3" parent="." instance=ExtResource("1_ngjq6")]
+position = Vector2(262, 94)
