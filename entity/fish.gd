@@ -12,18 +12,25 @@ const SPEED_MAX:float = 1.0
 
 const ALIGNMENT_FORCE:float = .01
 const COHESION_FORCE:float = .0001
-const SEPARATION_FORCE:float = 1.2
+const SEPARATION_FORCE:float = 2#1.2
 
-const MOUSE_PERCEPTION_RADIUS:float = 80
+const MOUSE_PERCEPTION_RADIUS:float = 100
 const MOUSE_FORCE:float = .002
 
 var direction:float = randf_range(0, TAU)
 @onready var velocity:Vector2 = Util.vector_from_angle(SPEED_MAX, direction)
 
+#const MAX_LIFESPAN:float = 20
+
+#var lifespan_tween:Tween
 var eat_tweens:Array[Tween] = []
 
 func _exit_tree() -> void:
 	for tween:Tween in eat_tweens: tween.kill()
+
+#func _ready() -> void:
+	#lifespan_tween = create_tween()
+	#lifespan_tween.tween_callback(peacefully_die_of_old_age).set_delay(MAX_LIFESPAN * randf_range(.8,1.0))
 
 func _process(delta: float) -> void:
 	Util.wrap_screen(self)
@@ -68,8 +75,8 @@ func _process(delta: float) -> void:
 		velocity += mouse_diff * MOUSE_FORCE
 
 	velocity = velocity.limit_length(SPEED_MAX)
-	
-	$Sprite.frame = posmod(round(velocity.angle() * 8 / TAU), 8) 
+
+	$Sprite.frame = posmod(round(velocity.angle() * 8 / TAU), 8)
 	#$Label.text = "%s %s" % [posmod(round(velocity.angle() * 8 / TAU), 8) $Sprite.frame]
 	position += velocity
 
@@ -90,3 +97,6 @@ func lay_fish() -> void:
 	fish.position = position + Vector2(.01,.01)
 	fish.velocity = velocity
 	Main.scene.add_child(fish)
+
+func peacefully_die_of_old_age() -> void:
+	queue_free()

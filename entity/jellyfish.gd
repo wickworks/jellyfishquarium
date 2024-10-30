@@ -3,7 +3,7 @@ class_name Jellyfish
 
 const EAT_DIST:float = 10
 const EAT_TO_LAY_TIME:float = 1.5
-const LAY_MAX:int = 3
+const LAY_MAX:int = 6
 const LARVAE_SCENE:PackedScene = preload("res://entity/larvae.tscn")
 
 var velocity: Vector2 = Vector2(randf_range(-1.0, 1.0), 0.0)

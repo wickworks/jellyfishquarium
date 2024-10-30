@@ -12,7 +12,9 @@ static var mouse_position:Vector2
 
 func _ready() -> void:
 	Main.scene = self
+	create_starting_animals()
 
+func create_starting_animals() -> void:
 	var screen_size := get_viewport().get_visible_rect().size
 	for i in STARTING_FISH:
 		var fish:Fish = FISH_SCENE.instantiate()
@@ -29,8 +31,9 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		var screen_size := get_viewport().get_visible_rect().size
-		var all_fish:Array = get_tree().get_nodes_in_group("fish")
-		for fish:Fish in all_fish:
-			fish.position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
-			fish.velocity = Util.vector_from_angle(Fish.SPEED_MAX, randf_range(0, TAU))
+
+		for fish:Fish in get_tree().get_nodes_in_group("fish"): fish.queue_free()
+		for jellyfish:Jellyfish in get_tree().get_nodes_in_group("jellyfish"): jellyfish.queue_free()
+		for larvae:Larvae in get_tree().get_nodes_in_group("larvae"): larvae.queue_free()
+
+		create_starting_animals()

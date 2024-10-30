@@ -39,7 +39,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Jellyfish" type="Node2D"]
+[node name="Jellyfish" type="Node2D" groups=["jellyfish"]]
 script = ExtResource("1_qx2it")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
