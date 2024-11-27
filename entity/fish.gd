@@ -14,26 +14,31 @@ const ALIGNMENT_FORCE:float = .01
 const COHESION_FORCE:float = .0001
 const SEPARATION_FORCE:float = 2#1.2
 
-const MOUSE_PERCEPTION_RADIUS:float = 100
-const MOUSE_FORCE:float = .0018
+#const MOUSE_PERCEPTION_RADIUS:float = 100
+const FOLLOW_FORCE:float = .0018
+const FOLLOW_RADIUS:float = 500
+
+var idle_point:Vector2
+var following_player:bool = false
 
 var direction:float = randf_range(0, TAU)
 @onready var velocity:Vector2 = Util.vector_from_angle(SPEED_MAX, direction)
 
 const MAX_LIFESPAN:float = 40
 
-var lifespan_tween:Tween
-var eat_tweens:Array[Tween] = []
+#var lifespan_tween:Tween
+#var eat_tweens:Array[Tween] = []
 
-func _exit_tree() -> void:
-	for tween:Tween in eat_tweens: tween.kill()
+#func _exit_tree() -> void:
+	#for tween:Tween in eat_tweens: tween.kill()
 
 func _ready() -> void:
-	lifespan_tween = create_tween()
-	lifespan_tween.tween_callback(peacefully_die_of_old_age).set_delay(MAX_LIFESPAN * randf_range(.8,1.0))
+	idle_point = position + Vector2(velocity.y, velocity.x) * 5
+	#lifespan_tween = create_tween()
+	#lifespan_tween.tween_callback(peacefully_die_of_old_age).set_delay(MAX_LIFESPAN * randf_range(.8,1.0))
 
 func _process(delta: float) -> void:
-	Util.wrap_screen(self)
+	#Util.wrap_screen(self)
 
 	var average_velocity := Vector2.ZERO
 	var average_position := Vector2.ZERO
@@ -67,12 +72,19 @@ func _process(delta: float) -> void:
 	velocity -= average_separation * SEPARATION_FORCE
 
 
-	# and always know about the mouse
-	var mouse_distance := position.distance_to(Main.mouse_position)
-	if mouse_distance < MOUSE_PERCEPTION_RADIUS:
-		var mouse_diff := Main.mouse_position - position
-		mouse_diff = mouse_diff.limit_length(PERCEPTION_RADIUS)
-		velocity += mouse_diff * MOUSE_FORCE
+	var follow_diff := Vector2.ZERO
+	if following_player:
+		# ???? follow player
+		if follow_diff.length() > FOLLOW_RADIUS:
+			following_player = false
+			idle_point = position
+	else:
+		follow_diff = idle_point - position
+		if follow_diff.length() > FOLLOW_RADIUS: idle_point = position
+
+	follow_diff = follow_diff.limit_length(FOLLOW_RADIUS)
+	velocity += follow_diff * FOLLOW_FORCE
+
 
 	velocity = velocity.limit_length(SPEED_MAX)
 
@@ -82,21 +94,21 @@ func _process(delta: float) -> void:
 
 
 	# EAT LARVAE
-	var all_larvae:Array = get_tree().get_nodes_in_group("larvae")
-	for larvae:Larvae in all_larvae:
-		var distance := position.distance_to(larvae.position)
-		if distance < EAT_DIST:
-			larvae.queue_free()
-			var eat_tween = create_tween()
-			eat_tween.tween_callback(lay_fish).set_delay(EAT_TO_LAY_TIME)
-			eat_tweens.append(eat_tween)
+	#var all_larvae:Array = get_tree().get_nodes_in_group("larvae")
+	#for larvae:Larvae in all_larvae:
+		#var distance := position.distance_to(larvae.position)
+		#if distance < EAT_DIST:
+			#larvae.queue_free()
+			#var eat_tween = create_tween()
+			#eat_tween.tween_callback(lay_fish).set_delay(EAT_TO_LAY_TIME)
+			#eat_tweens.append(eat_tween)
 
-func lay_fish() -> void:
-	#for i in randi_range(1, LAY_MAX):
-	var fish:Fish = FISH_SCENE.instantiate()
-	fish.position = position + Vector2(.01,.01)
-	fish.velocity = velocity
-	Main.scene.add_child(fish)
-
-func peacefully_die_of_old_age() -> void:
-	queue_free()
+#func lay_fish() -> void:
+	##for i in randi_range(1, LAY_MAX):
+	#var fish:Fish = FISH_SCENE.instantiate()
+	#fish.position = position + Vector2(.01,.01)
+	#fish.velocity = velocity
+	#Main.scene.add_child(fish)
+#
+#func peacefully_die_of_old_age() -> void:
+	#queue_free()
