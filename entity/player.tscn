@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ceuuvi1cua8if"]
+[gd_scene load_steps=28 format=3 uid="uid://ceuuvi1cua8if"]
 
 [ext_resource type="Script" path="res://entity/player.gd" id="1_ap0cw"]
 [ext_resource type="Texture2D" uid="uid://c1bvn6jplu14f" path="res://assets/platformer_char/chill/Player Idle 48x48.png" id="2_3nydx"]
@@ -235,10 +235,14 @@ _data = {
 "walk": SubResource("Animation_qipkf")
 }
 
-[node name="Player" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmw5g"]
+size = Vector2(14, 30)
+
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ap0cw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_cvlfg")
 animation = &"idle"
 
@@ -248,3 +252,7 @@ libraries = {
 "": SubResource("AnimationLibrary_igl3l")
 }
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_pmw5g")

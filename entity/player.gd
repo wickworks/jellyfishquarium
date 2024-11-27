@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +15,6 @@ var state: State = State.Idle
 
 
 var move_x := 0.0
-var speed: Vector2 = Vector2(0, 0)
 
 func _approach(value: float, target: float, amount: float) -> float:
 	if value < target:
@@ -43,12 +42,15 @@ func _process(delta):
 				$AnimationPlayer.stop()
 				$AnimationPlayer.play("idle")
 	
-	if absf(speed.x) > MAX_RUN && signf(speed.x) == move_x:
-		speed.x = _approach(speed.x, MAX_RUN * move_x, RUN_REDUCE * delta)
+	if absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x:
+		velocity.x = _approach(velocity.x, MAX_RUN * move_x, RUN_REDUCE * delta)
 	else:
-		speed.x = _approach(speed.x, MAX_RUN * move_x, RUN_ACCEL * delta)
+		velocity.x = _approach(velocity.x, MAX_RUN * move_x, RUN_ACCEL * delta)
 		
-	if speed.x != 0:
-		scale.x = signf(speed.x)
-		
-	position += speed * delta
+	if velocity.x != 0:
+		$AnimatedSprite2D.scale.x = signf(velocity.x)
+	
+	move_and_slide()
+	
+	#position.x = new_x
+	

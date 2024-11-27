@@ -9,7 +9,7 @@
 script = ExtResource("1_csyl4")
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
-position = Vector2(61, 105)
+position = Vector2(220, 71)
 
 [node name="Map" type="Node2D" parent="."]
 
