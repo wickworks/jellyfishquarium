@@ -1,12 +1,54 @@
-[gd_scene load_steps=5 format=4 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=7 format=4 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://j84xxwwavnf2" path="res://entity/player.tscn" id="2_54jki"]
+[ext_resource type="Texture2D" uid="uid://7rb23l21bujj" path="res://assets/platformer_env/background3.png" id="2_i3i1g"]
 [ext_resource type="TileSet" uid="uid://btsul1rodpbea" path="res://assets/platformer_env/main_tileset.tres" id="3_df2rq"]
+[ext_resource type="Texture2D" uid="uid://b3pg7r35job74" path="res://assets/platformer_env/background2.png" id="3_uwpg4"]
 [ext_resource type="PackedScene" uid="uid://bxvd8usqdadrs" path="res://entity/fish.tscn" id="4_5wu0d"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
+
+[node name="Background" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(800, 600)
+repeat_times = 4
+
+[node name="rocks" type="Sprite2D" parent="Background/Parallax2D"]
+texture = ExtResource("2_i3i1g")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-200, -100)
+repeat_size = Vector2(800, 600)
+repeat_times = 4
+
+[node name="seaweeddarker" type="Sprite2D" parent="Background/Parallax2D4"]
+modulate = Color(0.370365, 0.370364, 0.370364, 1)
+texture = ExtResource("3_uwpg4")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(400, 200)
+repeat_size = Vector2(800, 600)
+repeat_times = 4
+
+[node name="seaweeddark" type="Sprite2D" parent="Background/Parallax2D3"]
+modulate = Color(0.479834, 0.479834, 0.479834, 1)
+texture = ExtResource("3_uwpg4")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(800, 600)
+repeat_times = 4
+
+[node name="seaweed" type="Sprite2D" parent="Background/Parallax2D2"]
+modulate = Color(0.597176, 0.597176, 0.597176, 1)
+texture = ExtResource("3_uwpg4")
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
 position = Vector2(220, 71)
