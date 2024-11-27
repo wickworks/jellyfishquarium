@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://btsul1rodpbea"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://btsul1rodpbea"]
 
 [ext_resource type="Texture2D" uid="uid://b6f6aq1huovrd" path="res://assets/platformer_env/main.png" id="1_4chu4"]
 
@@ -13,6 +13,9 @@ tile_data = PackedInt32Array(0, 0, 2, 1, 65536, 2, 2, 131072, 2, 3, 196608, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_rvf6s"]
 tile_data = PackedInt32Array(0, 131072, 4, 1, 196608, 4, 2, 262144, 4)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_lqirb"]
+tile_data = PackedInt32Array(0, 65536, 4, 65536, 65536, 5, 131072, 65536, 6, 65537, 131072, 5, 131073, 131072, 6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dn3bw"]
 texture = ExtResource("1_4chu4")
@@ -153,3 +156,4 @@ pattern_0 = SubResource("TileMapPattern_3rqov")
 pattern_1 = SubResource("TileMapPattern_a00vh")
 pattern_2 = SubResource("TileMapPattern_7273e")
 pattern_3 = SubResource("TileMapPattern_rvf6s")
+pattern_4 = SubResource("TileMapPattern_lqirb")
