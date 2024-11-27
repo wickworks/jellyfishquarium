@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://j84xxwwavnf2"]
+[gd_scene load_steps=40 format=3 uid="uid://ceuuvi1cua8if"]
 
 [ext_resource type="Script" path="res://entity/player.gd" id="1_ap0cw"]
 [ext_resource type="Texture2D" uid="uid://c1bvn6jplu14f" path="res://assets/platformer_char/chill/Player Idle 48x48.png" id="2_3nydx"]
 [ext_resource type="Texture2D" uid="uid://dimf6tg7bplrv" path="res://assets/platformer_char/chill/PlayerWalk 48x48.png" id="2_apgse"]
+[ext_resource type="Texture2D" uid="uid://dk2bhbpm1u8qt" path="res://assets/platformer_char/parkour/player new jump 48x48.png" id="3_kqqgu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0diy"]
 atlas = ExtResource("2_3nydx")
@@ -43,6 +44,30 @@ region = Rect2(384, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ql33"]
 atlas = ExtResource("2_3nydx")
 region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4wvn"]
+atlas = ExtResource("3_kqqgu")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efkp7"]
+atlas = ExtResource("3_kqqgu")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke6qx"]
+atlas = ExtResource("3_kqqgu")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vd1y"]
+atlas = ExtResource("3_kqqgu")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li1j7"]
+atlas = ExtResource("3_kqqgu")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j65w5"]
+atlas = ExtResource("3_kqqgu")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_adi8e"]
 atlas = ExtResource("2_apgse")
@@ -111,6 +136,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4wvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efkp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke6qx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vd1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li1j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j65w5")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -226,10 +274,67 @@ tracks/1/keys = {
 "values": [&"move"]
 }
 
+[sub_resource type="Animation" id="Animation_e1kws"]
+resource_name = "jump"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+
+[sub_resource type="Animation" id="Animation_cbrk1"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_igl3l"]
 _data = {
 "RESET": SubResource("Animation_l0lu0"),
+"fall": SubResource("Animation_cbrk1"),
 "idle": SubResource("Animation_gxcut"),
+"jump": SubResource("Animation_e1kws"),
 "walk": SubResource("Animation_qipkf")
 }
 
