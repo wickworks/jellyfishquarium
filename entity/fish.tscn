@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxvd8usqdadrs"]
+[gd_scene load_steps=15 format=3 uid="uid://bxvd8usqdadrs"]
 
 [ext_resource type="Script" path="res://entity/fish.gd" id="1_sxfor"]
 [ext_resource type="Texture2D" uid="uid://bxk5krdvkvy0i" path="res://entity/fish.png" id="3_fdt3h"]
@@ -67,6 +67,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5bg6o"]
+particle_flag_disable_z = true
+angle_min = 90.0
+angle_max = 90.0
+spread = 180.0
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_jplug"]
+offsets = PackedFloat32Array(0, 0.494403, 1)
+colors = PackedColorArray(0, 0.74902, 0.862745, 1, 0.494403, 0.873105, 0.930604, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nkq6y"]
+gradient = SubResource("Gradient_jplug")
+width = 1
+
 [node name="Fish" type="Node2D" groups=["fish"]]
 script = ExtResource("1_sxfor")
 
@@ -76,3 +93,7 @@ sprite_frames = SubResource("SpriteFrames_4klu8")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="TrailParticles" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_5bg6o")
+texture = SubResource("GradientTexture1D_nkq6y")
