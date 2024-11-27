@@ -90,10 +90,6 @@ script = ExtResource("1_sxfor")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4klu8")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 process_material = SubResource("ParticleProcessMaterial_5bg6o")
 texture = SubResource("GradientTexture1D_nkq6y")

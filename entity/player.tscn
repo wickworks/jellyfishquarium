@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://j84xxwwavnf2"]
+[gd_scene load_steps=31 format=3 uid="uid://j84xxwwavnf2"]
 
 [ext_resource type="Script" path="res://entity/player.gd" id="1_ap0cw"]
 [ext_resource type="Texture2D" uid="uid://c1bvn6jplu14f" path="res://assets/platformer_char/chill/Player Idle 48x48.png" id="2_3nydx"]
@@ -236,6 +236,26 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmw5g"]
 size = Vector2(14, 30)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fd53w"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 150, 0)
+emission_shape_scale = Vector3(400, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -10, 0)
+tangential_accel_min = -10.0
+tangential_accel_max = 10.0
+
+[sub_resource type="Gradient" id="Gradient_2q6ii"]
+colors = PackedColorArray(0, 0.87451, 0.929412, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8nabu"]
+gradient = SubResource("Gradient_2q6ii")
+width = 2
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ap0cw")
 
@@ -256,3 +276,10 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pmw5g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_fd53w")
+texture = SubResource("GradientTexture1D_8nabu")
+lifetime = 8.0
+preprocess = 12.0
