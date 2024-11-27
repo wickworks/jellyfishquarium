@@ -23,34 +23,33 @@ func _approach(value: float, target: float, amount: float) -> float:
 		return maxf(value - amount, target)
 	else:
 		return target
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move_x = Input.get_axis("Move left", "Move right")
-	
+
 	match state:
 		State.Idle:
 			if move_x != 0:
 				state = State.Walking
 				$AnimationPlayer.stop()
 				$AnimationPlayer.play("walk")
-		
+
 		State.Walking:
 			if move_x == 0:
 				state = State.Idle
 				$AnimationPlayer.stop()
 				$AnimationPlayer.play("idle")
-	
+
 	if absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x:
 		velocity.x = _approach(velocity.x, MAX_RUN * move_x, RUN_REDUCE * delta)
 	else:
 		velocity.x = _approach(velocity.x, MAX_RUN * move_x, RUN_ACCEL * delta)
-		
+
 	if velocity.x != 0:
 		$AnimatedSprite2D.scale.x = signf(velocity.x)
-	
+
 	move_and_slide()
-	
+
 	#position.x = new_x
-	

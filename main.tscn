@@ -41,3 +41,84 @@ position = Vector2(151, 119)
 
 [node name="Fish5" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
 position = Vector2(-22, 131)
+
+[node name="Fish6" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-325, 548)
+
+[node name="Fish7" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-209, 552)
+
+[node name="Fish8" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-275, 605)
+
+[node name="Fish9" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-252, 557)
+
+[node name="Fish10" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-161, 581)
+
+[node name="Fish11" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-185, 613)
+
+[node name="Fish12" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-338, 618)
+
+[node name="Fish13" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-353, 575)
+
+[node name="Fish14" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-188, -17)
+
+[node name="Fish15" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-183, -104)
+
+[node name="Fish16" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-50, -105)
+
+[node name="Fish17" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-28, -134)
+
+[node name="Fish18" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-28, -115)
+
+[node name="Fish19" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(-48, -138)
+
+[node name="Fish20" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(130, -182)
+
+[node name="Fish21" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(114, -115)
+
+[node name="Fish22" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(118, -51)
+
+[node name="Fish23" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(334, -130)
+
+[node name="Fish24" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(396, -11)
+
+[node name="Fish25" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(422, 122)
+
+[node name="Fish26" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(417, 104)
+
+[node name="Fish27" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(401, 121)
+
+[node name="Fish28" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(427, 134)
+
+[node name="Fish29" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(429, 106)
+
+[node name="Fish30" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(439, 127)
+
+[node name="Fish31" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(519, -118)
+
+[node name="Fish32" parent="Map/Animals" instance=ExtResource("4_5wu0d")]
+position = Vector2(519, -118)
