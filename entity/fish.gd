@@ -12,16 +12,20 @@ const SPEED_MAX:float = 1.0
 
 const ALIGNMENT_FORCE:float = .01
 const COHESION_FORCE:float = .0001
-const SEPARATION_FORCE:float = 2#1.2
+const SEPARATION_FORCE:float = 3#1.2
 
 #const MOUSE_PERCEPTION_RADIUS:float = 100
 const FOLLOW_FORCE:float = .0018
-const FOLLOW_RADIUS:float = 500
+const FOLLOW_RADIUS:float = 100
 
 var idle_point:Vector2
 var following_player:bool = false
 
-var direction:float = randf_range(0, TAU)
+# offset the attraction to the player by a variable amount for each fish, and change that orbit point over time
+var orbit:float = 0
+@onready var variation_seed:float = randf()
+
+@onready var direction:float = variation_seed * TAU
 @onready var velocity:Vector2 = Util.vector_from_angle(SPEED_MAX, direction)
 
 const MAX_LIFESPAN:float = 40
@@ -33,7 +37,7 @@ const MAX_LIFESPAN:float = 40
 	#for tween:Tween in eat_tweens: tween.kill()
 
 func _ready() -> void:
-	idle_point = position + Vector2(velocity.y, velocity.x) * 5
+	idle_point = position + Vector2(variation_seed,-variation_seed*2) * 2
 	#lifespan_tween = create_tween()
 	#lifespan_tween.tween_callback(peacefully_die_of_old_age).set_delay(MAX_LIFESPAN * randf_range(.8,1.0))
 
@@ -71,16 +75,26 @@ func _process(delta: float) -> void:
 	velocity += average_position * COHESION_FORCE
 	velocity -= average_separation * SEPARATION_FORCE
 
+	orbit += (variation_seed - .5) * delta * 4
+	if orbit > TAU: orbit -= TAU
+	elif orbit < 0: orbit += TAU
+	var variation_offset := Util.vector_from_angle(variation_seed, orbit) * 60
+
+	var player:Player = get_tree().get_first_node_in_group("player")
+	var player_diff := (player.position + variation_offset) - position
 
 	var follow_diff := Vector2.ZERO
-	if following_player:
-		# ???? follow player
+	if following_player and player:
+		follow_diff = player_diff
 		if follow_diff.length() > FOLLOW_RADIUS:
 			following_player = false
 			idle_point = position
 	else:
 		follow_diff = idle_point - position
-		if follow_diff.length() > FOLLOW_RADIUS: idle_point = position
+		if follow_diff.length() > FOLLOW_RADIUS:
+			idle_point = position
+		if player_diff.length() < FOLLOW_RADIUS:
+			following_player = true
 
 	follow_diff = follow_diff.limit_length(FOLLOW_RADIUS)
 	velocity += follow_diff * FOLLOW_FORCE

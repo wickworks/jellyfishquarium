@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -33,6 +33,7 @@ project/assembly_name="Jellyfishquarium"
 fish=""
 jellyfish=""
 larvae=""
+player=""
 
 [input]
 
