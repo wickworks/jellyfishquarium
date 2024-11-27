@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
-[ext_resource type="PackedScene" path="res://entity/player.tscn" id="2_54jki"]
+[ext_resource type="PackedScene" uid="uid://ceuuvi1cua8if" path="res://entity/player.tscn" id="2_54jki"]
 [ext_resource type="TileSet" uid="uid://btsul1rodpbea" path="res://assets/platformer_env/main_tileset.tres" id="3_df2rq"]
 
 [node name="Main" type="Node2D"]

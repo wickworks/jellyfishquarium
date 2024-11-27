@@ -9,6 +9,10 @@ const MAX_RUN := 90.0
 const RUN_REDUCE := 400.0
 const RUN_ACCEL := 1000.0
 
+enum State { Idle, Walking }
+
+var state: State = State.Idle
+
 
 var move_x := 0.0
 var speed: Vector2 = Vector2(0, 0)
@@ -26,9 +30,25 @@ func _approach(value: float, target: float, amount: float) -> float:
 func _process(delta):
 	move_x = Input.get_axis("Move left", "Move right")
 	
+	match state:
+		State.Idle:
+			if move_x != 0:
+				state = State.Walking
+				$AnimationPlayer.stop()
+				$AnimationPlayer.play("walk")
+		
+		State.Walking:
+			if move_x == 0:
+				state = State.Idle
+				$AnimationPlayer.stop()
+				$AnimationPlayer.play("idle")
+	
 	if absf(speed.x) > MAX_RUN && signf(speed.x) == move_x:
 		speed.x = _approach(speed.x, MAX_RUN * move_x, RUN_REDUCE * delta)
 	else:
 		speed.x = _approach(speed.x, MAX_RUN * move_x, RUN_ACCEL * delta)
+		
+	if speed.x != 0:
+		scale.x = signf(speed.x)
 		
 	position += speed * delta
