@@ -5,15 +5,15 @@ class_name Player
 func _ready():
 	pass # Replace with function body.
 
-const MAX_RUN := 90.0 * 1.5
-const MAX_FALL := 160.0 * 1.5
-const FAST_MAX_ACCEL := 300.0 * 1.5
-const RUN_REDUCE := 400.0 * 1.5
-const RUN_ACCEL := 1000.0 * 1.5
-const GRAVITY := 900.0 * 1.5
-const JUMP_H_BOOST := 40.0 * 1.5
-const JUMP_SPEED := -105.0 * 1.5
-const HALF_GRAV_THRESHOLD := 40.0 * 1.5
+const MAX_RUN := 90.0 
+const MAX_FALL := 160.0 
+const FAST_MAX_ACCEL := 300.0 
+const RUN_REDUCE := 400.0 
+const RUN_ACCEL := 1000.0 
+const GRAVITY := 900.0 
+const JUMP_H_BOOST := 40.0 
+const JUMP_SPEED := -125.0 
+const HALF_GRAV_THRESHOLD := 40.0 
 const VAR_JUMP_TIME = 0.2
 
 var lift_speed := Vector2(0, 0)
@@ -54,8 +54,6 @@ func _process(delta):
 	
 		if var_jump_timer <= 0:
 			var_jump_timer = 0
-			$AnimationPlayer.stop()
-			$AnimationPlayer.play("fall")
 	
 	
 	if is_on_floor():
@@ -63,6 +61,9 @@ func _process(delta):
 			$AnimationPlayer.play("walk")
 		else:
 			$AnimationPlayer.play("idle")
+	else:
+		if velocity.y > 5:
+			$AnimationPlayer.play("fall")
 
 	# horizontal movement
 	if absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x:
@@ -94,7 +95,6 @@ func _process(delta):
 		velocity.y = JUMP_SPEED
 		velocity += lift_boost
 		var_jump_speed = velocity.y
-		$AnimatedSprite2D.scale = Vector2(0.8 * signf($AnimatedSprite2D.scale.x), 1.2)
 		
 	if var_jump_timer > 0:
 		if Input.is_action_pressed("Jump"):
@@ -111,7 +111,6 @@ func _process(delta):
 		var collision = get_slide_collision(collision_i)
 		if collision.get_normal() == Vector2.UP:
 			var_jump_timer = 0
-			$AnimatedSprite2D.scale = Vector2(1.0 * signf($AnimatedSprite2D.scale.x), 1.0)
 			
 			
 	
