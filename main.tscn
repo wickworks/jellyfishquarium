@@ -51,7 +51,7 @@ modulate = Color(0.597176, 0.597176, 0.597176, 1)
 texture = ExtResource("3_uwpg4")
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
-position = Vector2(220, 71)
+position = Vector2(255, 137)
 
 [node name="Map" type="Node2D" parent="."]
 

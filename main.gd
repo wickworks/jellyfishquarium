@@ -10,8 +10,19 @@ static var scene:Main
 
 #static var mouse_position:Vector2
 
-func _ready() -> void:
+@onready var window: Window = get_window() 
+@onready var base_size: Vector2i = window.content_scale_size
+
+func _ready() -> void: 
+	window.size_changed.connect(window_size_changed) 
 	Main.scene = self
+	
+	
+func window_size_changed(): 
+	var scale: Vector2i = window.size/base_size 
+	window.content_scale_size = window.size / (scale.y if scale.y >= scale.x else scale.x) 
+
+
 	#create_starting_animals()
 #
 #func create_starting_animals() -> void:
