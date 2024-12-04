@@ -338,6 +338,8 @@ width = 2
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ap0cw")
 
+[node name="Hooks" type="Node" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_cvlfg")

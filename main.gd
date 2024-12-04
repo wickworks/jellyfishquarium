@@ -10,11 +10,11 @@ static var scene:Main
 
 #static var mouse_position:Vector2
 
-@onready var window: Window = get_window() 
+@onready var window: Window = get_window()
 @onready var base_size: Vector2i = window.content_scale_size
 
-func _ready() -> void: 
-	window.size_changed.connect(window_size_changed) 
+func _ready() -> void:
+	window.size_changed.connect(window_size_changed)
 	Main.scene = self
 	
 	

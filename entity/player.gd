@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+@export var hook_scene:PackedScene = preload("res://entity/hook.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -46,11 +48,11 @@ func _process(delta):
 
 	if var_jump_timer > 0:
 		var_jump_timer -= delta
-	
+
 		if var_jump_timer <= 0:
 			var_jump_timer = 0
-	
-	
+
+
 	if is_on_floor():
 		if move_x != 0:
 			$AnimationPlayer.play("walk")
@@ -67,8 +69,8 @@ func _process(delta):
 		velocity.x = Util.approach(velocity.x, MAX_RUN * move_x, RUN_ACCEL * delta)
 	if velocity.x != 0:
 		$AnimatedSprite2D.scale.x = signf(velocity.x)
-	
-	
+
+
 	# vertical movement
 	var mf = MAX_FALL
 	max_fall = Util.approach(max_fall, mf, FAST_MAX_ACCEL * delta)		
@@ -79,8 +81,8 @@ func _process(delta):
 		velocity.y = Util.approach(velocity.y, max, GRAVITY * mult * delta)
 		if velocity.y > 0:
 			$AnimationPlayer.play("fall")
-		
-		
+
+
 	if is_on_floor() and Input.is_action_just_pressed("Jump"):
 		print("Jump! %s" % [max_fall])
 		$AnimationPlayer.stop()
@@ -90,7 +92,7 @@ func _process(delta):
 		velocity.y = JUMP_SPEED
 		velocity += lift_boost
 		var_jump_speed = velocity.y
-		
+
 	if var_jump_timer > 0:
 		if Input.is_action_pressed("Jump"):
 			velocity.y = minf(velocity.y, var_jump_speed)
@@ -98,10 +100,14 @@ func _process(delta):
 			var_jump_timer = 0
 			#$AnimationPlayer.stop()
 			#$AnimationPlayer.play("fall")
-	
-	
+
+	# update hooks
+	for hook:Hook in $Hooks.get_children():
+		update_hook(hook)
+
 	move_and_slide()
-		
+
+
 	for collision_i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(collision_i)
 		if collision.get_normal() == Vector2.UP:
@@ -122,3 +128,18 @@ func _process(delta):
 	
 			
 	
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fire_1"):
+		var mouse_pos := get_global_mouse_position()
+		var firing_angle := position.angle_to_point(mouse_pos)
+		create_hook(firing_angle)
+
+
+func create_hook(angle:float) -> void:
+	var new_hook:Hook = hook_scene.instantiate()
+	$Hooks.add_child(new_hook)
+	new_hook.initialize(global_position, angle)
+
+func update_hook(hook:Hook) -> void:
+	hook.update_line(global_position - hook.global_position)
