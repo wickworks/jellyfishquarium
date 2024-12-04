@@ -3,7 +3,7 @@ class_name Hook
 
 const SPEED:float = 15
 #const PULL_VELOCITY:float = 200
-const PULL_ACCEL:float = 1200
+const PULL_ACCEL:float = 1500
 
 var is_hooked:bool = false
 
