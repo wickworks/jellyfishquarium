@@ -143,16 +143,16 @@ func _process(delta):
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire_1"):
-		var mouse_pos := get_global_mouse_position()
-		var firing_angle := global_position.angle_to_point(mouse_pos)
-		create_hook(firing_angle)
+	var mouse_pos := get_global_mouse_position()
+	var firing_angle := global_position.angle_to_point(mouse_pos)
+	for action:StringName in [&'fire_1', &'fire_2']:
+		if event.is_action_pressed(action):
+			create_hook(firing_angle, action)
 
-
-func create_hook(angle:float) -> void:
+func create_hook(angle:float, action:StringName) -> void:
 	var new_hook:Hook = HOOK_SCENE.instantiate()
 	$Hooks.add_child(new_hook)
-	new_hook.initialize(global_position, angle)
+	new_hook.initialize(global_position, angle, action)
 
 func update_hook(hook:Hook, delta:float) -> void:
 	hook.update_line(global_position - hook.global_position)
