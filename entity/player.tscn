@@ -354,11 +354,16 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pmw5g")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_fd53w")
 texture = SubResource("GradientTexture1D_8nabu")
 lifetime = 8.0
 preprocess = 12.0
+
+[node name="CameraOffset" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera" type="Camera2D" parent="CameraOffset"]
+unique_name_in_owner = true
+position = Vector2(0, 26)

@@ -5,6 +5,8 @@ class_name Player
 func _ready():
 	pass # Replace with function body.
 
+const LOOK_SPEED = 1.0
+const LOOK_DISTANCE = 50.0
 const MAX_RUN := 90.0 
 const MAX_FALL := 160.0 
 const FAST_MAX_ACCEL := 300.0 
@@ -33,13 +35,6 @@ var state: State = State.Idle
 
 var move_x := 0.0
 
-func _approach(value: float, target: float, amount: float) -> float:
-	if value < target:
-		return minf(value + amount, target)
-	if value > target:
-		return maxf(value - amount, target)
-	else:
-		return target
 		
 func _enter_tree():
 	max_fall = MAX_FALL
@@ -67,21 +62,21 @@ func _process(delta):
 
 	# horizontal movement
 	if absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x:
-		velocity.x = _approach(velocity.x, MAX_RUN * move_x, RUN_REDUCE * delta)
+		velocity.x = Util.approach(velocity.x, MAX_RUN * move_x, RUN_REDUCE * delta)
 	else:
-		velocity.x = _approach(velocity.x, MAX_RUN * move_x, RUN_ACCEL * delta)
+		velocity.x = Util.approach(velocity.x, MAX_RUN * move_x, RUN_ACCEL * delta)
 	if velocity.x != 0:
 		$AnimatedSprite2D.scale.x = signf(velocity.x)
 	
 	
 	# vertical movement
 	var mf = MAX_FALL
-	max_fall = _approach(max_fall, mf, FAST_MAX_ACCEL * delta)		
+	max_fall = Util.approach(max_fall, mf, FAST_MAX_ACCEL * delta)		
 
 	if !is_on_floor():
 		var max = max_fall
 		var mult = 0.5 if (absf(velocity.y) < HALF_GRAV_THRESHOLD && (Input.is_action_pressed("Jump"))) else 1.0
-		velocity.y = _approach(velocity.y, max, GRAVITY * mult * delta)
+		velocity.y = Util.approach(velocity.y, max, GRAVITY * mult * delta)
 		if velocity.y > 0:
 			$AnimationPlayer.play("fall")
 		
@@ -103,14 +98,27 @@ func _process(delta):
 			var_jump_timer = 0
 			#$AnimationPlayer.stop()
 			#$AnimationPlayer.play("fall")
-		
+	
+	
 	move_and_slide()
 		
-	
 	for collision_i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(collision_i)
 		if collision.get_normal() == Vector2.UP:
 			var_jump_timer = 0
+	
+	
+	const CAMERA_OFFSET := -70.0
+	
+	#%CameraOffset.position.x = Util.approach(%CameraOffset.position.x, LOOK_DISTANCE * velocity.x / MAX_RUN, )
+	
+	var look = Vector2(
+		LOOK_DISTANCE * velocity.x / MAX_RUN,
+		(velocity.y * LOOK_DISTANCE / MAX_FALL if velocity.y > 0 else 0) + CAMERA_OFFSET
+	)
+	%CameraOffset.position = look
+	
 			
+	
 			
 	
