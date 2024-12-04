@@ -1,11 +1,14 @@
 extends CharacterBody2D
 class_name Player
 
-@export var hook_scene:PackedScene = preload("res://entity/hook.tscn")
+const HOOK_SCENE:PackedScene = preload("res://entity/hook.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+const AIR_CONTROL_THRESHOLD := 95 # moving faster than this and we lose air control
+const AIR_REDUCE := 100.0
 
 const MAX_RUN := 90.0
 const MAX_FALL := 160.0
@@ -62,10 +65,15 @@ func _process(delta):
 			$AnimationPlayer.play("fall")
 
 	# horizontal movement
-	if absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x:
-		velocity.x = Util.approach(velocity.x, MAX_RUN * move_x, RUN_REDUCE * delta)
+	var accel_x
+	if not is_on_floor() and absf(velocity.x) > AIR_CONTROL_THRESHOLD:
+		accel_x = AIR_REDUCE
+	elif (absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x):
+		accel_x = RUN_REDUCE
 	else:
-		velocity.x = Util.approach(velocity.x, MAX_RUN * move_x, RUN_ACCEL * delta)
+		accel_x = RUN_ACCEL
+
+	velocity.x = Util.approach(velocity.x, MAX_RUN * move_x, accel_x * delta)
 	if velocity.x != 0:
 		$AnimatedSprite2D.scale.x = signf(velocity.x)
 
@@ -102,7 +110,7 @@ func _process(delta):
 
 	# update hooks
 	for hook:Hook in $Hooks.get_children():
-		update_hook(hook)
+		update_hook(hook, delta)
 
 	move_and_slide()
 
@@ -128,14 +136,20 @@ func _process(delta):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_1"):
 		var mouse_pos := get_global_mouse_position()
-		var firing_angle := position.angle_to_point(mouse_pos)
+		var firing_angle := global_position.angle_to_point(mouse_pos)
 		create_hook(firing_angle)
 
 
 func create_hook(angle:float) -> void:
-	var new_hook:Hook = hook_scene.instantiate()
+	var new_hook:Hook = HOOK_SCENE.instantiate()
 	$Hooks.add_child(new_hook)
 	new_hook.initialize(global_position, angle)
 
-func update_hook(hook:Hook) -> void:
+func update_hook(hook:Hook, delta:float) -> void:
 	hook.update_line(global_position - hook.global_position)
+
+	if hook.is_hooked:
+		#var pull_vector: = Vector2.from_angle(global_position.angle_to_point(hook.global_position)) * Hook.PULL_VELOCITY
+		#velocity = Util.approach2d(velocity, pull_vector, Hook.PULL_ACCEL)
+		var pull_force: = Vector2.from_angle(global_position.angle_to_point(hook.global_position)) * Hook.PULL_ACCEL
+		velocity += (pull_force * delta)
