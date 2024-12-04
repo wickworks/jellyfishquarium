@@ -30,6 +30,8 @@ var var_jump_timer := 0.0
 var var_jump_speed := 0.0
 var look_x := 0.0
 var look_dx := 0.0
+var was_on_floor := false
+var camera_y := global_position.y
 
 var lift_boost: Vector2:
 	get:
@@ -137,21 +139,49 @@ func _process(delta):
 
 
 	const CAMERA_OFFSET := -70.0
-	const LOOK_DISTANCE = 50.0
+	const LOOK_DISTANCE = 80.0
 	const LOOK_SPEED = MAX_RUN
 	const LOOK_ACCEL = 10.0
-
+	const LOOK_DEADZONE = 20.0
 
 	var new_look_x = LOOK_DISTANCE * signf(velocity.x)
 
-	if velocity.x != 0 and (signf(new_look_x) != signf(look_x) or absf(new_look_x) > absf(look_x)):
+
+	if move_x != 0 and (signf(new_look_x) != signf(look_x) or absf(new_look_x) > absf(look_x)):
 		look_dx = Util.approach(look_dx, LOOK_SPEED, LOOK_ACCEL)
-		look_x = Util.approach(look_x, new_look_x, look_dx * delta)
-	else:
+		look_x = Util.approach(look_x, new_look_x, LOOK_SPEED * delta)
+	elif velocity.x == 0:
 		look_dx = Util.approach(look_dx, 0, LOOK_ACCEL)
-	%CameraOffset.position.x = look_x
+
+	var new_camera_x = global_position.x + look_x
+
+	%Camera.position.x = clamp(%Camera.position.x, new_camera_x - LOOK_DEADZONE, new_camera_x + LOOK_DEADZONE)
 
 
+	var touched_floor = false
+	if is_on_floor() and not was_on_floor:
+		touched_floor = true
+	was_on_floor = is_on_floor()
+
+	var camera_size = get_viewport_rect().size
+	var camera_rect = Rect2(%Camera.position - camera_size / 2, camera_size)
+	for child in $Hooks.get_children():
+		if child is Node2D:
+			if child.position.y < camera_rect.position.y + 20:
+				camera_y = global_position.y
+
+	if is_on_floor():
+		camera_y = global_position.y
+
+	if global_position.y > camera_y:
+		camera_y = global_position.y
+
+	%Camera.position.y = camera_y - (camera_size.y/2 - 40)
+	const LOOK_SPEED_Y = 200
+
+
+func _move_camera_y(new_y: float) -> void:
+	%CameraOffset.position.y = new_y
 
 
 
