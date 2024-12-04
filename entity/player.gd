@@ -12,7 +12,7 @@ const AIR_REDUCE := 100.0
 
 const WALLSLIDE_V_MULT := .2
 
-const MAX_RUN := 120.0
+const MAX_RUN := 100.0
 const MAX_FALL := 200.#160.0
 const MAX_FALL_FAST := 300.
 const FAST_MAX_ACCEL := 500#300.0
@@ -177,6 +177,8 @@ func _process(delta):
 		camera_y = global_position.y
 
 	%Camera.position.y = camera_y - (camera_size.y/2 - 40)
+
+
 	const LOOK_SPEED_Y = 200
 
 
