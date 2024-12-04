@@ -26,6 +26,7 @@ var max_fall := 0.0
 var var_jump_timer := 0.0
 var var_jump_speed := 0.0
 var look_x := 0.0
+var look_dx := 0.0
 
 var lift_boost: Vector2:
 	get:
@@ -124,11 +125,17 @@ func _process(delta):
 
 	const CAMERA_OFFSET := -70.0
 	const LOOK_DISTANCE = 50.0
-	const LOOK_SPEED = 70.0
+	const LOOK_SPEED = MAX_RUN
+	const LOOK_ACCEL = 10.0
 
-	var new_look_x = LOOK_DISTANCE * velocity.x / MAX_RUN
-	if signf(new_look_x) == signf(look_x) and absf(new_look_x) > absf(look_x):
-		look_x = Util.approach(look_x, new_look_x, LOOK_SPEED * delta)
+
+	var new_look_x = LOOK_DISTANCE * signf(velocity.x)
+
+	if velocity.x != 0 and (signf(new_look_x) != signf(look_x) or absf(new_look_x) > absf(look_x)):
+		look_dx = Util.approach(look_dx, LOOK_SPEED, LOOK_ACCEL)
+		look_x = Util.approach(look_x, new_look_x, look_dx * delta)
+	else:
+		look_dx = Util.approach(look_dx, 0, LOOK_ACCEL)
 	%CameraOffset.position.x = look_x
 
 
