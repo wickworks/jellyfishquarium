@@ -10,14 +10,14 @@ func _ready():
 const AIR_CONTROL_THRESHOLD := 95 # moving faster than this and we lose air control
 const AIR_REDUCE := 100.0
 
-const MAX_RUN := 90.0
-const MAX_FALL := 160.0
+const MAX_RUN := 120.0
+const MAX_FALL := 200.#160.0
 const FAST_MAX_ACCEL := 300.0
 const RUN_REDUCE := 400.0
 const RUN_ACCEL := 1000.0
 const GRAVITY := 900.0
 const JUMP_H_BOOST := 40.0
-const JUMP_SPEED := -125.0
+const JUMP_SPEED := -165.0#-125.0
 const HALF_GRAV_THRESHOLD := 40.0
 const VAR_JUMP_TIME = 0.2
 
@@ -155,10 +155,8 @@ func create_hook(angle:float, action:StringName) -> void:
 	new_hook.initialize(global_position, angle, action)
 
 func update_hook(hook:Hook, delta:float) -> void:
+	var relative_pos:Vector2 = global_position - hook.global_position
 	hook.update_line(global_position - hook.global_position)
 
 	if hook.is_hooked:
-		#var pull_vector: = Vector2.from_angle(global_position.angle_to_point(hook.global_position)) * Hook.PULL_VELOCITY
-		#velocity = Util.approach2d(velocity, pull_vector, Hook.PULL_ACCEL)
-		var pull_force: = Vector2.from_angle(global_position.angle_to_point(hook.global_position)) * Hook.PULL_ACCEL
-		velocity += (pull_force * delta)
+		velocity += hook.get_pull_force(relative_pos) * delta
