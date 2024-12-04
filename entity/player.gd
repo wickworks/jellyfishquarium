@@ -7,23 +7,22 @@ class_name Player
 func _ready():
 	pass # Replace with function body.
 
-const LOOK_SPEED = 1.0
-const LOOK_DISTANCE = 50.0
-const MAX_RUN := 90.0 
-const MAX_FALL := 160.0 
-const FAST_MAX_ACCEL := 300.0 
-const RUN_REDUCE := 400.0 
-const RUN_ACCEL := 1000.0 
-const GRAVITY := 900.0 
-const JUMP_H_BOOST := 40.0 
-const JUMP_SPEED := -125.0 
-const HALF_GRAV_THRESHOLD := 40.0 
+const MAX_RUN := 90.0
+const MAX_FALL := 160.0
+const FAST_MAX_ACCEL := 300.0
+const RUN_REDUCE := 400.0
+const RUN_ACCEL := 1000.0
+const GRAVITY := 900.0
+const JUMP_H_BOOST := 40.0
+const JUMP_SPEED := -125.0
+const HALF_GRAV_THRESHOLD := 40.0
 const VAR_JUMP_TIME = 0.2
 
 var lift_speed := Vector2(0, 0)
 var max_fall := 0.0
 var var_jump_timer := 0.0
 var var_jump_speed := 0.0
+var look_x := 0.0
 
 var lift_boost: Vector2:
 	get:
@@ -37,7 +36,7 @@ var state: State = State.Idle
 
 var move_x := 0.0
 
-		
+
 func _enter_tree():
 	max_fall = MAX_FALL
 
@@ -73,7 +72,7 @@ func _process(delta):
 
 	# vertical movement
 	var mf = MAX_FALL
-	max_fall = Util.approach(max_fall, mf, FAST_MAX_ACCEL * delta)		
+	max_fall = Util.approach(max_fall, mf, FAST_MAX_ACCEL * delta)
 
 	if !is_on_floor():
 		var max = max_fall
@@ -107,27 +106,24 @@ func _process(delta):
 
 	move_and_slide()
 
-
 	for collision_i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(collision_i)
 		if collision.get_normal() == Vector2.UP:
 			var_jump_timer = 0
-	
-	
+
+
 	const CAMERA_OFFSET := -70.0
-	
-	#%CameraOffset.position.x = Util.approach(%CameraOffset.position.x, LOOK_DISTANCE * velocity.x / MAX_RUN, )
-	
-	var look = Vector2(
-		LOOK_DISTANCE * velocity.x / MAX_RUN,
-		(velocity.y * LOOK_DISTANCE / MAX_FALL if velocity.y > 0 else 0) + CAMERA_OFFSET
-	)
-	%CameraOffset.position = look
-	
-			
-	
-			
-	
+	const LOOK_DISTANCE = 50.0
+	const LOOK_SPEED = 70.0
+
+	var new_look_x = LOOK_DISTANCE * velocity.x / MAX_RUN
+	if signf(new_look_x) == signf(look_x) and absf(new_look_x) > absf(look_x):
+		look_x = Util.approach(look_x, new_look_x, LOOK_SPEED * delta)
+	%CameraOffset.position.x = look_x
+
+
+
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_1"):

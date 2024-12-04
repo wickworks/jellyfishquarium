@@ -16,11 +16,11 @@ static var scene:Main
 func _ready() -> void:
 	window.size_changed.connect(window_size_changed)
 	Main.scene = self
-	
-	
-func window_size_changed(): 
-	var ratio: Vector2i = window.size/base_size 
-	window.content_scale_size = window.size / (ratio.y if ratio.y >= ratio.x else ratio.x) 
+
+
+func window_size_changed():
+	var ratio: Vector2i = window.size/base_size
+	window.content_scale_size = window.size / (ratio.y if ratio.y >= ratio.x else ratio.x)
 
 
 	#create_starting_animals()

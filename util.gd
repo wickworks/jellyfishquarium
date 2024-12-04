@@ -23,7 +23,10 @@ static func approach(value: float, target: float, amount: float) -> float:
 		return maxf(value - amount, target)
 	else:
 		return target
-		
+
+static func anim(obj, property, target: float, amount: float) -> void:
+	obj.set(property, approach(obj.get(property), target, amount))
+
 static func approach2d(value: Vector2, target: Vector2, amount: float) -> Vector2:
 	return Vector2(
 		approach(value.x, target.x, amount),
