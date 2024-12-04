@@ -1,9 +1,9 @@
 extends CharacterBody2D
 class_name Hook
 
-const SPEED:float = 10
+const SPEED:float = 15
 #const PULL_VELOCITY:float = 200
-const PULL_ACCEL:float = 1500
+const PULL_ACCEL:float = 1200
 
 var is_hooked:bool = false
 

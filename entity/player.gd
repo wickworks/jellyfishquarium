@@ -46,6 +46,8 @@ func _enter_tree():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var has_latched_grappling_hook := $Hooks.get_children().any(func(hook:Hook) -> bool: return hook.is_hooked)
+
 	move_x = Input.get_axis("Move left", "Move right")
 
 	if var_jump_timer > 0:
@@ -66,7 +68,7 @@ func _process(delta):
 
 	# horizontal movement
 	var accel_x
-	if not is_on_floor() and absf(velocity.x) > AIR_CONTROL_THRESHOLD:
+	if (not is_on_floor() and absf(velocity.x) > AIR_CONTROL_THRESHOLD) or has_latched_grappling_hook:
 		accel_x = AIR_REDUCE
 	elif (absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x):
 		accel_x = RUN_REDUCE
