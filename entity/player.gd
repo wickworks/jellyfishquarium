@@ -10,9 +10,12 @@ func _ready():
 const AIR_CONTROL_THRESHOLD := 95 # moving faster than this and we lose air control
 const AIR_REDUCE := 100.0
 
+const WALLSLIDE_V_MULT := .2
+
 const MAX_RUN := 120.0
 const MAX_FALL := 200.#160.0
-const FAST_MAX_ACCEL := 300.0
+const MAX_FALL_FAST := 300.
+const FAST_MAX_ACCEL := 500#300.0
 const RUN_REDUCE := 400.0
 const RUN_ACCEL := 1000.0
 const GRAVITY := 900.0
@@ -39,6 +42,7 @@ var state: State = State.Idle
 
 
 var move_x := 0.0
+var move_y := 0.0
 
 
 func _enter_tree():
@@ -50,6 +54,7 @@ func _process(delta):
 	var has_latched_grappling_hook := $Hooks.get_children().any(func(hook:Hook) -> bool: return hook.is_hooked)
 
 	move_x = Input.get_axis("Move left", "Move right")
+	move_y = Input.get_axis("Move up", "Move down")
 
 	if var_jump_timer > 0:
 		var_jump_timer -= delta
@@ -57,6 +62,11 @@ func _process(delta):
 		if var_jump_timer <= 0:
 			var_jump_timer = 0
 
+	var wallslide_x:int = 0
+	if is_on_wall_only() and sign(get_wall_normal().x) == sign(-move_x) and velocity.y > 0:
+		wallslide_x = move_x
+
+	$AnimatedSprite2D.rotation_degrees = -90 * wallslide_x
 
 	if is_on_floor():
 		if move_x != 0:
@@ -80,21 +90,24 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.scale.x = signf(velocity.x)
 
-
 	# vertical movement
-	var mf = MAX_FALL
-	max_fall = Util.approach(max_fall, mf, FAST_MAX_ACCEL * delta)
+	var target_max_fall:float = MAX_FALL_FAST if move_y > 0 else MAX_FALL
+	if wallslide_x != 0: target_max_fall *= WALLSLIDE_V_MULT
+	max_fall = Util.approach(max_fall, target_max_fall, FAST_MAX_ACCEL * delta)
+	#if wallslide_x != 0: max_fall = MAX_FALL * WALLSLIDE_V_MULT
 
 	if !is_on_floor():
-		var max = max_fall
-		var mult = 0.5 if (absf(velocity.y) < HALF_GRAV_THRESHOLD && (Input.is_action_pressed("Jump"))) else 1.0
-		velocity.y = Util.approach(velocity.y, max, GRAVITY * mult * delta)
+		var jump_mult := 1.0
+		# hold jump to get a bit o anti gravity
+		if (absf(velocity.y) < HALF_GRAV_THRESHOLD && (Input.is_action_pressed("Jump"))): jump_mult = 0.5
+
+		velocity.y = Util.approach(velocity.y, max_fall, GRAVITY * jump_mult * delta)
 		if velocity.y > 0:
 			$AnimationPlayer.play("fall")
 
 
 	if is_on_floor() and Input.is_action_just_pressed("Jump"):
-		print("Jump! %s" % [max_fall])
+		#print("Jump! %s" % [max_fall])
 		$AnimationPlayer.stop()
 		$AnimationPlayer.play("jump")
 		var_jump_timer = VAR_JUMP_TIME
