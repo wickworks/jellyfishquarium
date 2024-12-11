@@ -23,8 +23,22 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Move left", "Move right", "Move up", "Move down")
 
+	const MAX_RUN := 100.0
+	const RUN_ACCEL := 1000.0
+#
+	#var accel_x
+	#if not is_on_floor():
+		#accel_x = AIR_REDUCE
+	#elif (absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x):
+		#accel_x = RUN_REDUCE
+	#else:
+		#accel_x = RUN_ACCEL
+
+
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized().rotated(Vector3.UP, %Camera.rotation.y)
-	$Rogue.look_at(global_position - direction)
+	if direction.length() > 0:
+		$Rogue.look_at(global_position - direction)
+
 
 	if direction:
 		velocity.x = direction.x * SPEED

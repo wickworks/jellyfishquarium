@@ -13,11 +13,11 @@ const AIR_REDUCE := 100.0
 const WALLSLIDE_V_MULT := .2
 
 const MAX_RUN := 100.0
+const RUN_ACCEL := 1000.0
 const MAX_FALL := 200.#160.0
 const MAX_FALL_FAST := 300.
 const FAST_MAX_ACCEL := 500#300.0
 const RUN_REDUCE := 400.0
-const RUN_ACCEL := 1000.0
 const GRAVITY := 900.0
 const JUMP_H_BOOST := 40.0
 const JUMP_SPEED := -165.0#-125.0
