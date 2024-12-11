@@ -1,9 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
-
 
 func _physics_process(delta):
 	$Rogue/AnimationPlayer.play("Running_A")
@@ -21,30 +19,42 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("Move left", "Move right", "Move up", "Move down")
+	var move = Input.get_vector("Move left", "Move right", "Move up", "Move down")
 
-	const MAX_RUN := 100.0
-	const RUN_ACCEL := 1000.0
+	const MAX_RUN := 10.0
+	const RUN_ACCEL := 100.0
+	const RUN_REDUCE := 40.0
 #
-	#var accel_x
-	#if not is_on_floor():
-		#accel_x = AIR_REDUCE
-	#elif (absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x):
-		#accel_x = RUN_REDUCE
-	#else:
-		#accel_x = RUN_ACCEL
 
+	var v_ground = Vector2(velocity.x, velocity.z).rotated(+%Camera.rotation.y)
+	var a_ground: Vector2
+	if (absf(velocity.x) > MAX_RUN && signf(velocity.x) == move.x):
+		a_ground.x = RUN_REDUCE
+	else:
+		a_ground.x = RUN_ACCEL
 
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized().rotated(Vector3.UP, %Camera.rotation.y)
+	if (absf(velocity.z) > MAX_RUN && signf(velocity.z) == move.y):
+		a_ground.y = RUN_REDUCE
+	else:
+		a_ground.y = RUN_ACCEL
+	v_ground.x = Util.approach(v_ground.x, MAX_RUN * move.x, a_ground.x * delta)
+	v_ground.y = Util.approach(v_ground.y, MAX_RUN * move.y, a_ground.y * delta)
+
+	v_ground = v_ground.rotated(-%Camera.rotation.y)
+	velocity = Vector3(v_ground.x, 0, v_ground.y)
+
+	print(move,MAX_RUN * move.y, v_ground, a_ground, velocity, delta)
+
+	var direction = (transform.basis * Vector3(move.x, 0, move.y)).normalized().rotated(Vector3.UP, %Camera.rotation.y)
 	if direction.length() > 0:
 		$Rogue.look_at(global_position - direction)
 
 
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	#if direction:
+		#velocity.x = direction.x * SPEED
+		#velocity.z = direction.z * SPEED
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
+		#velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
