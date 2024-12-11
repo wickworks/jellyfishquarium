@@ -24,7 +24,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("Move left", "Move right", "Move up", "Move down")
 
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized().rotated(Vector3.UP, %Camera.rotation.y)
-	#look_at(global_position - direction)
+	$Rogue.look_at(global_position - direction)
 
 	if direction:
 		velocity.x = direction.x * SPEED
