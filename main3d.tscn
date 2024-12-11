@@ -24,6 +24,7 @@ sky = SubResource("Sky_df6r1")
 ambient_light_color = Color(1, 0.44316, 0.52013, 1)
 ambient_light_sky_contribution = 0.01
 ambient_light_energy = 6.07
+ssao_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_v4ga2"]
 
@@ -44,3 +45,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0578609, 0)
 shape = SubResource("WorldBoundaryShape3D_v4ga2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.59912, -0.492232, 0.631478, -0.266282, 0.866299, 0.422635, -0.755083, 0.0850577, -0.650089, 0, 13.5407, 0)
+shadow_enabled = true
