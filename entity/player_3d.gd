@@ -103,7 +103,20 @@ func _physics_process(delta):
 	if direction.length() > 0:
 		$Rogue.look_at(global_position - direction)
 
-
-	%Camera.look_at($Rogue.global_position)
-
 	move_and_slide()
+
+	# UPDATE CAMERA
+	const SNAP_WEIGHT:float = 4
+	const MIN_OFFSET:float = 8
+	const ANCHOR_SPACING:float = 30
+	var cam_pos:Vector3 = %Camera.global_position
+	var player_pos:Vector3 = global_position + Vector3(MIN_OFFSET, 0, MIN_OFFSET)
+	var closest_point := Vector3(
+		floor(player_pos.x / ANCHOR_SPACING) * ANCHOR_SPACING,
+		cam_pos.y,
+		floor(player_pos.z / ANCHOR_SPACING) * ANCHOR_SPACING
+	)
+	%Camera.global_position = cam_pos.lerp(closest_point, SNAP_WEIGHT * delta)
+
+	#if cam_pos.distance_to(closest_point) > 5:
+	%Camera.look_at($Rogue.global_position)
