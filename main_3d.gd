@@ -14,3 +14,7 @@ func _ready() -> void:
 func window_size_changed():
 	var ratio: Vector2i = window.size/base_size
 	window.content_scale_size = window.size / (ratio.y if ratio.y >= ratio.x else ratio.x)
+
+
+func _process(delta):
+	pass
