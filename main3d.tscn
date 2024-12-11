@@ -1,3 +1,39 @@
-[gd_scene format=3 uid="uid://b6wvcygbytx67"]
+[gd_scene load_steps=7 format=3 uid="uid://b6wvcygbytx67"]
+
+[ext_resource type="Script" path="res://main_3d.gd" id="1_hdd3x"]
+[ext_resource type="PackedScene" uid="uid://cxvdfcoc4l3fo" path="res://entity/player_3d.tscn" id="1_no513"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mb64b"]
+plane = Plane(1, 1, 1, 1)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_s8jgd"]
+
+[sub_resource type="Sky" id="Sky_df6r1"]
+sky_material = SubResource("PhysicalSkyMaterial_s8jgd")
+process_mode = 3
+
+[sub_resource type="Environment" id="Environment_ty4lp"]
+background_mode = 2
+background_energy_multiplier = 8.49
+sky = SubResource("Sky_df6r1")
+ambient_light_color = Color(1, 0.44316, 0.52013, 1)
+ambient_light_sky_contribution = 0.01
+ambient_light_energy = 6.07
 
 [node name="Main3d" type="Node3D"]
+script = ExtResource("1_hdd3x")
+
+[node name="Player3d" parent="." instance=ExtResource("1_no513")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56575, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.39636, 0, 0, 0, 1.39636, 0, 0, 0, 1.39636, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_mb64b")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.984757, -0.103191, 0.139288, -0.0535311, 0.945191, 0.321781, -0.164876, 0.309451, -0.936403, 2.13585, 4.57894, -8.00227)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ty4lp")
