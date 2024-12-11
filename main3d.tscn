@@ -4,9 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cxvdfcoc4l3fo" path="res://entity/player_3d.tscn" id="1_no513"]
 [ext_resource type="PackedScene" uid="uid://bos0kgufkj7rm" path="res://levels/platformer_world.tscn" id="3_454tx"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mb64b"]
-plane = Plane(1, 1, 1, 1)
-
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_s8jgd"]
 
 [sub_resource type="Sky" id="Sky_df6r1"]
@@ -21,19 +18,21 @@ ambient_light_color = Color(1, 0.44316, 0.52013, 1)
 ambient_light_sky_contribution = 0.01
 ambient_light_energy = 6.07
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_v4ga2"]
+
 [node name="Main3d" type="Node3D"]
 script = ExtResource("1_hdd3x")
 
 [node name="Player3d" parent="." instance=ExtResource("1_no513")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56575, 0)
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1.39636, 0, 0, 0, 1.39636, 0, 0, 0, 1.39636, 0, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_mb64b")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7193, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ty4lp")
 
 [node name="PlatformerWorld" parent="." instance=ExtResource("3_454tx")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0578609, 0)
+shape = SubResource("WorldBoundaryShape3D_v4ga2")
