@@ -4,6 +4,7 @@ extends CharacterBody3D
 const JUMP_VELOCITY = 4.5
 
 func _physics_process(delta):
+
 	$Rogue/AnimationPlayer.play("Running_A")
 	$"Rogue/Rig/Skeleton3D/1H_Crossbow".hide()
 	$"Rogue/Rig/Skeleton3D/2H_Crossbow".hide()
@@ -20,6 +21,12 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var move = Input.get_vector("Move left", "Move right", "Move up", "Move down")
+
+	if is_on_floor():
+		if move.length() > 0:
+			$Rogue/AnimationPlayer.play("Running_A")
+		else:
+			$Rogue/AnimationPlayer.play("Idle")
 
 	const MAX_RUN := 10.0
 	const RUN_ACCEL := 100.0
@@ -41,20 +48,12 @@ func _physics_process(delta):
 	v_ground.y = Util.approach(v_ground.y, MAX_RUN * move.y, a_ground.y * delta)
 
 	v_ground = v_ground.rotated(-%Camera.rotation.y)
-	velocity = Vector3(v_ground.x, 0, v_ground.y)
+	velocity = Vector3(v_ground.x, velocity.y, v_ground.y)
 
 	print(move,MAX_RUN * move.y, v_ground, a_ground, velocity, delta)
 
 	var direction = (transform.basis * Vector3(move.x, 0, move.y)).normalized().rotated(Vector3.UP, %Camera.rotation.y)
 	if direction.length() > 0:
 		$Rogue.look_at(global_position - direction)
-
-
-	#if direction:
-		#velocity.x = direction.x * SPEED
-		#velocity.z = direction.z * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-		#velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
