@@ -19,4 +19,4 @@ shape = SubResource("CylinderShape3D_xg46q")
 
 [node name="Camera" type="Camera3D" parent="Node"]
 unique_name_in_owner = true
-transform = Transform3D(0.947857, 0.211584, -0.254384, 0, 0.771856, 0.64199, 0.330877, -0.606122, 0.728732, -4.858, 10.9874, 9.08418)
+transform = Transform3D(0.944129, 0.210752, -0.253384, 0, 0.76882, 0.639465, 0.329576, -0.603738, 0.725865, -4.858, 15.098, 9.08418)

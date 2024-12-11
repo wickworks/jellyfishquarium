@@ -56,4 +56,7 @@ func _physics_process(delta):
 	if direction.length() > 0:
 		$Rogue.look_at(global_position - direction)
 
+
+	%Camera.look_at($Rogue.global_position)
+
 	move_and_slide()
