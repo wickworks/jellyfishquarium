@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bos0kgufkj7rm"]
+
+[ext_resource type="MeshLibrary" uid="uid://cbgfd8n7g6lge" path="res://assets/platformer_3d_env/3d_meshlib.tres" id="1_2lfy4"]
+
+[node name="PlatformerWorld" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_2lfy4")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
