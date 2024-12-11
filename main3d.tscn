@@ -30,6 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7193, 0)
 environment = SubResource("Environment_ty4lp")
 
 [node name="PlatformerWorld" parent="." instance=ExtResource("3_454tx")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
