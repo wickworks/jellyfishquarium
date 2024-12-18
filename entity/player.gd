@@ -65,7 +65,6 @@ func bounce():
 
 func catch():
 	velocity.y = 0
-	%AnimationPlayer.play
 	%AnimationPlayer.play("catch")
 	%AnimationPlayer.queue("fall")
 
@@ -91,15 +90,6 @@ func _process(delta):
 
 	$AnimatedSprite2D.rotation_degrees = -90 * wallslide_x
 
-	if is_on_floor():
-		if move_x != 0:
-			$AnimationPlayer.play("walk")
-		else:
-			$AnimationPlayer.play("idle")
-	else:
-		if velocity.y > 5:
-			$AnimationPlayer.play("fall")
-
 	# horizontal movement
 	var accel_x
 	if (not is_on_floor() and absf(velocity.x) > AIR_CONTROL_THRESHOLD):
@@ -123,27 +113,6 @@ func _process(delta):
 		if (absf(velocity.y) < HALF_GRAV_THRESHOLD && (Input.is_action_pressed("Jump"))): jump_mult = 0.5
 
 		velocity.y = Util.approach(velocity.y, max_fall, GRAVITY * jump_mult * delta)
-		if velocity.y > 0:
-			$AnimationPlayer.play("fall")
-
-	if Input.is_action_just_pressed("Jump"):
-		if is_on_floor() or wallslide_x != 0:
-			#print("Jump! %s" % [max_fall])
-			$AnimationPlayer.stop()
-			$AnimationPlayer.play("jump")
-			var_jump_timer = VAR_JUMP_TIME
-			velocity.x += JUMP_H_BOOST * move_x
-			velocity.y = JUMP_SPEED
-			velocity += lift_boost
-			var_jump_speed = velocity.y
-
-	if var_jump_timer > 0:
-		if Input.is_action_pressed("Jump"):
-			velocity.y = minf(velocity.y, var_jump_speed)
-		else:
-			var_jump_timer = 0
-			#$AnimationPlayer.stop()
-			#$AnimationPlayer.play("fall")
 
 	move_and_slide()
 
