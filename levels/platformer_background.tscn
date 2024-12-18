@@ -1,14 +1,314 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmiv3cig62rk0"]
 
-[ext_resource type="Texture2D" uid="uid://bg500wf6fo0je" path="res://assets/defenestration/building_bg.png" id="3_0v6x8"]
+[ext_resource type="Texture2D" uid="uid://cvohhw3d41cal" path="res://assets/defenestration/clouds.png" id="1_kod6o"]
 
 [node name="Background" type="Node2D"]
 texture_filter = 1
 
-[node name="Parallax2D5" type="Parallax2D" parent="."]
-repeat_size = Vector2(203, 48)
-repeat_times = 50
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+modulate = Color(0.1972, 0.374227, 0.68, 1)
+scale = Vector2(0.8, 0.8)
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-352, 154)
+repeat_size = Vector2(700, 600)
+repeat_times = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D5"]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_0v6x8")
+[node name="CloudA" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(139, 39)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudA2" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(523, 120)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudA3" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(198, 194)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudB" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(240, 8)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudB2" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(276, 334)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudB3" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(152, 352)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudC" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(389, 47)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(180, -3, 162, 57)
+
+[node name="CloudD" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(-8, 140)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 87, 177, 70)
+
+[node name="CloudD2" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(663, 344)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 87, 177, 70)
+
+[node name="CloudE" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(76, 430)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 157, 183, 67)
+
+[node name="CloudE2" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(416, 514)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 157, 183, 67)
+
+[node name="CloudF" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(186, 480)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(195, 111, 238, 129)
+
+[node name="CloudF2" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(364, -54)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(195, 111, 238, 129)
+
+[node name="CloudG" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(374, 446)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(236, 59, 82, 38)
+
+[node name="CloudH" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(458, 289)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(342, 59, 84, 48)
+
+[node name="CloudH2" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(269, 230)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(342, 59, 84, 48)
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+modulate = Color(0.43, 0.587667, 0.86, 1)
+scale = Vector2(0.9, 0.9)
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(187, 145)
+repeat_size = Vector2(700, 600)
+
+[node name="CloudA" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(139, 39)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudA2" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(523, 120)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudA3" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(198, 194)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudB" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(240, 8)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudB2" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(276, 334)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudB3" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(152, 352)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudC" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(389, 47)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(180, -3, 162, 57)
+
+[node name="CloudD" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(-8, 140)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 87, 177, 70)
+
+[node name="CloudD2" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(663, 344)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 87, 177, 70)
+
+[node name="CloudE" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(76, 430)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 157, 183, 67)
+
+[node name="CloudE2" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(416, 514)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 157, 183, 67)
+
+[node name="CloudF" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(186, 480)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(195, 111, 238, 129)
+
+[node name="CloudF2" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(364, -54)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(195, 111, 238, 129)
+
+[node name="CloudG" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(374, 446)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(236, 59, 82, 38)
+
+[node name="CloudH" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(458, 289)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(342, 59, 84, 48)
+
+[node name="CloudH2" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(269, 230)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(342, 59, 84, 48)
+
+[node name="Parallax2D1" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(700, 600)
+repeat_times = 10
+
+[node name="CloudA" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(139, 39)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudA2" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(523, 120)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudA3" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(198, 194)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(2, 0, 80, 27)
+
+[node name="CloudB" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(240, 8)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudB2" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(276, 334)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudB3" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(152, 352)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-2, 30, 168, 55)
+
+[node name="CloudC" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(389, 47)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(180, -3, 162, 57)
+
+[node name="CloudD" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(-8, 140)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 87, 177, 70)
+
+[node name="CloudD2" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(663, 344)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 87, 177, 70)
+
+[node name="CloudE" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(76, 430)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 157, 183, 67)
+
+[node name="CloudE2" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(416, 514)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(-3, 157, 183, 67)
+
+[node name="CloudF" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(186, 480)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(195, 111, 238, 129)
+
+[node name="CloudF2" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(364, -54)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(195, 111, 238, 129)
+
+[node name="CloudG" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(374, 446)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(236, 59, 82, 38)
+
+[node name="CloudH" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(458, 289)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(342, 59, 84, 48)
+
+[node name="CloudH2" type="Sprite2D" parent="Parallax2D1"]
+position = Vector2(269, 230)
+texture = ExtResource("1_kod6o")
+region_enabled = true
+region_rect = Rect2(342, 59, 84, 48)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=6 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
-[ext_resource type="PackedScene" uid="uid://cq5un6ocoglki" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
+[ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
 [ext_resource type="PackedScene" uid="uid://ceuuvi1cua8if" path="res://entity/player.tscn" id="2_54jki"]
-[ext_resource type="PackedScene" uid="uid://bevxb17lroc5y" path="res://levels/awning.tscn" id="4_i4p0y"]
+[ext_resource type="Texture2D" uid="uid://bg500wf6fo0je" path="res://assets/defenestration/building_bg.png" id="4_6x6vh"]
+[ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/awning.tscn" id="4_i4p0y"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
@@ -12,6 +13,12 @@ script = ExtResource("1_csyl4")
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
 position = Vector2(126, 11)
+
+[node name="Building" type="TextureRect" parent="."]
+offset_right = 409.0
+offset_bottom = 2914.0
+texture = ExtResource("4_6x6vh")
+stretch_mode = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 
