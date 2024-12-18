@@ -1,0 +1,201 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gglkdy1hywi"]
+
+[ext_resource type="PackedScene" uid="uid://b654io1hse74w" path="res://levels/clothes.tscn" id="1_gjchm"]
+[ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/awning.tscn" id="2_41akt"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Clothes5" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(109, 1006)
+
+[node name="Clothes35" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(272, 1007)
+
+[node name="Clothes36" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(332, 1007)
+
+[node name="Clothes42" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(212, 1009)
+
+[node name="Clothes43" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(50, 1006)
+
+[node name="Clothes29" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(135, 2539)
+
+[node name="Clothes30" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(304, 2695)
+
+[node name="Clothes31" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(97, 2814)
+
+[node name="Clothes34" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(155, 2736)
+
+[node name="Awning" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(245, 137)
+
+[node name="Awning2" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(310, 177)
+
+[node name="Awning4" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(160, 183)
+
+[node name="Awning6" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(246, 275)
+
+[node name="Awning25" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(219, 2478)
+
+[node name="Awning26" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(307, 2534)
+
+[node name="Awning27" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(53, 2657)
+
+[node name="Awning28" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(209, 2699)
+
+[node name="Awning29" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(209, 2699)
+
+[node name="Awning7" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(35, 228)
+
+[node name="Awning8" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(164, 704)
+
+[node name="Awning30" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(163, 805)
+
+[node name="Awning31" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(161, 1011)
+
+[node name="Clothes6" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(108, 1059)
+
+[node name="Clothes7" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(167, 1059)
+
+[node name="Clothes37" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(271, 1060)
+
+[node name="Clothes44" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(331, 1060)
+
+[node name="Clothes46" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(49, 1059)
+
+[node name="Awning32" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(218, 1064)
+
+[node name="Clothes45" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(153, 1104)
+
+[node name="Clothes50" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(211, 1103)
+
+[node name="Clothes47" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(269, 1106)
+
+[node name="Clothes48" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(329, 1106)
+
+[node name="Clothes49" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(47, 1105)
+
+[node name="Awning33" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(100, 1109)
+
+[node name="Awning34" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(333, 1163)
+
+[node name="Awning36" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(164, 1282)
+
+[node name="Awning40" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(368, 1760)
+
+[node name="Awning38" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(427, 1531)
+
+[node name="Awning39" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(429, 1581)
+
+[node name="Clothes51" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(105, 1156)
+
+[node name="Clothes52" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(163, 1155)
+
+[node name="Clothes53" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(221, 1158)
+
+[node name="Clothes54" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(281, 1158)
+
+[node name="Clothes55" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(46, 1158)
+
+[node name="Awning35" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(41, 1207)
+
+[node name="Awning37" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(368, 1429)
+
+[node name="Awning41" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(311, 1796)
+
+[node name="Clothes56" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(153, 1204)
+
+[node name="Clothes62" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(247, 1327)
+
+[node name="Clothes63" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(305, 1324)
+
+[node name="Clothes64" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(308, 1373)
+
+[node name="Clothes65" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(367, 1372)
+
+[node name="Clothes57" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(211, 1203)
+
+[node name="Clothes61" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(244, 1274)
+
+[node name="Clothes58" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(269, 1206)
+
+[node name="Clothes59" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(329, 1206)
+
+[node name="Clothes60" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(94, 1206)
+
+[node name="Clothes66" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(42, 1276)
+
+[node name="Clothes67" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(38, 1378)
+
+[node name="Clothes68" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(43, 1519)
+
+[node name="Clothes69" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(318, 1759)
+
+[node name="Clothes70" parent="." instance=ExtResource("1_gjchm")]
+position = Vector2(318, 1759)
+
+[node name="Awning9" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(245, 469)
+
+[node name="Awning10" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(367, 851)
+
+[node name="Awning11" parent="." instance=ExtResource("2_41akt")]
+position = Vector2(366, 614)
