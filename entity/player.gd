@@ -27,6 +27,8 @@ const JUMP_SPEED := -165.0#-125.0
 const HALF_GRAV_THRESHOLD := 40.0
 const VAR_JUMP_TIME = 0.2
 
+var weight = 135
+
 var lift_speed := Vector2(0, 0)
 var max_fall := 0.0
 var var_jump_timer := 0.0

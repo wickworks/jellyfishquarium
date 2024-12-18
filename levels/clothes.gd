@@ -25,8 +25,7 @@ func _on_body_entered(body: Node2D):
 		if body.has_method("catch"):
 			body.catch()
 
-
-		if has_clothes:
+		if has_clothes and &"weight" in body and body.weight > 50:
 			has_clothes = false
 			$Sprite2D.texture = empty_sprite
 
