@@ -14,9 +14,11 @@ const AIR_REDUCE := 100.0
 
 const WALLSLIDE_V_MULT := .2
 
+const MAX_FALL := 400.0
+@export var target_max_fall := MAX_FALL
+
 const MAX_RUN := 100.0
 const RUN_ACCEL := 1000.0
-const MAX_FALL := 400.#160.0
 const MAX_FALL_FAST := 300.0
 const FAST_MAX_ACCEL := 500#300.0
 const RUN_REDUCE := 400.0
@@ -59,7 +61,13 @@ func bounce():
 	if absf(velocity.y) > AWNING_PASS_THRU_SPEED:
 		velocity.y = -velocity.y * AWNING_BOUNCE
 	else:
-		velocity.y = 0
+		catch()
+
+func catch():
+	velocity.y = 0
+	%AnimationPlayer.play
+	%AnimationPlayer.play("catch")
+	%AnimationPlayer.queue("fall")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -106,8 +114,6 @@ func _process(delta):
 		$AnimatedSprite2D.scale.x = signf(velocity.x)
 
 	# vertical movement
-	var target_max_fall:float = MAX_FALL_FAST if move_y > 0 else MAX_FALL
-	if wallslide_x != 0: target_max_fall *= WALLSLIDE_V_MULT
 	max_fall = Util.approach(max_fall, target_max_fall, FAST_MAX_ACCEL * delta)
 	#if wallslide_x != 0: max_fall = MAX_FALL * WALLSLIDE_V_MULT
 
