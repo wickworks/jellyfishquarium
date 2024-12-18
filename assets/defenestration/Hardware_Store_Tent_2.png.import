@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q0use1ue343u"
-path="res://.godot/imported/ME_Singles_Generic_Building_48x48_Hardware_Store_Tent_1.png-3aa77a37bd667b940ef540ad085227b6.ctex"
+uid="uid://bjr7labuslgej"
+path="res://.godot/imported/Hardware_Store_Tent_2.png-5ab402d98633e05800bff21e7f721260.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defenestration/ME_Singles_Generic_Building_48x48_Hardware_Store_Tent_1.png"
-dest_files=["res://.godot/imported/ME_Singles_Generic_Building_48x48_Hardware_Store_Tent_1.png-3aa77a37bd667b940ef540ad085227b6.ctex"]
+source_file="res://assets/defenestration/Hardware_Store_Tent_2.png"
+dest_files=["res://.godot/imported/Hardware_Store_Tent_2.png-5ab402d98633e05800bff21e7f721260.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1gw0pcnipo4n"
-path="res://.godot/imported/ME_Singles_Generic_Building_48x48_Condo_8_Balcony_Railing_3.png-fc05df3e2716a2d5370a3b55a107a90d.ctex"
+uid="uid://c6xky5qluh887"
+path="res://.godot/imported/billboard1.png-ba5544113a983bf79be9c66df49ef515.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defenestration/ME_Singles_Generic_Building_48x48_Condo_8_Balcony_Railing_3.png"
-dest_files=["res://.godot/imported/ME_Singles_Generic_Building_48x48_Condo_8_Balcony_Railing_3.png-fc05df3e2716a2d5370a3b55a107a90d.ctex"]
+source_file="res://assets/defenestration/billboard1.png"
+dest_files=["res://.godot/imported/billboard1.png-ba5544113a983bf79be9c66df49ef515.ctex"]
 
 [params]
 

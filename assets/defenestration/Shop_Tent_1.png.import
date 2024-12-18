@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcr52jwf5jtk3"
-path="res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_1.png-2bf5d24eae91e1d8ea0b9394289481ef.ctex"
+uid="uid://di0qxr81v5arn"
+path="res://.godot/imported/Shop_Tent_1.png-1ded141c10c5ee59b393568456be5359.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defenestration/ME_Singles_City_Props_48x48_Hanging_Clothes_1.png"
-dest_files=["res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_1.png-2bf5d24eae91e1d8ea0b9394289481ef.ctex"]
+source_file="res://assets/defenestration/Shop_Tent_1.png"
+dest_files=["res://.godot/imported/Shop_Tent_1.png-1ded141c10c5ee59b393568456be5359.ctex"]
 
 [params]
 

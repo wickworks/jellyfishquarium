@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b654io1hse74w"]
 
 [ext_resource type="Script" path="res://levels/clothes.gd" id="1_itkqy"]
-[ext_resource type="Texture2D" uid="uid://b063xewy3scrr" path="res://assets/defenestration/ME_Singles_City_Props_48x48_Hanging_Clothes_5.png" id="2_1lja0"]
-[ext_resource type="Texture2D" uid="uid://cuil4555j8665" path="res://assets/defenestration/ME_Singles_City_Props_48x48_Hanging_Clothes_6.png" id="6_b71eo"]
-[ext_resource type="Texture2D" uid="uid://bif5s53netfax" path="res://assets/defenestration/ME_Singles_City_Props_48x48_Hanging_Clothes_7.png" id="7_s65kx"]
+[ext_resource type="Texture2D" uid="uid://b063xewy3scrr" path="res://assets/defenestration/Hanging_Clothes_5.png" id="2_1lja0"]
+[ext_resource type="Texture2D" uid="uid://cuil4555j8665" path="res://assets/defenestration/Hanging_Clothes_6.png" id="6_b71eo"]
+[ext_resource type="Texture2D" uid="uid://bif5s53netfax" path="res://assets/defenestration/Hanging_Clothes_7.png" id="7_s65kx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uklbq"]
 size = Vector2(42, 20)

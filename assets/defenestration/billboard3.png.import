@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hllnl7mj15r2"
-path="res://.godot/imported/ME_Singles_Generic_Building_48x48_Shop_Tent_3.png-de741d37465b1346e74440274eabb4d5.ctex"
+uid="uid://boe7pirjsc3v5"
+path="res://.godot/imported/billboard3.png-98eb4a9ab978b6987f3b6d2b89d72481.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defenestration/ME_Singles_Generic_Building_48x48_Shop_Tent_3.png"
-dest_files=["res://.godot/imported/ME_Singles_Generic_Building_48x48_Shop_Tent_3.png-de741d37465b1346e74440274eabb4d5.ctex"]
+source_file="res://assets/defenestration/billboard3.png"
+dest_files=["res://.godot/imported/billboard3.png-98eb4a9ab978b6987f3b6d2b89d72481.ctex"]
 
 [params]
 
