@@ -54,8 +54,12 @@ func _enter_tree():
 
 
 func bounce():
-	print("bounce!!!")
-	velocity.y = -velocity.y
+	const AWNING_BOUNCE = 0.45
+	const AWNING_PASS_THRU_SPEED = 200.0
+	if absf(velocity.y) > AWNING_PASS_THRU_SPEED:
+		velocity.y = -velocity.y * AWNING_BOUNCE
+	else:
+		velocity.y = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

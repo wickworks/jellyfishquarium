@@ -12,7 +12,5 @@ func _process(delta):
 
 
 func _on_body_entered(body: Node2D):
-	print("entered")
 	if body.has_method("bounce"):
-		print("bounce!")
 		body.bounce()

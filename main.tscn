@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
-[ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
+[ext_resource type="PackedScene" uid="uid://cq5un6ocoglki" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
 [ext_resource type="PackedScene" uid="uid://ceuuvi1cua8if" path="res://entity/player.tscn" id="2_54jki"]
 [ext_resource type="PackedScene" uid="uid://bevxb17lroc5y" path="res://levels/awning.tscn" id="4_i4p0y"]
 
