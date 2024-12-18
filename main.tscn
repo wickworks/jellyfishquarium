@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=12 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
@@ -8,12 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bg500wf6fo0je" path="res://assets/defenestration/building_bg.png" id="4_6x6vh"]
 [ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/awning.tscn" id="4_i4p0y"]
 [ext_resource type="Texture2D" uid="uid://mykw304gfoe6" path="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png" id="5_sbtx8"]
-[ext_resource type="Texture2D" uid="uid://cnsa8jwnyim15" path="res://assets/defenestration/ME_Singles_City_Props_48x48_Tree_13.png" id="6_d5myg"]
+[ext_resource type="Texture2D" uid="uid://cg5jjjtjxg4i1" path="res://assets/defenestration/ME_Singles_City_Props_48x48_Tree_2.png" id="6_so4si"]
 [ext_resource type="Texture2D" uid="uid://b76i41fsis0r6" path="res://assets/defenestration/sideways_pole.png" id="7_l3rvu"]
-[ext_resource type="Texture2D" uid="uid://ddxdrgps5vnpm" path="res://assets/defenestration/ME_Singles_Floor_Modular_Building_48x48_Roof_5.png" id="8_orpng"]
-[ext_resource type="Texture2D" uid="uid://bd4jfivh0khbw" path="res://assets/defenestration/water_tower.png" id="9_l01q3"]
-[ext_resource type="Texture2D" uid="uid://dj2wnh3xm6gm2" path="res://assets/defenestration/ac.png" id="10_eis5m"]
-[ext_resource type="Texture2D" uid="uid://d2d0lryyqcx71" path="res://assets/defenestration/ME_Singles_Office_48x48_Building_Sign_1.png" id="11_hu8m1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oepgc"]
 
@@ -21,12 +17,14 @@
 script = ExtResource("1_csyl4")
 
 [node name="Background" parent="." instance=ExtResource("2_5vl4y")]
+metadata/_edit_lock_ = true
 
 [node name="Building" type="TextureRect" parent="."]
 offset_right = 409.0
 offset_bottom = 2914.0
 texture = ExtResource("4_6x6vh")
 stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Ground" type="TextureRect" parent="Building"]
 layout_mode = 1
@@ -63,12 +61,12 @@ stretch_mode = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -6.0
-offset_top = -38.0
-offset_right = -741.0
-offset_bottom = 25.0
+offset_left = 4.0
+offset_top = -47.0
+offset_right = -731.0
+offset_bottom = 1.0
 grow_horizontal = 2
-texture = ExtResource("6_d5myg")
+texture = ExtResource("6_so4si")
 stretch_mode = 1
 
 [node name="Prop" type="TextureRect" parent="Building/Ground"]
@@ -111,313 +109,184 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 673.0
-offset_top = -38.0
-offset_right = -62.0
-offset_bottom = 25.0
+offset_left = 665.0
+offset_top = -47.0
+offset_right = -70.0
+offset_bottom = 1.0
 grow_horizontal = 2
-texture = ExtResource("6_d5myg")
+texture = ExtResource("6_so4si")
 stretch_mode = 1
 
-[node name="Roof" type="NinePatchRect" parent="Building"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = -82.0
-offset_bottom = 7.0
-grow_horizontal = 2
-texture = ExtResource("8_orpng")
-patch_margin_left = 15
-patch_margin_top = 24
-patch_margin_right = 15
-patch_margin_bottom = 15
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+[node name="Level" type="Node2D" parent="."]
 
-[node name="Watertower" type="TextureRect" parent="Building/Roof"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -84.0
-offset_top = -123.0
-offset_right = -5.0
-offset_bottom = -13.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("9_l01q3")
+[node name="Clothes5" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(109, 1006)
 
-[node name="ACUnit" type="TextureRect" parent="Building/Roof"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -391.0
-offset_top = -90.0
-offset_right = -344.0
-offset_bottom = -59.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("10_eis5m")
-stretch_mode = 5
+[node name="Clothes35" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(272, 1007)
 
-[node name="ACUnit2" type="TextureRect" parent="Building/Roof"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -342.0
-offset_top = -90.0
-offset_right = -295.0
-offset_bottom = -59.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("10_eis5m")
-stretch_mode = 5
+[node name="Clothes36" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(332, 1007)
 
-[node name="Sign" type="TextureRect" parent="Building/Roof"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -37.0
-offset_right = -210.0
-offset_bottom = -22.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(2, 2)
-texture = ExtResource("11_hu8m1")
-stretch_mode = 5
+[node name="Clothes42" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(212, 1009)
 
-[node name="Shadow" type="ColorRect" parent="Building/Roof"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 0.47451)
+[node name="Clothes43" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(50, 1006)
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Clothes2" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(78, 144)
-
-[node name="Clothes4" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(154, 213)
-
-[node name="Clothes5" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(48, 217)
-
-[node name="Clothes6" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(167, 319)
-
-[node name="Clothes7" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(65, 395)
-
-[node name="Clothes8" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(302, 471)
-
-[node name="Clothes35" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(304, 325)
-
-[node name="Clothes36" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(248, 221)
-
-[node name="Clothes37" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(335, 175)
-
-[node name="Clothes38" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(374, 581)
-
-[node name="Clothes39" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(347, 916)
-
-[node name="Clothes40" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(292, 1031)
-
-[node name="Clothes41" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(292, 1031)
-
-[node name="Clothes9" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(184, 583)
-
-[node name="Clothes10" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(61, 761)
-
-[node name="Clothes11" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(121, 804)
-
-[node name="Clothes12" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(45, 529)
-
-[node name="Clothes13" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(241, 816)
-
-[node name="Clothes14" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(148, 945)
-
-[node name="Clothes15" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(80, 1078)
-
-[node name="Clothes16" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(312, 1347)
-
-[node name="Clothes17" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(171, 1380)
-
-[node name="Clothes18" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(201, 1212)
-
-[node name="Clothes19" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(69, 1618)
-
-[node name="Clothes20" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(70, 1277)
-
-[node name="Clothes21" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(248, 1590)
-
-[node name="Clothes22" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(72, 1736)
-
-[node name="Clothes23" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(291, 2040)
-
-[node name="Clothes24" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(200, 2135)
-
-[node name="Clothes25" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(134, 2223)
-
-[node name="Clothes26" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(108, 1886)
-
-[node name="Clothes27" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(233, 1858)
-
-[node name="Clothes28" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(263, 2395)
-
-[node name="Clothes29" parent="Node2D" instance=ExtResource("3_8dyhs")]
+[node name="Clothes29" parent="Level" instance=ExtResource("3_8dyhs")]
 position = Vector2(135, 2539)
 
-[node name="Clothes30" parent="Node2D" instance=ExtResource("3_8dyhs")]
+[node name="Clothes30" parent="Level" instance=ExtResource("3_8dyhs")]
 position = Vector2(304, 2695)
 
-[node name="Clothes31" parent="Node2D" instance=ExtResource("3_8dyhs")]
+[node name="Clothes31" parent="Level" instance=ExtResource("3_8dyhs")]
 position = Vector2(97, 2814)
 
-[node name="Clothes34" parent="Node2D" instance=ExtResource("3_8dyhs")]
+[node name="Clothes34" parent="Level" instance=ExtResource("3_8dyhs")]
 position = Vector2(155, 2736)
 
-[node name="Clothes32" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(104, 2417)
+[node name="Awning" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(245, 137)
 
-[node name="Clothes33" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(323, 2336)
+[node name="Awning2" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(310, 177)
 
-[node name="Awning" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(150, 27)
+[node name="Awning4" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(160, 183)
 
-[node name="Awning2" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(64, 84)
+[node name="Awning6" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(246, 275)
 
-[node name="Awning3" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(154, 157)
-
-[node name="Awning4" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(103, 214)
-
-[node name="Awning5" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(17, 271)
-
-[node name="Awning6" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(107, 344)
-
-[node name="Awning13" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(317, 775)
-
-[node name="Awning14" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(214, 1019)
-
-[node name="Awning15" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(130, 1326)
-
-[node name="Awning16" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(282, 1474)
-
-[node name="Awning17" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(162, 1575)
-
-[node name="Awning18" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(336, 1881)
-
-[node name="Awning19" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(208, 1965)
-
-[node name="Awning20" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(260, 1740)
-
-[node name="Awning21" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(63, 2179)
-
-[node name="Awning22" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(62, 2062)
-
-[node name="Awning23" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(316, 2254)
-
-[node name="Awning24" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(132, 2344)
-
-[node name="Awning25" parent="Node2D" instance=ExtResource("4_i4p0y")]
+[node name="Awning25" parent="Level" instance=ExtResource("4_i4p0y")]
 position = Vector2(219, 2478)
 
-[node name="Awning26" parent="Node2D" instance=ExtResource("4_i4p0y")]
+[node name="Awning26" parent="Level" instance=ExtResource("4_i4p0y")]
 position = Vector2(307, 2534)
 
-[node name="Awning27" parent="Node2D" instance=ExtResource("4_i4p0y")]
+[node name="Awning27" parent="Level" instance=ExtResource("4_i4p0y")]
 position = Vector2(53, 2657)
 
-[node name="Awning28" parent="Node2D" instance=ExtResource("4_i4p0y")]
+[node name="Awning28" parent="Level" instance=ExtResource("4_i4p0y")]
 position = Vector2(209, 2699)
 
-[node name="Awning29" parent="Node2D" instance=ExtResource("4_i4p0y")]
+[node name="Awning29" parent="Level" instance=ExtResource("4_i4p0y")]
 position = Vector2(209, 2699)
 
-[node name="Awning7" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(167, 399)
+[node name="Awning7" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(35, 228)
 
-[node name="Awning8" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(81, 456)
+[node name="Awning8" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(164, 704)
 
-[node name="Awning9" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(171, 529)
+[node name="Awning30" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(163, 805)
 
-[node name="Awning10" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(120, 586)
+[node name="Awning31" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(161, 1011)
 
-[node name="Awning11" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(34, 643)
+[node name="Clothes6" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(108, 1059)
 
-[node name="Awning12" parent="Node2D" instance=ExtResource("4_i4p0y")]
-position = Vector2(124, 716)
+[node name="Clothes7" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(167, 1059)
 
-[node name="Clothes" parent="Node2D" instance=ExtResource("3_8dyhs")]
-position = Vector2(134, 103)
+[node name="Clothes37" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(271, 1060)
+
+[node name="Clothes44" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(331, 1060)
+
+[node name="Clothes46" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(49, 1059)
+
+[node name="Awning32" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(218, 1064)
+
+[node name="Clothes45" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(153, 1104)
+
+[node name="Clothes50" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(211, 1103)
+
+[node name="Clothes47" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(269, 1106)
+
+[node name="Clothes48" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(329, 1106)
+
+[node name="Clothes49" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(47, 1105)
+
+[node name="Awning33" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(100, 1109)
+
+[node name="Awning34" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(333, 1163)
+
+[node name="Awning36" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(161, 1281)
+
+[node name="Clothes51" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(105, 1156)
+
+[node name="Clothes52" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(163, 1155)
+
+[node name="Clothes53" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(221, 1158)
+
+[node name="Clothes54" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(281, 1158)
+
+[node name="Clothes55" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(46, 1158)
+
+[node name="Awning35" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(41, 1207)
+
+[node name="Awning37" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(368, 1429)
+
+[node name="Clothes56" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(153, 1204)
+
+[node name="Clothes62" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(247, 1327)
+
+[node name="Clothes63" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(305, 1324)
+
+[node name="Clothes64" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(308, 1373)
+
+[node name="Clothes65" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(367, 1372)
+
+[node name="Clothes57" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(211, 1203)
+
+[node name="Clothes61" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(244, 1274)
+
+[node name="Clothes58" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(269, 1206)
+
+[node name="Clothes59" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(329, 1206)
+
+[node name="Clothes60" parent="Level" instance=ExtResource("3_8dyhs")]
+position = Vector2(94, 1206)
+
+[node name="Awning9" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(245, 469)
+
+[node name="Awning10" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(367, 851)
+
+[node name="Awning11" parent="Level" instance=ExtResource("4_i4p0y")]
+position = Vector2(366, 614)
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
-position = Vector2(202, 24)
+position = Vector2(231, 18)
 target_max_fall = 1200.0
