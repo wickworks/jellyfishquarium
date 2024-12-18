@@ -15,15 +15,25 @@ func _process(delta):
 func _on_body_entered(body: Node2D):
 	const AWNING_BOUNCE = 0.45
 	const AWNING_PASS_THRU_SPEED = 200.0
-	if &"velocity" in body:
+
+
+	if &"velocity" not in body or &"weight" not in body:
+		return
+
+
+	var power: float = absf(body.velocity.y) * body.weight
+	var catch_amount = 200 - power / 300
+	if catch_amount > 0:
 		if absf(body.velocity.y) > AWNING_PASS_THRU_SPEED:
 			body.velocity.y = -body.velocity.y * AWNING_BOUNCE
 			if body.has_method("bounce"):
 				body.bounce()
 		else:
-			body.velocity.y = 0
+			body.velocity.y = Util.approach(body.velocity.y, 0, catch_amount)
 			if body.has_method("catch"):
 				body.catch()
+	else:
+		body.velocity.y = Util.approach(body.velocity.y, 0, 200)
 
 
 func _on_body_exited(body):

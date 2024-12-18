@@ -317,4 +317,4 @@ position = Vector2(134, 103)
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
 position = Vector2(126, 11)
-target_max_fall = 400.0
+target_max_fall = 1200.0

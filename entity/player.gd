@@ -14,7 +14,7 @@ const AIR_REDUCE := 100.0
 
 const WALLSLIDE_V_MULT := .2
 
-const MAX_FALL := 400.0
+const MAX_FALL := 1200.0
 @export var target_max_fall := MAX_FALL
 
 const MAX_RUN := 100.0
