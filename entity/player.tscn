@@ -470,9 +470,5 @@ preprocess = 12.0
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 71)
-position_smoothing_speed = 10.0
-
-[node name="Camera2" type="Camera2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, 71)
+limit_bottom = 3000
 position_smoothing_speed = 10.0

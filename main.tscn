@@ -38,7 +38,7 @@ anchor_bottom = 1.0
 offset_left = -314.0
 offset_top = -1.0
 offset_right = 385.0
-offset_bottom = 319.0
+offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_0g51u")
@@ -354,6 +354,21 @@ position = Vector2(163, 2140)
 [node name="Awning44" parent="Level" instance=ExtResource("14_n3h4y")]
 position = Vector2(163, 2583)
 
+[node name="Awning51" parent="Level" instance=ExtResource("14_n3h4y")]
+position = Vector2(249, 2530)
+
+[node name="Awning52" parent="Level" instance=ExtResource("14_n3h4y")]
+position = Vector2(367, 2821)
+
+[node name="Awning53" parent="Level" instance=ExtResource("14_n3h4y")]
+position = Vector2(97, 2727)
+
+[node name="Awning55" parent="Level" instance=ExtResource("14_n3h4y")]
+position = Vector2(97, 2727)
+
+[node name="Awning54" parent="Level" instance=ExtResource("14_n3h4y")]
+position = Vector2(249, 2772)
+
 [node name="Awning45" parent="Level" instance=ExtResource("14_n3h4y")]
 position = Vector2(306, 2670)
 
@@ -431,6 +446,30 @@ position = Vector2(234, 2384)
 
 [node name="Clothes80" parent="Level" instance=ExtResource("13_b44ki")]
 position = Vector2(173, 2381)
+
+[node name="Clothes83" parent="Level" instance=ExtResource("13_b44ki")]
+position = Vector2(252, 2483)
+
+[node name="Clothes84" parent="Level" instance=ExtResource("13_b44ki")]
+position = Vector2(103, 2675)
+
+[node name="Clothes85" parent="Level" instance=ExtResource("13_b44ki")]
+position = Vector2(103, 2675)
+
+[node name="Clothes86" parent="Level" instance=ExtResource("13_b44ki")]
+position = Vector2(164, 2675)
+
+[node name="Clothes87" parent="Level" instance=ExtResource("13_b44ki")]
+position = Vector2(224, 2675)
+
+[node name="Clothes88" parent="Level" instance=ExtResource("13_b44ki")]
+position = Vector2(303, 2724)
+
+[node name="Clothes89" parent="Level" instance=ExtResource("13_b44ki")]
+position = Vector2(199, 2769)
+
+[node name="Clothes90" parent="Level" instance=ExtResource("13_b44ki")]
+position = Vector2(299, 2767)
 
 [node name="Clothes81" parent="Level" instance=ExtResource("13_b44ki")]
 position = Vector2(307, 2483)

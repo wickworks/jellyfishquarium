@@ -112,7 +112,7 @@ func _process(delta):
 
 		velocity.y = Util.approach(velocity.y, max_fall, get_gravity().y * jump_mult * delta)
 
-	var is_terminal = velocity.y > 1000
+	var is_terminal = velocity.y > 800
 	move_and_slide()
 
 
@@ -135,6 +135,8 @@ func _process(delta):
 	for collision_i in range(get_slide_collision_count()):
 		if is_terminal:
 			game_over.emit()
+		else:
+			%AnimationPlayer.play("idle")
 
 
 
