@@ -3,9 +3,11 @@ class_name Player
 
 const HOOK_SCENE:PackedScene = preload("res://entity/hook.tscn")
 
+var initial_position: Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	initial_position = position
 
 const AIR_CONTROL_THRESHOLD := 95 # moving faster than this and we lose air control
 const AIR_REDUCE := 100.0
@@ -14,11 +16,11 @@ const WALLSLIDE_V_MULT := .2
 
 const MAX_RUN := 100.0
 const RUN_ACCEL := 1000.0
-const MAX_FALL := 200.#160.0
+const MAX_FALL := 400.#160.0
 const MAX_FALL_FAST := 300.0
 const FAST_MAX_ACCEL := 500#300.0
 const RUN_REDUCE := 400.0
-const GRAVITY := 900.0
+const GRAVITY := 500.0
 const JUMP_H_BOOST := 40.0
 const JUMP_SPEED := -165.0#-125.0
 const HALF_GRAV_THRESHOLD := 40.0
@@ -53,6 +55,10 @@ func _enter_tree():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_key_pressed(KEY_R):
+		position = initial_position
+		velocity = Vector2.ZERO
+
 
 	move_x = Input.get_axis("Move left", "Move right")
 	move_y = Input.get_axis("Move up", "Move down")

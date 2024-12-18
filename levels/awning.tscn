@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bevxb17lroc5y"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pyfc8"]
+
+[node name="Awning" type="Sprite2D"]
+position = Vector2(60, 23)
+scale = Vector2(58, 16)
+texture = SubResource("PlaceholderTexture2D_pyfc8")

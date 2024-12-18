@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=5 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://cq5un6ocoglki" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
 [ext_resource type="PackedScene" uid="uid://ceuuvi1cua8if" path="res://entity/player.tscn" id="2_54jki"]
+[ext_resource type="PackedScene" uid="uid://bevxb17lroc5y" path="res://levels/awning.tscn" id="4_i4p0y"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
@@ -10,4 +11,42 @@ script = ExtResource("1_csyl4")
 [node name="Background" parent="." instance=ExtResource("2_5vl4y")]
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
-position = Vector2(255, 137)
+position = Vector2(126, 11)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Awning" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(150, 27)
+
+[node name="Awning2" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(64, 84)
+
+[node name="Awning3" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(154, 157)
+
+[node name="Awning4" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(103, 214)
+
+[node name="Awning5" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(17, 271)
+
+[node name="Awning6" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(107, 344)
+
+[node name="Awning" parent="." instance=ExtResource("4_i4p0y")]
+position = Vector2(167, 399)
+
+[node name="Awning2" parent="." instance=ExtResource("4_i4p0y")]
+position = Vector2(81, 456)
+
+[node name="Awning3" parent="." instance=ExtResource("4_i4p0y")]
+position = Vector2(171, 529)
+
+[node name="Awning4" parent="." instance=ExtResource("4_i4p0y")]
+position = Vector2(120, 586)
+
+[node name="Awning5" parent="." instance=ExtResource("4_i4p0y")]
+position = Vector2(34, 643)
+
+[node name="Awning6" parent="." instance=ExtResource("4_i4p0y")]
+position = Vector2(124, 716)
