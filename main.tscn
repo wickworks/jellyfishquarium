@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=15 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
@@ -8,8 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bg500wf6fo0je" path="res://assets/defenestration/building_bg.png" id="4_6x6vh"]
 [ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/awning.tscn" id="4_i4p0y"]
 [ext_resource type="Texture2D" uid="uid://mykw304gfoe6" path="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png" id="5_sbtx8"]
-[ext_resource type="Texture2D" uid="uid://cg5jjjtjxg4i1" path="res://assets/defenestration/ME_Singles_City_Props_48x48_Tree_2.png" id="6_so4si"]
+[ext_resource type="Texture2D" uid="uid://cnsa8jwnyim15" path="res://assets/defenestration/ME_Singles_City_Props_48x48_Tree_13.png" id="6_d5myg"]
 [ext_resource type="Texture2D" uid="uid://b76i41fsis0r6" path="res://assets/defenestration/sideways_pole.png" id="7_l3rvu"]
+[ext_resource type="Texture2D" uid="uid://ddxdrgps5vnpm" path="res://assets/defenestration/ME_Singles_Floor_Modular_Building_48x48_Roof_5.png" id="8_orpng"]
+[ext_resource type="Texture2D" uid="uid://bd4jfivh0khbw" path="res://assets/defenestration/water_tower.png" id="9_l01q3"]
+[ext_resource type="Texture2D" uid="uid://dj2wnh3xm6gm2" path="res://assets/defenestration/ac.png" id="10_eis5m"]
+[ext_resource type="Texture2D" uid="uid://d2d0lryyqcx71" path="res://assets/defenestration/ME_Singles_Office_48x48_Building_Sign_1.png" id="11_hu8m1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
@@ -50,12 +54,12 @@ stretch_mode = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 4.0
-offset_top = -47.0
-offset_right = -731.0
-offset_bottom = 1.0
+offset_left = -6.0
+offset_top = -38.0
+offset_right = -741.0
+offset_bottom = 25.0
 grow_horizontal = 2
-texture = ExtResource("6_so4si")
+texture = ExtResource("6_d5myg")
 stretch_mode = 1
 
 [node name="Prop" type="TextureRect" parent="Building/Ground"]
@@ -98,13 +102,103 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 665.0
-offset_top = -47.0
-offset_right = -70.0
-offset_bottom = 1.0
+offset_left = 673.0
+offset_top = -38.0
+offset_right = -62.0
+offset_bottom = 25.0
 grow_horizontal = 2
-texture = ExtResource("6_so4si")
+texture = ExtResource("6_d5myg")
 stretch_mode = 1
+
+[node name="Roof" type="NinePatchRect" parent="Building"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -82.0
+offset_bottom = 7.0
+grow_horizontal = 2
+texture = ExtResource("8_orpng")
+patch_margin_left = 15
+patch_margin_top = 24
+patch_margin_right = 15
+patch_margin_bottom = 15
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Watertower" type="TextureRect" parent="Building/Roof"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -123.0
+offset_right = -5.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_l01q3")
+
+[node name="ACUnit" type="TextureRect" parent="Building/Roof"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -391.0
+offset_top = -90.0
+offset_right = -344.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("10_eis5m")
+stretch_mode = 5
+
+[node name="ACUnit2" type="TextureRect" parent="Building/Roof"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -342.0
+offset_top = -90.0
+offset_right = -295.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("10_eis5m")
+stretch_mode = 5
+
+[node name="Sign" type="TextureRect" parent="Building/Roof"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -37.0
+offset_right = -210.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+texture = ExtResource("11_hu8m1")
+stretch_mode = 5
+
+[node name="Shadow" type="ColorRect" parent="Building/Roof"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.47451)
 
 [node name="Node2D" type="Node2D" parent="."]
 
