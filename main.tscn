@@ -452,6 +452,7 @@ position = Vector2(248, 662)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -470,3 +471,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." instance_placeholder="res://entity/player.tscn"]
+position = Vector2(204, 46)
+
+[connection signal="spawn_player" from="Building/Roof/ShatterableWindow" to="." method="_on_shatterable_window_spawn_player"]

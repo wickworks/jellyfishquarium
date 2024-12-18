@@ -1,7 +1,6 @@
 extends Control
 
 @onready var shards:InstancePlaceholder = $WindowShards
-@onready var player:InstancePlaceholder = $Player
 
 func _ready() -> void:
 	get_tree().create_timer(1.5).timeout.connect(shatter)
@@ -14,7 +13,8 @@ func shatter() -> void:
 		shard.velocity.x = randf_range(-100, 100)
 		shard.spin = shard.velocity.x / 20
 
-	var girl = player.create_instance(true)
-	girl.velocity.x = 140
+	spawn_player.emit(Vector2(140, 0))
 
 	$Camera2D.enabled = false
+
+signal spawn_player(velocity)

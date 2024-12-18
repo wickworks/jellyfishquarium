@@ -112,12 +112,9 @@ func _process(delta):
 
 		velocity.y = Util.approach(velocity.y, max_fall, get_gravity().y * jump_mult * delta)
 
+	var is_terminal = velocity.y > 1000
 	move_and_slide()
 
-	for collision_i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(collision_i)
-		if collision.get_normal() == Vector2.UP:
-			var_jump_timer = 0
 
 
 	const CAMERA_OFFSET := -70.0
@@ -135,8 +132,10 @@ func _process(delta):
 	elif velocity.x == 0:
 		look_dx = Util.approach(look_dx, 0, LOOK_ACCEL)
 
-	if is_on_floor() and velocity.y > 400:
-		game_over.emit()
+	for collision_i in range(get_slide_collision_count()):
+		if is_terminal:
+			game_over.emit()
+
 
 
 signal game_over

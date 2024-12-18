@@ -3,6 +3,7 @@ class_name Main
 
 static var scene:Main
 
+@onready var player:InstancePlaceholder = $Player
 #const FISH_SCENE:PackedScene = preload("res://entity/fish.tscn")
 #const JELLYFISH_SCENE:PackedScene = preload("res://entity/jellyfish.tscn")
 #const STARTING_JELLYFISH:int = 5
@@ -48,3 +49,13 @@ func window_size_changed():
 		#for larvae:Larvae in get_tree().get_nodes_in_group("larvae"): larvae.queue_free()
 #
 		#create_starting_animals()
+
+
+func _on_shatterable_window_spawn_player(velocity):
+	var girl = player.create_instance(true)
+	girl.velocity = velocity
+	girl.game_over.connect(_on_player_game_over)
+
+
+func _on_player_game_over():
+	%GameOver.show()
