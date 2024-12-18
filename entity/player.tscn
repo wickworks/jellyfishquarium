@@ -336,6 +336,7 @@ gradient = SubResource("Gradient_2q6ii")
 width = 2
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 0
 script = ExtResource("1_ap0cw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
