@@ -1,66 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://veebp23egfrq"]
+[gd_scene load_steps=4 format=3 uid="uid://veebp23egfrq"]
 
 [ext_resource type="Texture2D" uid="uid://dq1p246722lcx" path="res://assets/defenestration/roundSG3_sprite.png" id="1_2lfe3"]
 [ext_resource type="Texture2D" uid="uid://bndqquiyskjl0" path="res://assets/defenestration/roundSG3_open.png" id="1_3dc1n"]
-[ext_resource type="Texture2D" uid="uid://cbxedeygoj2mx" path="res://assets/defenestration/shards/shard1.png" id="2_31o7n"]
-[ext_resource type="Texture2D" uid="uid://lbf5js8v22nn" path="res://assets/defenestration/shards/shard2.png" id="3_jyf3f"]
-[ext_resource type="Texture2D" uid="uid://c5nxu1bblgatl" path="res://assets/defenestration/shards/shard3.png" id="4_hfyvp"]
-[ext_resource type="Texture2D" uid="uid://ipv1xbks4oa5" path="res://assets/defenestration/shards/shard4.png" id="5_sf0mv"]
-[ext_resource type="Texture2D" uid="uid://cashxag0k73rh" path="res://assets/defenestration/shards/shard5.png" id="6_rcux7"]
+[ext_resource type="Script" path="res://levels/shatterable_window.gd" id="1_c1byq"]
 
 [node name="ShatterableWindow" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+script = ExtResource("1_c1byq")
 
 [node name="WindowBroken" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 63.0
-offset_right = 216.0
-offset_bottom = 127.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 texture = ExtResource("1_3dc1n")
 stretch_mode = 5
 
+[node name="WindowShards" parent="." instance_placeholder="res://levels/window_shards.tscn"]
+
 [node name="Window" type="TextureRect" parent="."]
-unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 63.0
-offset_right = 216.0
-offset_bottom = 127.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 texture = ExtResource("1_2lfe3")
 stretch_mode = 5
 
-[node name="WindowShards" type="Node2D" parent="Window"]
-position = Vector2(31, 32)
+[node name="Player" parent="." instance_placeholder="res://entity/player.tscn"]
 
-[node name="Shard1" type="Sprite2D" parent="Window/WindowShards"]
-texture = ExtResource("2_31o7n")
-
-[node name="Shard2" type="Sprite2D" parent="Window/WindowShards"]
-texture = ExtResource("3_jyf3f")
-
-[node name="Shard3" type="Sprite2D" parent="Window/WindowShards"]
-texture = ExtResource("4_hfyvp")
-
-[node name="Shard4" type="Sprite2D" parent="Window/WindowShards"]
-texture = ExtResource("5_sf0mv")
-
-[node name="Shard5" type="Sprite2D" parent="Window/WindowShards"]
-texture = ExtResource("6_rcux7")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 70)

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
-[ext_resource type="PackedScene" uid="uid://ceuuvi1cua8if" path="res://entity/player.tscn" id="2_54jki"]
 [ext_resource type="Texture2D" uid="uid://gib7egolxtv8" path="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_27.png" id="4_0g51u"]
 [ext_resource type="Texture2D" uid="uid://bg500wf6fo0je" path="res://assets/defenestration/building_bg.png" id="4_6x6vh"]
 [ext_resource type="Texture2D" uid="uid://mykw304gfoe6" path="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png" id="5_sbtx8"]
@@ -175,6 +174,10 @@ texture = ExtResource("10_eis5m")
 stretch_mode = 5
 
 [node name="ShatterableWindow" parent="Building/Roof" instance=ExtResource("11_lv64s")]
+offset_left = 204.0
+offset_top = 127.0
+offset_right = 204.0
+offset_bottom = 127.0
 
 [node name="Sign" type="TextureRect" parent="Building/Roof"]
 layout_mode = 1
@@ -435,7 +438,3 @@ position = Vector2(367, 851)
 position = Vector2(248, 662)
 
 [node name="Node2D" type="Node2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("2_54jki")]
-position = Vector2(126, 11)
-target_max_fall = 400.0

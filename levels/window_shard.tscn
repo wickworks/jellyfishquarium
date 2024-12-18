@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csja4j7jtvl1n"]
+
+[ext_resource type="Texture2D" uid="uid://cbxedeygoj2mx" path="res://assets/defenestration/shards/shard1.png" id="1_xlroh"]
+
+[node name="Shard1" type="Sprite2D"]
+texture = ExtResource("1_xlroh")
