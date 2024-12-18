@@ -438,7 +438,7 @@ gradient = SubResource("Gradient_2q6ii")
 width = 2
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_ap0cw")
 target_max_fall = 20.0
 

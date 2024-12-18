@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dj2wnh3xm6gm2" path="res://assets/defenestration/ac.png" id="10_eis5m"]
 [ext_resource type="Texture2D" uid="uid://d2d0lryyqcx71" path="res://assets/defenestration/ME_Singles_Office_48x48_Building_Sign_1.png" id="11_hu8m1"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oepgc"]
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
 
@@ -35,11 +37,18 @@ anchor_bottom = 1.0
 offset_left = -314.0
 offset_top = -1.0
 offset_right = 385.0
-offset_bottom = 144.0
+offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_0g51u")
 stretch_mode = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Building/Ground"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building/Ground/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_oepgc")
 
 [node name="Sidewalk" type="TextureRect" parent="Building/Ground"]
 layout_mode = 1
@@ -410,5 +419,5 @@ position = Vector2(124, 716)
 position = Vector2(134, 103)
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
-position = Vector2(126, 11)
+position = Vector2(202, 24)
 target_max_fall = 1200.0
