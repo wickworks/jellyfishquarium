@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq5un6ocoglki"]
+
+[ext_resource type="Texture2D" uid="uid://7rb23l21bujj" path="res://assets/platformer_env/background3.png" id="1_c0bv4"]
+[ext_resource type="Texture2D" uid="uid://b3pg7r35job74" path="res://assets/platformer_env/background2.png" id="2_uyuvv"]
+
+[node name="Background" type="Node2D"]
+texture_filter = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(800, 600)
+repeat_times = 4
+
+[node name="rocks" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_c0bv4")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-200, -100)
+repeat_size = Vector2(800, 600)
+repeat_times = 4
+
+[node name="seaweeddarker" type="Sprite2D" parent="Parallax2D4"]
+modulate = Color(0.370365, 0.370364, 0.370364, 1)
+texture = ExtResource("2_uyuvv")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(400, 200)
+repeat_size = Vector2(800, 600)
+repeat_times = 4
+
+[node name="seaweeddark" type="Sprite2D" parent="Parallax2D3"]
+modulate = Color(0.479834, 0.479834, 0.479834, 1)
+texture = ExtResource("2_uyuvv")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(800, 600)
+repeat_times = 4
+
+[node name="seaweed" type="Sprite2D" parent="Parallax2D2"]
+modulate = Color(0.597176, 0.597176, 0.597176, 1)
+texture = ExtResource("2_uyuvv")
