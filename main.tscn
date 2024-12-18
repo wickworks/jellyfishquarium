@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=15 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
@@ -12,14 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b3gglkdy1hywi" path="res://levels/building_level.tscn" id="8_rvlu1"]
 [ext_resource type="Texture2D" uid="uid://bd4jfivh0khbw" path="res://assets/defenestration/water_tower.png" id="9_l01q3"]
 [ext_resource type="Texture2D" uid="uid://dj2wnh3xm6gm2" path="res://assets/defenestration/ac.png" id="10_eis5m"]
-[ext_resource type="Texture2D" uid="uid://bndqquiyskjl0" path="res://assets/defenestration/roundSG3_open.png" id="11_8ywdg"]
 [ext_resource type="Texture2D" uid="uid://d2d0lryyqcx71" path="res://assets/defenestration/ME_Singles_Office_48x48_Building_Sign_1.png" id="11_hu8m1"]
-[ext_resource type="Texture2D" uid="uid://dq1p246722lcx" path="res://assets/defenestration/roundSG3_sprite.png" id="12_lqkjk"]
-[ext_resource type="Texture2D" uid="uid://cbxedeygoj2mx" path="res://assets/defenestration/shards/shard1.png" id="13_478fg"]
-[ext_resource type="Texture2D" uid="uid://lbf5js8v22nn" path="res://assets/defenestration/shards/shard2.png" id="14_umv48"]
-[ext_resource type="Texture2D" uid="uid://c5nxu1bblgatl" path="res://assets/defenestration/shards/shard3.png" id="15_0eh72"]
-[ext_resource type="Texture2D" uid="uid://ipv1xbks4oa5" path="res://assets/defenestration/shards/shard4.png" id="16_40awv"]
-[ext_resource type="Texture2D" uid="uid://cashxag0k73rh" path="res://assets/defenestration/shards/shard5.png" id="17_rex13"]
+[ext_resource type="PackedScene" uid="uid://veebp23egfrq" path="res://levels/shatterable_window.tscn" id="11_lv64s"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
@@ -178,56 +172,7 @@ grow_vertical = 0
 texture = ExtResource("10_eis5m")
 stretch_mode = 5
 
-[node name="WindowBroken" type="TextureRect" parent="Building/Roof"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -32.5
-offset_top = 14.0
-offset_right = 31.5
-offset_bottom = 78.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("11_8ywdg")
-stretch_mode = 5
-
-[node name="Window" type="TextureRect" parent="Building/Roof"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -32.5
-offset_top = 14.0
-offset_right = 31.5
-offset_bottom = 78.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("12_lqkjk")
-stretch_mode = 5
-
-[node name="WindowShards" type="Node2D" parent="Building/Roof/Window"]
-position = Vector2(31, 32)
-
-[node name="Shard1" type="Sprite2D" parent="Building/Roof/Window/WindowShards"]
-texture = ExtResource("13_478fg")
-
-[node name="Shard2" type="Sprite2D" parent="Building/Roof/Window/WindowShards"]
-texture = ExtResource("14_umv48")
-
-[node name="Shard3" type="Sprite2D" parent="Building/Roof/Window/WindowShards"]
-texture = ExtResource("15_0eh72")
-
-[node name="Shard4" type="Sprite2D" parent="Building/Roof/Window/WindowShards"]
-texture = ExtResource("16_40awv")
-
-[node name="Shard5" type="Sprite2D" parent="Building/Roof/Window/WindowShards"]
-texture = ExtResource("17_rex13")
+[node name="ShatterableWindow" parent="Building/Roof" instance=ExtResource("11_lv64s")]
 
 [node name="Sign" type="TextureRect" parent="Building/Roof"]
 layout_mode = 1
