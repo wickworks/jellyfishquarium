@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b654io1hse74w"]
+[gd_scene load_steps=8 format=3 uid="uid://b654io1hse74w"]
 
 [ext_resource type="Script" path="res://levels/clothes.gd" id="1_itkqy"]
 [ext_resource type="Texture2D" uid="uid://b063xewy3scrr" path="res://assets/defenestration/Hanging_Clothes_5.png" id="2_1lja0"]
-[ext_resource type="PackedScene" uid="uid://cqe8btovjq7ft" path="res://levels/clothes_loose.tscn" id="5_cdnbg"]
+[ext_resource type="Texture2D" uid="uid://dj3tiv0sfsn8n" path="res://assets/defenestration/Hancing_Clothes_empty.png" id="5_5kj6u"]
+[ext_resource type="PackedScene" uid="uid://2tvquyefi3j2" path="res://levels/clothes_loose.tscn" id="5_cdnbg"]
 [ext_resource type="Texture2D" uid="uid://cuil4555j8665" path="res://assets/defenestration/Hanging_Clothes_6.png" id="6_b71eo"]
 [ext_resource type="Texture2D" uid="uid://bif5s53netfax" path="res://assets/defenestration/Hanging_Clothes_7.png" id="7_s65kx"]
 
@@ -12,6 +13,7 @@ size = Vector2(62, 16)
 [node name="Clothes" type="Area2D"]
 script = ExtResource("1_itkqy")
 possible_sprites = Array[Texture2D]([ExtResource("2_1lja0"), ExtResource("6_b71eo"), ExtResource("7_s65kx")])
+empty_sprite = ExtResource("5_5kj6u")
 loose_clothes_scene = ExtResource("5_cdnbg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

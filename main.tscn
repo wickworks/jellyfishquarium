@@ -29,6 +29,114 @@ position = Vector2(154, 213)
 [node name="Clothes5" parent="Node2D" instance=ExtResource("3_8dyhs")]
 position = Vector2(48, 217)
 
+[node name="Clothes6" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(167, 319)
+
+[node name="Clothes7" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(65, 395)
+
+[node name="Clothes8" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(302, 471)
+
+[node name="Clothes35" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(304, 325)
+
+[node name="Clothes36" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(248, 221)
+
+[node name="Clothes37" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(335, 175)
+
+[node name="Clothes38" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(374, 581)
+
+[node name="Clothes39" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(347, 916)
+
+[node name="Clothes40" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(292, 1031)
+
+[node name="Clothes41" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(292, 1031)
+
+[node name="Clothes9" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(184, 583)
+
+[node name="Clothes10" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(61, 761)
+
+[node name="Clothes11" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(121, 804)
+
+[node name="Clothes12" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(45, 529)
+
+[node name="Clothes13" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(241, 816)
+
+[node name="Clothes14" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(148, 945)
+
+[node name="Clothes15" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(80, 1078)
+
+[node name="Clothes16" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(312, 1347)
+
+[node name="Clothes17" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(171, 1380)
+
+[node name="Clothes18" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(201, 1212)
+
+[node name="Clothes19" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(69, 1618)
+
+[node name="Clothes20" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(70, 1277)
+
+[node name="Clothes21" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(248, 1590)
+
+[node name="Clothes22" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(72, 1736)
+
+[node name="Clothes23" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(291, 2040)
+
+[node name="Clothes24" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(200, 2135)
+
+[node name="Clothes25" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(134, 2223)
+
+[node name="Clothes26" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(108, 1886)
+
+[node name="Clothes27" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(233, 1858)
+
+[node name="Clothes28" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(263, 2395)
+
+[node name="Clothes29" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(135, 2539)
+
+[node name="Clothes30" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(304, 2695)
+
+[node name="Clothes31" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(97, 2814)
+
+[node name="Clothes34" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(155, 2736)
+
+[node name="Clothes32" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(104, 2417)
+
+[node name="Clothes33" parent="Node2D" instance=ExtResource("3_8dyhs")]
+position = Vector2(323, 2336)
+
 [node name="Awning" parent="Node2D" instance=ExtResource("4_i4p0y")]
 position = Vector2(150, 27)
 
@@ -46,6 +154,57 @@ position = Vector2(17, 271)
 
 [node name="Awning6" parent="Node2D" instance=ExtResource("4_i4p0y")]
 position = Vector2(107, 344)
+
+[node name="Awning13" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(317, 775)
+
+[node name="Awning14" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(214, 1019)
+
+[node name="Awning15" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(130, 1326)
+
+[node name="Awning16" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(282, 1474)
+
+[node name="Awning17" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(162, 1575)
+
+[node name="Awning18" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(336, 1881)
+
+[node name="Awning19" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(208, 1965)
+
+[node name="Awning20" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(260, 1740)
+
+[node name="Awning21" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(63, 2179)
+
+[node name="Awning22" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(62, 2062)
+
+[node name="Awning23" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(316, 2254)
+
+[node name="Awning24" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(132, 2344)
+
+[node name="Awning25" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(219, 2478)
+
+[node name="Awning26" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(307, 2534)
+
+[node name="Awning27" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(53, 2657)
+
+[node name="Awning28" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(209, 2699)
+
+[node name="Awning29" parent="Node2D" instance=ExtResource("4_i4p0y")]
+position = Vector2(209, 2699)
 
 [node name="Awning7" parent="Node2D" instance=ExtResource("4_i4p0y")]
 position = Vector2(167, 399)
@@ -70,3 +229,4 @@ position = Vector2(134, 103)
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
 position = Vector2(126, 11)
+target_max_fall = 400.0

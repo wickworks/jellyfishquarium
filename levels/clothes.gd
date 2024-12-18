@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var possible_sprites:Array[Texture2D]
+@export var empty_sprite:Texture2D
 
 @export var loose_clothes_scene:PackedScene
 
@@ -27,6 +28,8 @@ func _on_body_entered(body: Node2D):
 
 		if has_clothes:
 			has_clothes = false
+			$Sprite2D.texture = empty_sprite
+
 			for i in range(randi_range(4,8)):
 				var underwear = loose_clothes_scene.instantiate()
 				underwear.position = position + Vector2(randf_range(-5, 5), randf_range(-5, 5))
