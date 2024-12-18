@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=4 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
+[ext_resource type="PackedScene" uid="uid://cq5un6ocoglki" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
 [ext_resource type="PackedScene" uid="uid://ceuuvi1cua8if" path="res://entity/player.tscn" id="2_54jki"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
+
+[node name="Background" parent="." instance=ExtResource("2_5vl4y")]
 
 [node name="Player" parent="." instance=ExtResource("2_54jki")]
 position = Vector2(255, 137)

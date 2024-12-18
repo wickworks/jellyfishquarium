@@ -15,7 +15,7 @@ const WALLSLIDE_V_MULT := .2
 const MAX_RUN := 100.0
 const RUN_ACCEL := 1000.0
 const MAX_FALL := 200.#160.0
-const MAX_FALL_FAST := 300.
+const MAX_FALL_FAST := 300.0
 const FAST_MAX_ACCEL := 500#300.0
 const RUN_REDUCE := 400.0
 const GRAVITY := 900.0
@@ -53,7 +53,6 @@ func _enter_tree():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var has_latched_grappling_hook := $Hooks.get_children().any(func(hook:Hook) -> bool: return hook.is_hooked)
 
 	move_x = Input.get_axis("Move left", "Move right")
 	move_y = Input.get_axis("Move up", "Move down")
@@ -81,7 +80,7 @@ func _process(delta):
 
 	# horizontal movement
 	var accel_x
-	if (not is_on_floor() and absf(velocity.x) > AIR_CONTROL_THRESHOLD) or has_latched_grappling_hook:
+	if (not is_on_floor() and absf(velocity.x) > AIR_CONTROL_THRESHOLD):
 		accel_x = AIR_REDUCE
 	elif (absf(velocity.x) > MAX_RUN && signf(velocity.x) == move_x):
 		accel_x = RUN_REDUCE
@@ -126,10 +125,6 @@ func _process(delta):
 			#$AnimationPlayer.stop()
 			#$AnimationPlayer.play("fall")
 
-	# update hooks
-	for hook:Hook in $Hooks.get_children():
-		update_hook(hook, delta)
-
 	move_and_slide()
 
 	for collision_i in range(get_slide_collision_count()):
@@ -152,56 +147,3 @@ func _process(delta):
 		look_x = Util.approach(look_x, new_look_x, LOOK_SPEED * delta)
 	elif velocity.x == 0:
 		look_dx = Util.approach(look_dx, 0, LOOK_ACCEL)
-
-	var new_camera_x = global_position.x + look_x
-
-	%Camera.position.x = clamp(%Camera.position.x, new_camera_x - LOOK_DEADZONE, new_camera_x + LOOK_DEADZONE)
-
-
-	var touched_floor = false
-	if is_on_floor() and not was_on_floor:
-		touched_floor = true
-	was_on_floor = is_on_floor()
-
-	var camera_size = get_viewport_rect().size
-	var camera_rect = Rect2(%Camera.position - camera_size / 2, camera_size)
-	for child in $Hooks.get_children():
-		if child is Node2D:
-			if child.position.y < camera_rect.position.y + 20:
-				camera_y = global_position.y
-
-	if is_on_floor():
-		camera_y = global_position.y
-
-	if global_position.y > camera_y:
-		camera_y = global_position.y
-
-	%Camera.position.y = camera_y - (camera_size.y/2 - 40)
-
-
-	const LOOK_SPEED_Y = 200
-
-
-func _move_camera_y(new_y: float) -> void:
-	%CameraOffset.position.y = new_y
-
-
-
-func _input(event: InputEvent) -> void:
-	var mouse_pos := get_global_mouse_position()
-	var firing_angle := global_position.angle_to_point(mouse_pos)
-	for action:StringName in [&'fire_1', &'fire_2']:
-		if event.is_action_pressed(action):
-			create_hook(firing_angle, action)
-
-func create_hook(angle:float, action:StringName) -> void:
-	var new_hook:Hook = HOOK_SCENE.instantiate()
-	$Hooks.add_child(new_hook)
-	new_hook.initialize(global_position, angle, action)
-
-func update_hook(hook:Hook, delta:float) -> void:
-	var relative_pos:Vector2 = global_position - hook.global_position
-	hook.update_line(global_position - hook.global_position)
-
-	if hook.is_hooked:
-		velocity += hook.get_pull_force(relative_pos) * delta

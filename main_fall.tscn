@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyr12imgh6ibp"]
-
-[ext_resource type="Script" path="res://main_fall.gd" id="1_xsbra"]
-
-[node name="MainFall" type="Node2D"]
-script = ExtResource("1_xsbra")
