@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/clothes.gd" id="1_itkqy"]
 [ext_resource type="Texture2D" uid="uid://b063xewy3scrr" path="res://assets/defenestration/Hanging_Clothes_5.png" id="2_1lja0"]
-[ext_resource type="PackedScene" uid="uid://2tvquyefi3j2" path="res://levels/clothes_loose.tscn" id="5_cdnbg"]
+[ext_resource type="PackedScene" uid="uid://cqe8btovjq7ft" path="res://levels/clothes_loose.tscn" id="5_cdnbg"]
 [ext_resource type="Texture2D" uid="uid://cuil4555j8665" path="res://assets/defenestration/Hanging_Clothes_6.png" id="6_b71eo"]
 [ext_resource type="Texture2D" uid="uid://bif5s53netfax" path="res://assets/defenestration/Hanging_Clothes_7.png" id="7_s65kx"]
 
@@ -23,3 +23,4 @@ scale = Vector2(1, 0.970723)
 texture = ExtResource("2_1lja0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

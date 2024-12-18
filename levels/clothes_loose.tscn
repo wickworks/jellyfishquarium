@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://2tvquyefi3j2"]
+[gd_scene load_steps=8 format=3 uid="uid://cqe8btovjq7ft"]
 
 [ext_resource type="Script" path="res://levels/clothes_loose.gd" id="1_vwpjy"]
 [ext_resource type="Texture2D" uid="uid://ba676qrvssq8g" path="res://assets/defenestration/clothes1.png" id="2_kyl0d"]
@@ -11,6 +11,7 @@
 size = Vector2(13, 11)
 
 [node name="ClothesLoose" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_vwpjy")
 possible_sprites = Array[Texture2D]([ExtResource("2_kyl0d"), ExtResource("3_keggj"), ExtResource("4_pnf86"), ExtResource("5_x6iq6"), ExtResource("6_wbr5e")])
 

@@ -22,7 +22,6 @@ const RUN_ACCEL := 1000.0
 const MAX_FALL_FAST := 300.0
 const FAST_MAX_ACCEL := 500#300.0
 const RUN_REDUCE := 400.0
-const GRAVITY := 500.0
 const JUMP_H_BOOST := 40.0
 const JUMP_SPEED := -165.0#-125.0
 const HALF_GRAV_THRESHOLD := 40.0
@@ -56,17 +55,14 @@ func _enter_tree():
 
 
 func bounce():
-	const AWNING_BOUNCE = 0.45
-	const AWNING_PASS_THRU_SPEED = 200.0
-	if absf(velocity.y) > AWNING_PASS_THRU_SPEED:
-		velocity.y = -velocity.y * AWNING_BOUNCE
-	else:
-		catch()
+	pass
 
 func catch():
-	velocity.y = 0
 	%AnimationPlayer.play("catch")
-	%AnimationPlayer.queue("fall")
+
+func release():
+	%AnimationPlayer.play("fall")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -104,7 +100,7 @@ func _process(delta):
 		$AnimatedSprite2D.scale.x = signf(velocity.x)
 
 	# vertical movement
-	max_fall = Util.approach(max_fall, target_max_fall, FAST_MAX_ACCEL * delta)
+	max_fall = Util.approach(max_fall, MAX_FALL, FAST_MAX_ACCEL * delta)
 	#if wallslide_x != 0: max_fall = MAX_FALL * WALLSLIDE_V_MULT
 
 	if !is_on_floor():
@@ -112,7 +108,7 @@ func _process(delta):
 		# hold jump to get a bit o anti gravity
 		if (absf(velocity.y) < HALF_GRAV_THRESHOLD && (Input.is_action_pressed("Jump"))): jump_mult = 0.5
 
-		velocity.y = Util.approach(velocity.y, max_fall, GRAVITY * jump_mult * delta)
+		velocity.y = Util.approach(velocity.y, max_fall, get_gravity().y * jump_mult * delta)
 
 	move_and_slide()
 

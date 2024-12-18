@@ -11,6 +11,8 @@ size = Vector2(44, 17)
 
 [node name="Awning" type="Area2D"]
 collision_layer = 0
+gravity_space_override = 3
+gravity = 200.0
 script = ExtResource("1_bakon")
 possible_sprites = Array[Texture2D]([ExtResource("2_lb1fr"), ExtResource("3_wohg6"), ExtResource("4_xytji"), ExtResource("2_4xupe")])
 
@@ -25,3 +27,4 @@ offset = Vector2(15, 5)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
