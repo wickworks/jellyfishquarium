@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1v8vim6ff8re"
-path="res://.godot/imported/Hanging_Clothes_3.png-e0e50f520d59b69165d64edf17216707.ctex"
+uid="uid://c2umgnqc0esp4"
+path="res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_1.png-2bf5d24eae91e1d8ea0b9394289481ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defenestration/Hanging_Clothes_3.png"
-dest_files=["res://.godot/imported/Hanging_Clothes_3.png-e0e50f520d59b69165d64edf17216707.ctex"]
+source_file="res://assets/defenestration/ME_Singles_City_Props_48x48_Hanging_Clothes_1.png"
+dest_files=["res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_1.png-2bf5d24eae91e1d8ea0b9394289481ef.ctex"]
 
 [params]
 

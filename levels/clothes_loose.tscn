@@ -1,0 +1,22 @@
+[gd_scene load_steps=8 format=3 uid="uid://2tvquyefi3j2"]
+
+[ext_resource type="Script" path="res://levels/clothes_loose.gd" id="1_vwpjy"]
+[ext_resource type="Texture2D" uid="uid://ba676qrvssq8g" path="res://assets/defenestration/clothes1.png" id="2_kyl0d"]
+[ext_resource type="Texture2D" uid="uid://d14vgxux803e8" path="res://assets/defenestration/clothes2.png" id="3_keggj"]
+[ext_resource type="Texture2D" uid="uid://32505hhigfbb" path="res://assets/defenestration/clothes3.png" id="4_pnf86"]
+[ext_resource type="Texture2D" uid="uid://bo5dbduvj17ku" path="res://assets/defenestration/clothes4.png" id="5_x6iq6"]
+[ext_resource type="Texture2D" uid="uid://beun0eh6rsj3p" path="res://assets/defenestration/clothes5.png" id="6_wbr5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwnvc"]
+size = Vector2(13, 11)
+
+[node name="ClothesLoose" type="CharacterBody2D"]
+script = ExtResource("1_vwpjy")
+possible_sprites = Array[Texture2D]([ExtResource("2_kyl0d"), ExtResource("3_keggj"), ExtResource("4_pnf86"), ExtResource("5_x6iq6"), ExtResource("6_wbr5e")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("6_wbr5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_jwnvc")
