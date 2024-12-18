@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=16 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
@@ -38,7 +38,7 @@ anchor_bottom = 1.0
 offset_left = -314.0
 offset_top = -1.0
 offset_right = 385.0
-offset_bottom = 144.0
+offset_bottom = 319.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_0g51u")
