@@ -449,10 +449,6 @@ position = Vector2(248, 662)
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("2_54jki")]
-position = Vector2(126, 11)
-target_max_fall = 400.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]
