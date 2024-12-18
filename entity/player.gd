@@ -134,3 +134,9 @@ func _process(delta):
 		look_x = Util.approach(look_x, new_look_x, LOOK_SPEED * delta)
 	elif velocity.x == 0:
 		look_dx = Util.approach(look_dx, 0, LOOK_ACCEL)
+
+	if is_on_floor() and velocity.y > 400:
+		game_over.emit()
+
+
+signal game_over

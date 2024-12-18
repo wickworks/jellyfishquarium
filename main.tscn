@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=17 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://veebp23egfrq" path="res://levels/shatterable_window.tscn" id="11_lv64s"]
 [ext_resource type="PackedScene" uid="uid://b654io1hse74w" path="res://levels/clothes.tscn" id="13_b44ki"]
 [ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/awning.tscn" id="14_n3h4y"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_woqrr"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
@@ -110,6 +112,14 @@ offset_bottom = 25.0
 grow_horizontal = 2
 texture = ExtResource("6_d5myg")
 stretch_mode = 1
+
+[node name="Area2D" type="StaticBody2D" parent="Building/Ground"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building/Ground/Area2D"]
+position = Vector2(-5, 1)
+shape = SubResource("WorldBoundaryShape2D_woqrr")
 
 [node name="Roof" type="NinePatchRect" parent="Building"]
 layout_mode = 1
@@ -438,3 +448,29 @@ position = Vector2(367, 851)
 position = Vector2(248, 662)
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_54jki")]
+position = Vector2(126, 11)
+target_max_fall = 400.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOver" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
