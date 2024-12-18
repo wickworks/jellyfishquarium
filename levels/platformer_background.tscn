@@ -49,9 +49,9 @@ modulate = Color(0.597176, 0.597176, 0.597176, 1)
 texture = ExtResource("2_uyuvv")
 
 [node name="Parallax2D5" type="Parallax2D" parent="."]
-repeat_size = Vector2(192, 120)
+repeat_size = Vector2(203, 48)
 repeat_times = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D5"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_0v6x8")

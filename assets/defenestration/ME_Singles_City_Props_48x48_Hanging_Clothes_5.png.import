@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgpd4xqxldify"
-path="res://.godot/imported/5_Floor_Modular_Buildings_48x48.png-552589c7f42be3d24dc0bb00f0fa33df.ctex"
+uid="uid://b063xewy3scrr"
+path="res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_5.png-c77472745560afdaaca594c2fb173b1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defenestration/5_Floor_Modular_Buildings_48x48.png"
-dest_files=["res://.godot/imported/5_Floor_Modular_Buildings_48x48.png-552589c7f42be3d24dc0bb00f0fa33df.ctex"]
+source_file="res://assets/defenestration/ME_Singles_City_Props_48x48_Hanging_Clothes_5.png"
+dest_files=["res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_5.png-c77472745560afdaaca594c2fb173b1f.ctex"]
 
 [params]
 
