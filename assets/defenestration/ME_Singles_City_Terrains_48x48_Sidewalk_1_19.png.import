@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnarkmorxiagk"
-path="res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_4.png-e2f9a94c8a8d4f76fbe2dab05d1d3305.ctex"
+uid="uid://mykw304gfoe6"
+path="res://.godot/imported/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png-cf9bbf4e8345a4b9067f677c2f29b919.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defenestration/ME_Singles_City_Props_48x48_Hanging_Clothes_4.png"
-dest_files=["res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_4.png-e2f9a94c8a8d4f76fbe2dab05d1d3305.ctex"]
+source_file="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png"
+dest_files=["res://.godot/imported/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png-cf9bbf4e8345a4b9067f677c2f29b919.ctex"]
 
 [params]
 

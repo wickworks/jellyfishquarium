@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0xbv8ha2kc6a"
-path="res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_6.png-ea638e0065df5a21bd59d24fda084a70.ctex"
+uid="uid://cw4g53x3vx0ab"
+path="res://.godot/imported/underground_parking.png-2fbb0e3f74d11c896983239ee0c2ab05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defenestration/ME_Singles_City_Props_48x48_Hanging_Clothes_6.png"
-dest_files=["res://.godot/imported/ME_Singles_City_Props_48x48_Hanging_Clothes_6.png-ea638e0065df5a21bd59d24fda084a70.ctex"]
+source_file="res://assets/defenestration/underground_parking.png"
+dest_files=["res://.godot/imported/underground_parking.png-2fbb0e3f74d11c896983239ee0c2ab05.ctex"]
 
 [params]
 

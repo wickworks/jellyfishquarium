@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://3kgbntpjxrle"]
+[gd_scene load_steps=11 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
 [ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
 [ext_resource type="PackedScene" uid="uid://ceuuvi1cua8if" path="res://entity/player.tscn" id="2_54jki"]
 [ext_resource type="PackedScene" uid="uid://b654io1hse74w" path="res://levels/clothes.tscn" id="3_8dyhs"]
+[ext_resource type="Texture2D" uid="uid://gib7egolxtv8" path="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_27.png" id="4_0g51u"]
 [ext_resource type="Texture2D" uid="uid://bg500wf6fo0je" path="res://assets/defenestration/building_bg.png" id="4_6x6vh"]
 [ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/awning.tscn" id="4_i4p0y"]
+[ext_resource type="Texture2D" uid="uid://mykw304gfoe6" path="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png" id="5_sbtx8"]
+[ext_resource type="Texture2D" uid="uid://cg5jjjtjxg4i1" path="res://assets/defenestration/ME_Singles_City_Props_48x48_Tree_2.png" id="6_so4si"]
+[ext_resource type="Texture2D" uid="uid://b76i41fsis0r6" path="res://assets/defenestration/sideways_pole.png" id="7_l3rvu"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csyl4")
@@ -16,6 +20,90 @@ script = ExtResource("1_csyl4")
 offset_right = 409.0
 offset_bottom = 2914.0
 texture = ExtResource("4_6x6vh")
+stretch_mode = 1
+
+[node name="Ground" type="TextureRect" parent="Building"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -314.0
+offset_top = -1.0
+offset_right = 385.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_0g51u")
+stretch_mode = 1
+
+[node name="Sidewalk" type="TextureRect" parent="Building/Ground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+texture = ExtResource("5_sbtx8")
+stretch_mode = 1
+
+[node name="Tree1" type="TextureRect" parent="Building/Ground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = -47.0
+offset_right = -731.0
+offset_bottom = 1.0
+grow_horizontal = 2
+texture = ExtResource("6_so4si")
+stretch_mode = 1
+
+[node name="Prop" type="TextureRect" parent="Building/Ground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 608.0
+offset_top = -76.0
+offset_right = -437.0
+offset_bottom = 3.0
+grow_horizontal = 2
+texture = ExtResource("7_l3rvu")
+stretch_mode = 5
+
+[node name="Prop2" type="TextureRect" parent="Building/Ground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 317.0
+offset_top = -76.0
+offset_right = -728.0
+offset_bottom = 3.0
+grow_horizontal = 2
+texture = ExtResource("7_l3rvu")
+stretch_mode = 5
+
+[node name="Prop3" type="TextureRect" parent="Building/Ground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 135.0
+offset_top = -76.0
+offset_right = -910.0
+offset_bottom = 3.0
+grow_horizontal = 2
+texture = ExtResource("7_l3rvu")
+stretch_mode = 5
+
+[node name="Tree2" type="TextureRect" parent="Building/Ground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 665.0
+offset_top = -47.0
+offset_right = -70.0
+offset_bottom = 1.0
+grow_horizontal = 2
+texture = ExtResource("6_so4si")
 stretch_mode = 1
 
 [node name="Node2D" type="Node2D" parent="."]
