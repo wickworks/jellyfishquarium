@@ -11,14 +11,14 @@ script = ExtResource("1_csyl4")
 
 [node name="Background" parent="." instance=ExtResource("2_5vl4y")]
 
-[node name="Player" parent="." instance=ExtResource("2_54jki")]
-position = Vector2(126, 11)
-
 [node name="Building" type="TextureRect" parent="."]
 offset_right = 409.0
 offset_bottom = 2914.0
 texture = ExtResource("4_6x6vh")
 stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_54jki")]
+position = Vector2(126, 11)
 
 [node name="Node2D" type="Node2D" parent="."]
 
