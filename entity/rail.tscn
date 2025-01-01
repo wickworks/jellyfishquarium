@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_mp7jp"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.44126, -1.83563, -1.6713, 0, 0, 0, 0, 0, 0, -10.7692, -0.507014, 13.9712, 0, 0, 0, 0, 0, 0, -2.20975, -0.31902, 16.7625, 0, 0, 0, 0, 0, 0, 4.50073, -0.528088, 9.80551, 0, 0, 0, 0, 0, 0, 7.98266, -0.742456, -4.99477, 0, 0, 0, 0, 0, 0, 7.18092, -0.742456, -6.19908, 0, 0, 0, 0, 0, 0, 3.45549, -1.31327, -7.90293, 0, 0, 0, 0, 0, 0, 3.18434, -1.66878, -6.47182),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.44126, -1.83563, -1.6713, 0, 0, 0, 0, 0, 0, -10.7692, -0.507014, 13.9712, 0, 0, 0, 0, 0, 0, -4.39006, -0.31902, 16.6926, 0, 0, 0, 0, 0, 0, 3.95518, -0.528088, 9.43411, 0, 0, 0, 0, 0, 0, 7.98266, -0.742456, -4.99477, 0, 0, 0, 0, 0, 0, 7.18092, -0.742456, -6.19908, 0, 0, 0, 0, 0, 0, 3.45549, -1.31327, -7.90293, 0, 0, 0, 0, 0, 0, 3.18434, -1.66878, -6.47182),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -16,10 +16,12 @@ script = ExtResource("1_fqjp3")
 transform = Transform3D(0.898335, 0, -0.439312, 0, 1, 0, 0.439312, 0, 0.898335, 0, 0, 0)
 curve = SubResource("Curve3D_mp7jp")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Node"]
 polygon = PackedVector2Array(0, 0, 0, 0.1, 0.3, 0.1, 0.3, 0)
 mode = 2
-path_node = NodePath("../Path3D")
+path_node = NodePath("../../Path3D")
 path_interval_type = 0
 path_interval = 0.3
 path_simplify_angle = 0.0
