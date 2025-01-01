@@ -7,9 +7,3 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	%Sprite2D.position = Util.get_screen_position(global_position, get_viewport())
-
-
-func _on_visibility_changed():
-	%Sprite2D.visible = visible

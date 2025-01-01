@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cttab33scdxb"]
+[gd_scene load_steps=5 format=3 uid="uid://cttab33scdxb"]
 
 [ext_resource type="Script" path="res://entity/grind_target.gd" id="1_j825e"]
-[ext_resource type="Texture2D" uid="uid://bra6quvdw0kl4" path="res://icon.svg" id="1_pholn"]
+[ext_resource type="Texture2D" uid="uid://d3efu23fe7juc" path="res://assets/tinytarget.png" id="2_jwnkv"]
 
-[node name="GrindTarget" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0eo52"]
+transparency = 1
+albedo_texture = ExtResource("2_jwnkv")
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_3c30m"]
+material = SubResource("StandardMaterial3D_0eo52")
+size = Vector2(2, 2)
+
+[node name="GrindTarget" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_3c30m")
 script = ExtResource("1_j825e")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_pholn")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

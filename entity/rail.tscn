@@ -13,7 +13,6 @@ point_count = 8
 script = ExtResource("1_fqjp3")
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_mp7jp")
 
 [node name="Node" type="Node" parent="."]
