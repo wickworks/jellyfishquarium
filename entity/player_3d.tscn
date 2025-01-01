@@ -21,7 +21,7 @@ shape = SubResource("CylinderShape3D_xg46q")
 
 [node name="Camera" type="Camera3D" parent="Node"]
 unique_name_in_owner = true
-transform = Transform3D(0.944129, 0.210752, -0.253384, 0, 0.76882, 0.639465, 0.329576, -0.603738, 0.725865, -4.858, 15.098, 9.08418)
+transform = Transform3D(0.944129, 0.210752, -0.253385, 0, 0.76882, 0.639465, 0.329576, -0.603738, 0.725865, -4.84016, 6.54963, 8.85837)
 
 [node name="GrindTarget" parent="Node" instance=ExtResource("3_7wqyu")]
 unique_name_in_owner = true

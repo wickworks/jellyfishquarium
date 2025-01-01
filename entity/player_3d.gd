@@ -3,15 +3,16 @@ extends CharacterBody3D
 
 const JUMP_VELOCITY = 4.5
 const JUMP_H_BOOST := 4.0
-
+const GRAVITY := 90.0
 
 var var_jump_timer := 0.0
 var var_jump_speed := 0.0
 
 class RailGrind:
 	var rail:Rail
-	var direction: float
 	var offset: float
+	var velocity: float
+
 var rail_grind: RailGrind = null
 
 func _ready():
@@ -68,13 +69,19 @@ func _physics_process(delta):
 	%Camera.look_at($Rogue.global_position)
 
 func process_grind(grind: RailGrind, delta):
+	%GrindTarget.hide()
 	const GRIND_SPEED = 20.0
-	grind.offset += delta * grind.direction * GRIND_SPEED
 	var curve_transform = grind.rail.path.sample_baked_with_rotation(grind.offset)
+	var gravity_accel = curve_transform.basis.z.dot(Vector3.DOWN) * GRAVITY
+
+	grind.velocity += gravity_accel * delta
+	grind.offset -= delta * grind.velocity
 	global_position = grind.rail.to_global(curve_transform.origin)
 
+
+
 	if Input.is_action_just_pressed("Jump") or grind.offset >= grind.rail.path.get_baked_length() or grind.offset <= 0:
-		velocity = 20.0 * curve_transform.basis.z * -grind.direction
+		velocity = curve_transform.basis.z * grind.velocity
 		rail_grind = null
 		return true
 
@@ -103,8 +110,8 @@ func process_skating(delta):
 			$Rogue/AnimationPlayer.play("Idle")
 
 	const MAX_RUN := 20.0
-	const RUN_ACCEL := 15.0
-	const RUN_REDUCE := 15.0
+	const RUN_ACCEL := 70.0
+	const RUN_REDUCE := 70.0
 #
 
 	var v_ground = Vector2(velocity.x, velocity.z).rotated(+%Camera.rotation.y)
@@ -128,7 +135,6 @@ func process_skating(delta):
 
 	const MAX_FALL := 20
 	const HALF_GRAV_THRESHOLD := 40.0
-	const GRAVITY := 90.0
 # vertical movement
 	#if wallslide_x != 0: target_max_fall *= WALLSLIDE_V_MULT
 	#if wallslide_x != 0: max_fall = MAX_FALL * WALLSLIDE_V_MULT
@@ -187,11 +193,12 @@ func process_skating(delta):
 		%GrindTarget.show()
 
 		if not is_on_floor() and Input.is_action_just_pressed("Jump"):
+			const GRIND_BOOST = 10.0
 			rail_grind = RailGrind.new()
 			rail_grind.offset = closest_rail.offset
-			print(closest_rail.forward, velocity, closest_rail.forward.angle_to(velocity))
-			rail_grind.direction = 1 if closest_rail.forward.angle_to(velocity) > TAU/4 else -1
 			rail_grind.rail = closest_rail.rail
+			rail_grind.velocity = closest_rail.forward.dot(velocity)
+			rail_grind.velocity += GRIND_BOOST * signf(rail_grind.velocity)
 
 	else:
 		%GrindTarget.hide()
