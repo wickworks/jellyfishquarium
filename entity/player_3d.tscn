@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxvdfcoc4l3fo"]
+[gd_scene load_steps=6 format=3 uid="uid://cxvdfcoc4l3fo"]
 
 [ext_resource type="Script" path="res://entity/player_3d.gd" id="1_vhsut"]
 [ext_resource type="PackedScene" uid="uid://jgf6njw5342b" path="res://assets/platformer_3d_char/Rogue.glb" id="2_0ydfh"]
+[ext_resource type="Texture2D" uid="uid://bra6quvdw0kl4" path="res://icon.svg" id="3_6h4im"]
+[ext_resource type="PackedScene" uid="uid://cttab33scdxb" path="res://entity/grind_target.tscn" id="3_7wqyu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xg46q"]
 height = 1.0
@@ -20,3 +22,12 @@ shape = SubResource("CylinderShape3D_xg46q")
 [node name="Camera" type="Camera3D" parent="Node"]
 unique_name_in_owner = true
 transform = Transform3D(0.944129, 0.210752, -0.253384, 0, 0.76882, 0.639465, 0.329576, -0.603738, 0.725865, -4.858, 15.098, 9.08418)
+
+[node name="GrindTarget" parent="Node" instance=ExtResource("3_7wqyu")]
+unique_name_in_owner = true
+
+[node name="GrindTarget2" type="Sprite2D" parent="Node"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_6h4im")

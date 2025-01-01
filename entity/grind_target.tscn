@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cttab33scdxb"]
+
+[ext_resource type="Script" path="res://entity/grind_target.gd" id="1_j825e"]
+[ext_resource type="Texture2D" uid="uid://bra6quvdw0kl4" path="res://icon.svg" id="1_pholn"]
+
+[node name="GrindTarget" type="Node3D"]
+script = ExtResource("1_j825e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_pholn")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

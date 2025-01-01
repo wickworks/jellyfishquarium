@@ -54,6 +54,7 @@ func _physics_process(delta):
 
 
 
+
 	const MAX_FALL := 20
 	const HALF_GRAV_THRESHOLD := 40.0
 	const GRAVITY := 90.0
@@ -131,3 +132,23 @@ func _physics_process(delta):
 
 	#if cam_pos.distance_to(closest_point) > 5:
 	%Camera.look_at($Rogue.global_position)
+
+	const MAX_RAIL_LATCH = 3.0
+	var closest_distance = INF
+	var latch_point = null
+	var closest_rail = null
+	for rail in get_tree().get_nodes_in_group("rails"):
+		var position_in_railspace = rail.to_local(self.global_position)
+		var closest_point = rail.path.curve.sample_baked(rail.path.curve.get_closest_offset(position_in_railspace))
+		closest_point = rail.to_global(closest_point)
+		var distance = (closest_point - global_position).length()
+		if distance < closest_distance and distance < MAX_RAIL_LATCH:
+			closest_distance = distance
+			closest_rail = rail
+			latch_point = closest_point
+
+	if latch_point and closest_rail:
+		%GrindTarget.global_position = latch_point
+		%GrindTarget.show()
+	else:
+		%GrindTarget.hide()
