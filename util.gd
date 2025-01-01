@@ -32,3 +32,9 @@ static func approach2d(value: Vector2, target: Vector2, amount: float) -> Vector
 		approach(value.x, target.x, amount),
 		approach(value.y, target.y, amount),
 	)
+
+
+# e.g. Util.get_screen_pos(player.position, player.get_viewport())
+static func get_screen_position(world_pos:Vector3, viewport:Viewport) -> Vector2:
+	var camera := viewport.get_camera_3d()
+	return camera.unproject_position(world_pos)
