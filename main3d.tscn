@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6wvcygbytx67"]
+[gd_scene load_steps=10 format=3 uid="uid://b6wvcygbytx67"]
 
 [ext_resource type="Script" path="res://main_3d.gd" id="1_hdd3x"]
 [ext_resource type="PackedScene" uid="uid://cxvdfcoc4l3fo" path="res://entity/player_3d.tscn" id="1_no513"]
 [ext_resource type="PackedScene" uid="uid://bos0kgufkj7rm" path="res://levels/platformer_world.tscn" id="3_454tx"]
-[ext_resource type="PackedScene" uid="uid://du7xjyugkrgid" path="res://entity/rail.tscn" id="4_aw6la"]
 
 [sub_resource type="Gradient" id="Gradient_6syi3"]
 colors = PackedColorArray(0.854902, 0.545098, 0, 1, 1, 0, 0.737255, 1)
@@ -49,13 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7193, 0)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ty4lp")
 
-[node name="ActualWorld" type="Node3D" parent="."]
-
-[node name="PlatformerWorld" parent="ActualWorld" instance=ExtResource("3_454tx")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-
-[node name="Rail" parent="ActualWorld" instance=ExtResource("4_aw6la")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.153, 13.358)
+[node name="PlatformerWorld" parent="." instance=ExtResource("3_454tx")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
