@@ -77,7 +77,7 @@ func process_grind(grind: RailGrind, delta):
 	grind.velocity += gravity_accel * delta
 	grind.offset -= delta * grind.velocity
 	var new_position = grind.rail.to_global(curve_transform.origin)
-	velocity = new_position - position
+	velocity = (new_position - position) / delta
 	move_and_slide()
 
 	var collided = get_slide_collision_count() > 0
