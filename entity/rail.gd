@@ -1,3 +1,4 @@
 extends Node3D
+class_name Rail
 
-@onready var path: Path3D = $Path3D
+@onready var path: Curve3D = $Path3D.curve

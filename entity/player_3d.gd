@@ -2,109 +2,43 @@ extends CharacterBody3D
 
 
 const JUMP_VELOCITY = 4.5
+const JUMP_H_BOOST := 4.0
 
 
 var var_jump_timer := 0.0
 var var_jump_speed := 0.0
 
-func _physics_process(delta):
+class RailGrind:
+	var rail:Rail
+	var direction: float
+	var offset: float
+var rail_grind: RailGrind = null
+
+func _ready():
 	$"Rogue/Rig/Skeleton3D/1H_Crossbow".hide()
 	$"Rogue/Rig/Skeleton3D/2H_Crossbow".hide()
 	$"Rogue/Rig/Skeleton3D/Knife".hide()
 	$"Rogue/Rig/Skeleton3D/Knife_Offhand".hide()
 
-
-	if var_jump_timer > 0:
-		var_jump_timer -= delta
-
-		if var_jump_timer <= 0:
-			var_jump_timer = 0
-
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var move = Input.get_vector("Move left", "Move right", "Move up", "Move down")
-
-	if is_on_floor():
-		if move.length() > 0:
-			$Rogue/AnimationPlayer.play("Running_A")
-		else:
-			$Rogue/AnimationPlayer.play("Idle")
-
-	const MAX_RUN := 10.0
-	const RUN_ACCEL := 100.0
-	const RUN_REDUCE := 40.0
-#
-
-	var v_ground = Vector2(velocity.x, velocity.z).rotated(+%Camera.rotation.y)
-	var a_ground: Vector2
-	if (absf(velocity.x) > MAX_RUN && signf(velocity.x) == move.x):
-		a_ground.x = RUN_REDUCE
+func _physics_process(delta):
+	var jump = false
+	if rail_grind:
+		jump = process_grind(rail_grind, delta)
 	else:
-		a_ground.x = RUN_ACCEL
-
-	if (absf(velocity.z) > MAX_RUN && signf(velocity.z) == move.y):
-		a_ground.y = RUN_REDUCE
-	else:
-		a_ground.y = RUN_ACCEL
-	v_ground.x = Util.approach(v_ground.x, MAX_RUN * move.x, a_ground.x * delta)
-	v_ground.y = Util.approach(v_ground.y, MAX_RUN * move.y, a_ground.y * delta)
-
-	v_ground = v_ground.rotated(-%Camera.rotation.y)
+		jump = process_skating(delta)
 
 
-
-
-	const MAX_FALL := 20
-	const HALF_GRAV_THRESHOLD := 40.0
-	const GRAVITY := 90.0
 	const VAR_JUMP_TIME = 0.2
-	const JUMP_H_BOOST := 4.0
 	const JUMP_SPEED := 16.50#-125.0
-# vertical movement
-	#if wallslide_x != 0: target_max_fall *= WALLSLIDE_V_MULT
-	#if wallslide_x != 0: max_fall = MAX_FALL * WALLSLIDE_V_MULT
-	#var max_fall = Util.approach(max_fall, MAX_FALL, MAX_FALL * delta)
 
-
-	if !is_on_floor():
-		var jump_mult := 1.0
-		# hold jump to get a bit o anti gravity
-		if (absf(velocity.y) < HALF_GRAV_THRESHOLD && (Input.is_action_pressed("Jump"))): jump_mult = 0.5
-
-		velocity.y = Util.approach(velocity.y, -MAX_FALL, GRAVITY * jump_mult * delta)
-		if velocity.y < 0:
-			pass
-			#$Rogue/AnimationPlayer.play("Jump_Full_Short")
-
-	if Input.is_action_just_pressed("Jump"):
-		if is_on_floor(): #or wallslide_x != 0:
-			#print("Jump! %s" % [max_fall])
-			$Rogue/AnimationPlayer.stop()
-			$Rogue/AnimationPlayer.play("Jump_Start")
-			$Rogue/AnimationPlayer.queue("Jump_Full_Long")
-			var_jump_timer = VAR_JUMP_TIME
-			v_ground += JUMP_H_BOOST * move
-			velocity.y = JUMP_SPEED
-			#velocity += lift_boost
-			var_jump_speed = velocity.y
-#
-	if var_jump_timer > 0:
-		if Input.is_action_pressed("Jump"):
-			velocity.y = minf(velocity.y, var_jump_speed)
-		else:
-			var_jump_timer = 0
-			#$Rogue/AnimationPlayer.play("Jump_Full_Short")
-
-
-	velocity = Vector3(v_ground.x, velocity.y, v_ground.y)
-
-
-	var direction = (transform.basis * Vector3(move.x, 0, move.y)).normalized().rotated(Vector3.UP, %Camera.rotation.y)
-	if direction.length() > 0:
-		$Rogue.look_at(global_position - direction)
-
-	move_and_slide()
+	if jump: #or wallslide_x != 0:
+		$Rogue/AnimationPlayer.stop()
+		$Rogue/AnimationPlayer.play("Jump_Start")
+		$Rogue/AnimationPlayer.queue("Jump_Full_Long")
+		var_jump_timer = VAR_JUMP_TIME
+		velocity.y = JUMP_SPEED
+		#velocity += lift_boost
+		var_jump_speed = velocity.y
 
 	# UPDATE CAMERA
 	const MIN_FOLLOW_DISTANCE:float = 5
@@ -133,22 +67,133 @@ func _physics_process(delta):
 	#if cam_pos.distance_to(closest_point) > 5:
 	%Camera.look_at($Rogue.global_position)
 
+func process_grind(grind: RailGrind, delta):
+	const GRIND_SPEED = 20.0
+	grind.offset += delta * grind.direction * GRIND_SPEED
+	var curve_transform = grind.rail.path.sample_baked_with_rotation(grind.offset)
+	global_position = grind.rail.to_global(curve_transform.origin)
+
+	if Input.is_action_just_pressed("Jump") or grind.offset >= grind.rail.path.get_baked_length() or grind.offset <= 0:
+		velocity = 20.0 * curve_transform.basis.z * -grind.direction
+		rail_grind = null
+		return true
+
+
+	return false
+
+
+
+
+func get_move():
+	return Input.get_vector("Move left", "Move right", "Move up", "Move down")
+
+func process_skating(delta):
+	if var_jump_timer > 0:
+		var_jump_timer -= delta
+
+		if var_jump_timer <= 0:
+			var_jump_timer = 0
+
+	var move = get_move()
+
+	if is_on_floor():
+		if move.length() > 0:
+			$Rogue/AnimationPlayer.play("Running_A")
+		else:
+			$Rogue/AnimationPlayer.play("Idle")
+
+	const MAX_RUN := 20.0
+	const RUN_ACCEL := 15.0
+	const RUN_REDUCE := 15.0
+#
+
+	var v_ground = Vector2(velocity.x, velocity.z).rotated(+%Camera.rotation.y)
+	var a_ground: Vector2
+	if (absf(velocity.x) > MAX_RUN && signf(velocity.x) == move.x):
+		a_ground.x = RUN_REDUCE
+	else:
+		a_ground.x = RUN_ACCEL
+
+	if (absf(velocity.z) > MAX_RUN && signf(velocity.z) == move.y):
+		a_ground.y = RUN_REDUCE
+	else:
+		a_ground.y = RUN_ACCEL
+	v_ground.x = Util.approach(v_ground.x, MAX_RUN * move.x, a_ground.x * delta)
+	v_ground.y = Util.approach(v_ground.y, MAX_RUN * move.y, a_ground.y * delta)
+
+	v_ground = v_ground.rotated(-%Camera.rotation.y)
+
+
+
+
+	const MAX_FALL := 20
+	const HALF_GRAV_THRESHOLD := 40.0
+	const GRAVITY := 90.0
+# vertical movement
+	#if wallslide_x != 0: target_max_fall *= WALLSLIDE_V_MULT
+	#if wallslide_x != 0: max_fall = MAX_FALL * WALLSLIDE_V_MULT
+	#var max_fall = Util.approach(max_fall, MAX_FALL, MAX_FALL * delta)
+
+
+
+	if !is_on_floor():
+		var jump_mult := 1.0
+		# hold jump to get a bit o anti gravity
+		if (absf(velocity.y) < HALF_GRAV_THRESHOLD && (Input.is_action_pressed("Jump"))): jump_mult = 0.5
+
+		velocity.y = Util.approach(velocity.y, -MAX_FALL, GRAVITY * jump_mult * delta)
+		if velocity.y < 0:
+			pass
+			#$Rogue/AnimationPlayer.play("Jump_Full_Short")
+
+#
+	if var_jump_timer > 0:
+		if Input.is_action_pressed("Jump"):
+			velocity.y = minf(velocity.y, var_jump_speed)
+		else:
+			var_jump_timer = 0
+			#$Rogue/AnimationPlayer.play("Jump_Full_Short")
+
+
+	velocity = Vector3(v_ground.x, velocity.y, v_ground.y)
+
+
+	var direction = (transform.basis * Vector3(move.x, 0, move.y)).normalized().rotated(Vector3.UP, %Camera.rotation.y)
+	if direction.length() > 0:
+		$Rogue.look_at(global_position - direction)
+
+	move_and_slide()
+
+
 	const MAX_RAIL_LATCH = 3.0
-	var closest_distance = INF
-	var latch_point = null
 	var closest_rail = null
 	for rail in get_tree().get_nodes_in_group("rails"):
 		var position_in_railspace = rail.to_local(self.global_position)
-		var closest_point = rail.path.curve.sample_baked(rail.path.curve.get_closest_offset(position_in_railspace))
-		closest_point = rail.to_global(closest_point)
+		var offset = rail.path.get_closest_offset(position_in_railspace)
+		var attach_info: Transform3D = rail.path.sample_baked_with_rotation(offset)
+		var closest_point = rail.to_global(attach_info.origin)
 		var distance = (closest_point - global_position).length()
-		if distance < closest_distance and distance < MAX_RAIL_LATCH:
-			closest_distance = distance
-			closest_rail = rail
-			latch_point = closest_point
+		if distance < MAX_RAIL_LATCH and (not closest_rail or distance < closest_rail.distance):
+			closest_rail = {
+				distance=distance,
+				rail=rail,
+				latch_point=closest_point,
+				forward=attach_info.basis.z,
+				offset=offset
+			}
 
-	if latch_point and closest_rail:
-		%GrindTarget.global_position = latch_point
+	if closest_rail:
+		%GrindTarget.global_position = closest_rail.latch_point
 		%GrindTarget.show()
+
+		if not is_on_floor() and Input.is_action_just_pressed("Jump"):
+			rail_grind = RailGrind.new()
+			rail_grind.offset = closest_rail.offset
+			print(closest_rail.forward, velocity, closest_rail.forward.angle_to(velocity))
+			rail_grind.direction = 1 if closest_rail.forward.angle_to(velocity) > TAU/4 else -1
+			rail_grind.rail = closest_rail.rail
+
 	else:
 		%GrindTarget.hide()
+
+	return Input.is_action_just_pressed("Jump") and is_on_floor()
