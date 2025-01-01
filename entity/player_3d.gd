@@ -106,17 +106,28 @@ func _physics_process(delta):
 	move_and_slide()
 
 	# UPDATE CAMERA
-	const SNAP_WEIGHT:float = 4
+	const MIN_FOLLOW_DISTANCE:float = 5
+	const MAX_FOLLOW_DISTANCE:float = 10
+	const LERP_WEIGHT:float = 4
 	const MIN_OFFSET:float = 8
 	const ANCHOR_SPACING:float = 30
 	var cam_pos:Vector3 = %Camera.global_position
-	var player_pos:Vector3 = global_position + Vector3(MIN_OFFSET, 0, MIN_OFFSET)
-	var closest_point := Vector3(
-		floor(player_pos.x / ANCHOR_SPACING) * ANCHOR_SPACING,
-		cam_pos.y,
-		floor(player_pos.z / ANCHOR_SPACING) * ANCHOR_SPACING
-	)
-	%Camera.global_position = cam_pos.lerp(closest_point, SNAP_WEIGHT * delta)
+	var player_pos:Vector3 = global_position
+	var cam_base_pos:Vector2 = Vector2(cam_pos.x, cam_pos.z)
+	var player_base_pos:Vector2 = Vector2(player_pos.x, player_pos.z)
+	var base_distance := (player_base_pos - cam_base_pos).length()
+
+	var pull_to_distance:float = 0
+	if base_distance > MAX_FOLLOW_DISTANCE:
+		pull_to_distance = MAX_FOLLOW_DISTANCE
+	elif base_distance < MIN_FOLLOW_DISTANCE:
+		pull_to_distance = MIN_FOLLOW_DISTANCE
+
+	if pull_to_distance != 0:
+		var angle_to_base:float = player_base_pos.angle_to_point(cam_base_pos)
+		var follow_offset := Vector2(cos(angle_to_base) * MIN_FOLLOW_DISTANCE, sin(angle_to_base) * MIN_FOLLOW_DISTANCE)
+		var target_pos := player_base_pos + follow_offset
+		%Camera.global_position = cam_pos.lerp(Vector3(target_pos.x, cam_pos.y, target_pos.y), LERP_WEIGHT * delta)
 
 	#if cam_pos.distance_to(closest_point) > 5:
 	%Camera.look_at($Rogue.global_position)
