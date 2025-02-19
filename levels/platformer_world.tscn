@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bos0kgufkj7rm"]
+[gd_scene load_steps=19 format=3 uid="uid://bos0kgufkj7rm"]
 
 [ext_resource type="PackedScene" uid="uid://du7xjyugkrgid" path="res://entity/environment/rail.tscn" id="2_rmoe1"]
 [ext_resource type="PackedScene" uid="uid://m3n3e4r5gvqw" path="res://entity/environment/greybox.tscn" id="2_te7qo"]
@@ -10,12 +10,40 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_buo45")
 size = Vector2(300, 300)
 
+[sub_resource type="Curve3D" id="Curve3D_fq2y1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 26.9339, 14.5697, 76.1523, 0, 0, 0, 0, 0, 0, 40.5517, 15.6398, 43.7822, 0, 0, 0, 0, 0, 0, 41.2885, 15.6398, 41.0891),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [sub_resource type="Curve3D" id="Curve3D_nv0ij"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 20.0887, -1.59411, -7.22327, 0, 0, 0, 0, 0, 0, 22.5941, 3.35186, -5.06768, 0, 0, 0, 0, 0, 0, 34.7969, 3.35186, -5.2082, 0, 0, 0, 0, 0, 0, 38.7693, 5.37236, -8.03316, 0, 0, 0, 0, 0, 0, 49.551, 5.3723, -10.4712, 0, 0, 0, 0, 0, 0, 57.851, 5.3723, -6.46938, 0, 0, 0, 0, 0, 0, 65.1135, 5.3723, -9.7795, 0, 0, 0, 0, 0, 0, 66.8962, 5.37231, -22.3547, 0, 0, 0, 0, 0, 0, 75.8658, 2.09325, -30.3181, 0, 0, 0, 0, 0, 0, 82.6084, -0.744846, -35.8265),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 20.0887, -1.59411, -7.22327, 0, 0, 0, 0, 0, 0, 22.5941, 3.35186, -5.06768, 0, 0, 0, 0, 0, 0, 34.7969, 3.35186, -5.2082, 0, 0, 0, 0, 0, 0, 38.7693, 5.37236, -8.03316, 0, 0, 0, 0, 0, 0, 49.551, 5.3723, -10.4712, 0, 0, 0, 0, 0, 0, 57.851, 5.3723, -6.46938, 0, 0, 0, 0, 0, 0, 65.1135, 5.3723, -9.7795, 0, 0, 0, 0, 0, 0, 66.8962, 5.37231, -22.3547, 0, 0, 0, 0, 0, 0, 75.8658, 2.09325, -30.3181, 0, 0, 0, 0, 0, 0, 82.6084, 2.09325, -35.8265),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_c7u8e"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -52.6796, 8.07566, 71.181, 0, 0, 0, 0, 0, 0, -50.1446, 11.6384, 68.2522, 0, 0, 0, 0, 0, 0, -25.1758, 15.9784, 74.3065, 0, 0, 0, 0, 0, 0, -24.5335, 14.3709, 75.2163),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_x6j3m"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 12.4616, 6.25716, 61.8746, 0, 0, 0, 0, 0, 0, 12.1676, 7.97825, 59.4741, 0, 0, 0, 0, 0, 0, 10.8701, 7.13607, 47.8935, 0, 0, 0, 0, 0, 0, 10.6876, 7.97825, 32.3788, 0, 0, 0, 0, 0, 0, 9.14427, 6.92696, 17.5771, 0, 0, 0, 0, 0, 0, 8.18517, 8.17028, 2.17976, 0, 0, 0, 0, 0, 0, 8.20622, 7.18296, -14.4288, 0, 0, 0, 0, 0, 0, 9.9909, 7.85177, -32.9706, 0, 0, 0, 0, 0, 0, 15.8805, 5.30895, -41.2069, 0, 0, 0, 0, 0, 0, 16.8098, 2.14393, -45.1479, 0, 0, 0, 0, 0, 0, 15.9435, -0.229116, -49.474),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Curve3D" id="Curve3D_w6ere"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -41.448, 5.89981, 101.532, 0, 0, 0, 0, 0, 0, -13.7079, 8.94752, 101.626, 0, 0, 0, 0, 0, 0, 0.782513, 5.64496, 102.285, 0, 0, 0, 0, 0, 0, 20.328, 7.85472, 101.543, 0, 0, 0, 0, 0, 0, 34.3857, 5.1458, 99.9008, 0, 0, 0, 0, 0, 0, 48.6049, 7.68012, 99.4452, 0, 0, 0, 0, 0, 0, 58.1231, 4.61788, 87.3153, 0, 0, 0, 0, 0, 0, 68.8017, 8.64438, 75.2642, 0, 0, 0, 0, 0, 0, 78.0625, 6.63071, 62.7683, 0, 0, 0, 0, 0, 0, 88.561, 7.76887, 50.9938, 0, 0, 0, 0, 0, 0, 109.715, 10.1082, 29.3665, 0, 0, 0, 0, 0, 0, 117.83, 10.6001, 17.5077, 0, 0, 0, 0, 0, 0, 129.501, 15.1098, -5.58121, 0, 0, 0, 0, 0, 0, 132.106, 11.1791, -9.10033),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
 
 [sub_resource type="BoxMesh" id="BoxMesh_gpjlf"]
 size = Vector3(20, 15, 15)
@@ -29,8 +57,10 @@ size = Vector3(30, 10, 3)
 [sub_resource type="BoxMesh" id="BoxMesh_b60p1"]
 size = Vector3(14, 5, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ys27g"]
-size = Vector3(25, 6, 25)
+[sub_resource type="CylinderMesh" id="CylinderMesh_efygk"]
+top_radius = 15.0
+bottom_radius = 15.0
+height = 4.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_5icln"]
 size = Vector3(70, 10, 70)
@@ -38,6 +68,10 @@ size = Vector3(70, 10, 70)
 [sub_resource type="PrismMesh" id="PrismMesh_1mut2"]
 left_to_right = 1.0
 size = Vector3(10, 4, 10)
+
+[sub_resource type="PrismMesh" id="PrismMesh_1lnr0"]
+left_to_right = 1.0
+size = Vector3(15, 15, 15)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_srwb7"]
 top_radius = 2.7
@@ -48,18 +82,29 @@ height = 7.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_43ysm")
+metadata/_edit_lock_ = true
 
 [node name="Path3D" parent="." instance=ExtResource("2_rmoe1")]
+curve = SubResource("Curve3D_fq2y1")
 
 [node name="Path3D2" parent="." instance=ExtResource("2_rmoe1")]
 curve = SubResource("Curve3D_nv0ij")
+
+[node name="Path3D3" parent="." instance=ExtResource("2_rmoe1")]
+curve = SubResource("Curve3D_c7u8e")
+
+[node name="Path3D4" parent="." instance=ExtResource("2_rmoe1")]
+curve = SubResource("Curve3D_x6j3m")
+
+[node name="Path3D5" parent="." instance=ExtResource("2_rmoe1")]
+curve = SubResource("Curve3D_w6ere")
 
 [node name="Building1" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(0.930954, 0, -0.365137, 0, 1, 0, 0.365137, 0, 0.930954, -25.8843, -4.29561, 81.6202)
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building25" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(0.967502, 0, 0.252863, 0, 1, 0, -0.252863, 0, 0.967502, 29.2339, -4.35182, 80.8534)
+transform = Transform3D(0.967502, 0, 0.252863, 0, 1, 0, -0.252863, 0, 0.967502, 29.2339, -4.74492, 80.8534)
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building26" parent="." instance=ExtResource("2_te7qo")]
@@ -103,7 +148,7 @@ transform = Transform3D(-0.419214, 0, 0.907887, 0, 1, 0, -0.907887, 0, -0.419214
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building10" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(-0.777991, 0, 0.628275, 0, 1, 0, -0.628275, 0, -0.777991, 134.561, 6.99073, -32.6602)
+transform = Transform3D(-0.777991, 0, 0.628275, 0, 1, 0, -0.628275, 0, -0.777991, 135.201, 6.99073, -39.4187)
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building22" parent="." instance=ExtResource("2_te7qo")]
@@ -135,15 +180,63 @@ transform = Transform3D(-0.953302, 0, -0.30202, 0, 1, 0, 0.30202, 0, -0.953302, 
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building35" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(-0.959506, 0, 0.281689, 0, 1, 0, -0.281689, 0, -0.959506, -10.4082, 7.41922, -57.2316)
+transform = Transform3D(-0.991689, 0, -0.128657, 0, 1, 0, 0.128657, 0, -0.991689, -96.1288, 12.6815, 22.0986)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building66" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.350975, 0, 0.936385, 0, 1, 0, -0.936385, 0, -0.350975, -50.9248, 6.23568, 15.2274)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building67" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.675487, 0, 0.737372, 0, 1, 0, -0.737372, 0, -0.675487, -47.5667, 3.84026, 26.6646)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building56" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.665999, 0, -0.745952, 0, 1, 0, 0.745952, 0, -0.665999, -106.97, 7.84735, 7.29644)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building57" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.853497, 0, -0.521099, 0, 1, 0, 0.521099, 0, -0.853497, -102.649, 10.6091, 14.6056)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building48" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.932639, 0, 0.360811, 0, 1, 0, -0.360811, 0, -0.932639, -104.292, 10.1964, 31.5925)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building49" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.296891, 0, 0.954911, 0, 1, 0, -0.954911, 0, -0.296891, -84.968, 10.1964, 84.572)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building50" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.296891, 0, 0.954911, 0, 1, 0, -0.954911, 0, -0.296891, -62.2361, 9.96371, 144.956)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building51" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.00205889, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00205889, -5.04025, 7.96975, 139.068)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building54" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.509386, 0, 0.860538, 0, 1, 0, -0.860538, 0, -0.509386, 69.2753, 7.81522, 139.736)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building55" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.192076, 0, 0.98138, 0, 1, 0, -0.98138, 0, -0.192076, 79.4211, 7.81522, 135.888)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building52" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.140764, 0, 0.990043, 0, 1, 0, -0.990043, 0, 0.140764, 7.37847, 7.96975, 145.427)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building53" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.545883, 0, 0.837861, 0, 1, 0, -0.837861, 0, 0.545883, 15.321, 4.59251, 150.897)
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building17" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(-0.636455, 0, 0.771314, 0, 1, 0, -0.771314, 0, -0.636455, 129.249, 6.99073, -19.6729)
+transform = Transform3D(-0.636455, 0, 0.771314, 0, 1, 0, -0.771314, 0, -0.636455, 133.519, 6.99073, -25.8178)
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building29" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(-0.984267, 0, 0.176689, 0, 1, 0, -0.176689, 0, -0.984267, 134.704, 6.99073, -5.54822)
+transform = Transform3D(-0.984267, 0, 0.176689, 0, 1, 0, -0.176689, 0, -0.984267, 136.856, 6.99073, -10.129)
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building18" parent="." instance=ExtResource("2_te7qo")]
@@ -223,7 +316,7 @@ transform = Transform3D(-0.967859, 0, -0.251495, 0, 1, 0, 0.251495, 0, -0.967859
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building39" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(-0.967859, 0, -0.251495, 0, 1, 0, 0.251495, 0, -0.967859, 8.42548, 6.99073, -98.579)
+transform = Transform3D(-0.967859, 0, -0.251495, 0, 1, 0, 0.251495, 0, -0.967859, 9.26122, 6.99073, -96.9128)
 mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Building40" parent="." instance=ExtResource("2_te7qo")]
@@ -260,6 +353,18 @@ mesh = SubResource("BoxMesh_gpjlf")
 
 [node name="Wall1" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(-0.879707, 0, -0.475517, 0, 1, 0, 0.475517, 0, -0.879707, 98.2957, -0.572364, -11.0901)
+mesh = SubResource("BoxMesh_krh5m")
+
+[node name="Wall17" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.879707, 0, -0.475517, 0, 1, 0, 0.475517, 0, -0.879707, 33.879, -0.572364, -77.9633)
+mesh = SubResource("BoxMesh_krh5m")
+
+[node name="Wall18" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.969958, 0, -0.243277, 0, 1, 0, 0.243277, 0, -0.969958, 60.5982, -0.572364, -88.2575)
+mesh = SubResource("BoxMesh_krh5m")
+
+[node name="Wall19" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.969958, 0, -0.243277, 0, 1, 0, 0.243277, 0, -0.969958, 118.719, -0.572364, -100.423)
 mesh = SubResource("BoxMesh_krh5m")
 
 [node name="Wall4" parent="." instance=ExtResource("2_te7qo")]
@@ -323,7 +428,7 @@ transform = Transform3D(-0.738168, -0.0524405, -0.672576, -0.0907058, 0.995636, 
 mesh = SubResource("BoxMesh_krh5m")
 
 [node name="Wall16" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(-0.493122, 0, -0.86996, 0, 1, 0, 0.86996, 0, -0.493122, 120.726, 4.29876, 12.7743)
+transform = Transform3D(-0.493122, 0, -0.86996, 0, 1, 0, 0.86996, 0, -0.493122, 123.957, 4.29876, 8.39123)
 mesh = SubResource("BoxMesh_krh5m")
 
 [node name="Wall3" parent="." instance=ExtResource("2_te7qo")]
@@ -338,13 +443,57 @@ mesh = SubResource("BoxMesh_gpjlf")
 transform = Transform3D(-0.308951, 0, 0.951078, 0, 1, 0, -0.951078, 0, -0.308951, 50.6616, 6.99073, -23.665)
 mesh = SubResource("BoxMesh_gpjlf")
 
+[node name="Building58" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.995734, 0, -0.0922662, 0, 1, 0, 0.0922662, 0, -0.995734, -13.3397, 6.99073, -46.9031)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building59" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.75078, 0, 0.660552, 0, 1, 0, -0.660552, 0, 0.75078, -29.92, 6.99073, -76.463)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building60" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.702799, 0, 0.711389, 0, 1, 0, -0.711389, 0, 0.702799, -38.66, 6.99073, -85.7313)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building61" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.965355, 0, -0.260943, 0, 1, 0, 0.260943, 0, 0.965355, 0.471134, 6.99072, -85.4182)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building62" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.874155, 0, -0.48565, 0, 1, 0, 0.48565, 0, 0.874155, -2.00141, 6.99072, -73.5248)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building63" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.780561, 0, -0.62508, 0, 1, 0, 0.62508, 0, 0.780561, -7.73971, 6.99072, -62.2674)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building64" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.950364, 0, -0.311141, 0, 1, 0, 0.311141, 0, -0.950364, -17.4726, 6.99073, -58.1166)
+mesh = SubResource("BoxMesh_gpjlf")
+
+[node name="Building65" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.919479, 0, -0.39314, 0, 1, 0, 0.39314, 0, -0.919479, -22.8502, 6.99073, -69.641)
+mesh = SubResource("BoxMesh_gpjlf")
+
 [node name="Building5" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(-0.665582, 0, 0.746325, 0, 1, 0, -0.746325, 0, -0.665582, 83.1556, 6.99073, -53.7509)
 mesh = SubResource("BoxMesh_gpjlf")
 
-[node name="Platform" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3483, 3.68547, -31.1239)
-mesh = SubResource("BoxMesh_ys27g")
+[node name="Platform2" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.868977, 0, 0.494852, 0, 1, 0, -0.494852, 0, 0.868977, -111.119, 4.10632, -29.9999)
+mesh = SubResource("CylinderMesh_efygk")
+
+[node name="Platform4" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.868977, 0, 0.494852, 0, 1, 0, -0.494852, 0, 0.868977, -20.0933, 13.5839, -81.6847)
+mesh = SubResource("CylinderMesh_efygk")
+
+[node name="Platform3" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.868977, 0, 0.494852, 0, 1, 0, -0.494852, 0, 0.868977, -101.194, 2.5047, -31.2645)
+mesh = SubResource("CylinderMesh_efygk")
+
+[node name="Platform5" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.868977, 0, 0.494852, 0, 1, 0, -0.494852, 0, 0.868977, -43.7976, -0.471504, 0.626581)
+mesh = SubResource("CylinderMesh_efygk")
 
 [node name="RaisedArea" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3217, -2.57521, -21.958)
@@ -374,6 +523,10 @@ mesh = SubResource("BoxMesh_5icln")
 transform = Transform3D(-0.999995, 0, -0.00308934, 0, 1, 0, 0.00308934, 0, -0.999995, -50.6586, 0.402475, -22.7234)
 mesh = SubResource("PrismMesh_1mut2")
 
+[node name="TallRamp" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(-0.999995, 0, -0.00308934, 0, 1, 0, 0.00308934, 0, -0.999995, 56.4525, 6.7746, 23.4593)
+mesh = SubResource("PrismMesh_1lnr0")
+
 [node name="Ramp2" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(-0.999995, 0, -0.00308934, 0, 1, 0, 0.00308934, 0, -0.999995, -50.6384, 0.402475, -40.8528)
 mesh = SubResource("PrismMesh_1mut2")
@@ -391,11 +544,11 @@ transform = Transform3D(0.30528, 0, -0.952263, 0, 1, 0, 0.952263, 0, 0.30528, -8
 mesh = SubResource("PrismMesh_1mut2")
 
 [node name="Ramp6" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(-0.180725, 0, -0.983534, 0, 1, 0, 0.983534, 0, -0.180725, -65.6191, 7.39499, 45.3104)
+transform = Transform3D(-0.180725, 0, -0.983534, 0, 1, 0, 0.983534, 0, -0.180725, -65.5141, 7.14452, 45.0829)
 mesh = SubResource("PrismMesh_1mut2")
 
 [node name="Ramp7" parent="." instance=ExtResource("2_te7qo")]
-transform = Transform3D(-0.180725, 0, -0.983534, 0, 1, 0, 0.983534, 0, -0.180725, -81.1953, 7.39499, 43.3367)
+transform = Transform3D(-0.180725, 0, -0.983534, 0, 1, 0, 0.983534, 0, -0.180725, -81.0903, 7.14452, 43.1091)
 mesh = SubResource("PrismMesh_1mut2")
 
 [node name="Ramp8" parent="." instance=ExtResource("2_te7qo")]
@@ -454,6 +607,10 @@ mesh = SubResource("CylinderMesh_srwb7")
 transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 10.7902, 3.00891, 32.2568)
 mesh = SubResource("CylinderMesh_srwb7")
 
+[node name="Pillar34" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 35.738, 16.9519, 12.0703)
+mesh = SubResource("CylinderMesh_srwb7")
+
 [node name="Pillar10" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, -6.36559, 3.00891, 48.6477)
 mesh = SubResource("CylinderMesh_srwb7")
@@ -478,6 +635,10 @@ mesh = SubResource("CylinderMesh_srwb7")
 transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 2.57708, 29.2588, 82.1177)
 mesh = SubResource("CylinderMesh_srwb7")
 
+[node name="Pillar28" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 69.6594, 18.1282, 135.218)
+mesh = SubResource("CylinderMesh_srwb7")
+
 [node name="Pillar25" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 2.82796, 21.2352, 74.7897)
 mesh = SubResource("CylinderMesh_srwb7")
@@ -486,12 +647,40 @@ mesh = SubResource("CylinderMesh_srwb7")
 transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, -7.74198, 3.00891, 18.8648)
 mesh = SubResource("CylinderMesh_srwb7")
 
+[node name="Pillar33" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 8.57999, 3.00891, 1.74172)
+mesh = SubResource("CylinderMesh_srwb7")
+
+[node name="Pillar35" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 8.78363, 3.00891, -14.4642)
+mesh = SubResource("CylinderMesh_srwb7")
+
+[node name="Pillar37" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 8.83113, 3.00891, -30.5334)
+mesh = SubResource("CylinderMesh_srwb7")
+
+[node name="Pillar32" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, 118.706, 3.00891, -34.0538)
+mesh = SubResource("CylinderMesh_srwb7")
+
 [node name="Pillar13" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(0.998109, 0, 0.0614666, 0, 1, 0, -0.0614666, 0, 0.998109, -6.79334, 3.00891, 33.3397)
 mesh = SubResource("CylinderMesh_srwb7")
 
 [node name="Pillar2" parent="." instance=ExtResource("2_te7qo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.62, 3.39473, -71.4186)
+mesh = SubResource("CylinderMesh_srwb7")
+
+[node name="Pillar29" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.5655, 3.39473, -92.3723)
+mesh = SubResource("CylinderMesh_srwb7")
+
+[node name="Pillar30" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.485, 3.39473, -96.6245)
+mesh = SubResource("CylinderMesh_srwb7")
+
+[node name="Pillar31" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.135, 3.39472, -71.4974)
 mesh = SubResource("CylinderMesh_srwb7")
 
 [node name="Pillar3" parent="." instance=ExtResource("2_te7qo")]
