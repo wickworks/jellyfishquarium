@@ -59,8 +59,13 @@ func _physics_process(delta):
 		var_jump_speed = velocity.y
 
 	# UPDATE CAMERA
-	const MIN_FOLLOW_DISTANCE:float = 5
-	const MAX_FOLLOW_DISTANCE:float = 7
+	const MIN_FOLLOW_DISTANCE:float = 5.0
+	const MAX_FOLLOW_DISTANCE:float = 7.0
+	
+	var max_follow_distance = MAX_FOLLOW_DISTANCE
+	if movement != null:
+		max_follow_distance =11.0
+	
 	const LERP_WEIGHT:float = 4
 	const MIN_OFFSET:float = 8
 	const ANCHOR_SPACING:float = 30
@@ -71,8 +76,8 @@ func _physics_process(delta):
 	var base_distance := (player_base_pos - cam_base_pos).length()
 
 	var pull_to_distance:float = 0
-	if base_distance > MAX_FOLLOW_DISTANCE:
-		pull_to_distance = MAX_FOLLOW_DISTANCE
+	if base_distance > max_follow_distance:
+		pull_to_distance = max_follow_distance
 	elif base_distance < MIN_FOLLOW_DISTANCE:
 		pull_to_distance = MIN_FOLLOW_DISTANCE
 
@@ -147,7 +152,10 @@ func process_skating(delta):
 	var move = get_move()
 
 	if is_on_floor():
-		if move.length() > 0:
+		if Input.is_action_pressed("Jump"):
+			$Rogue/AnimationPlayer.play("Sit_Floor_Idle")
+			
+		elif move.length() > 0:
 			$Rogue/AnimationPlayer.play("Running_A")
 		else:
 			$Rogue/AnimationPlayer.play("Idle")
