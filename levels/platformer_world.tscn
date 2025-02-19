@@ -24,12 +24,13 @@ mesh = SubResource("PlaneMesh_43ysm")
 
 [node name="Path3D2" parent="." instance=ExtResource("2_rmoe1")]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37353, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.715)
 mesh = SubResource("BoxMesh_136hg")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
 shape = SubResource("ConvexPolygonShape3D_gwpft")
