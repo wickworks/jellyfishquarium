@@ -511,7 +511,4 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Player" parent="." instance_placeholder="res://entity/player.tscn"]
-position = Vector2(204, 46)
-
 [connection signal="spawn_player" from="Building/Roof/ShatterableWindow" to="." method="_on_shatterable_window_spawn_player"]
