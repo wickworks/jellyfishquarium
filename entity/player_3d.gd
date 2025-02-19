@@ -76,8 +76,6 @@ func _physics_process(delta):
 		)
 		%Camera.global_position = rotated_camera_vector + $Rogue.global_position
 		
-		
-	
 	%Camera.global_position
 		
 	%Camera.look_at($Rogue.global_position)

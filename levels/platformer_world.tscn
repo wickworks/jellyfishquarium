@@ -9,19 +9,11 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_buo45")
 size = Vector2(300, 300)
 
-[sub_resource type="Curve3D" id="Curve3D_imitq"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.35137, 0, -9.67327, 0, 0, 0, 0, 0, 0, -6.04714, 1, -8.15437, 0, 0, 0, 0, 0, 0, -6.59466, 0.645912, -1.92609, 0, 0, 0, 0, 0, 0, -4.89657, 0.699035, 4.91955, 0, 0, 0, 0, 0, 0, -2.28704, 0.756755, 10.1461, 0, 0, 0, 0, 0, 0, 0.720575, 0.361684, 12.0441, 0, 0, 0, 0, 0, 0, 2.95863, 0.197663, 8.92596),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
+[sub_resource type="BoxMesh" id="BoxMesh_136hg"]
+size = Vector3(25, 15, 1)
 
-[sub_resource type="Curve3D" id="Curve3D_kd2wh"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.14598, 0, -3.08005, 0, 0, 0, 0, 0, 0, 0.715514, 0.187867, -4.64937, 0, 0, 0, 0, 0, 0, 3.79, 1, -2.265, 0, 0, 0, 0, 0, 0, 5.48173, 1, -3.57077, 0, 0, 0, 0, 0, 0, 5.45387, 1, -5.46653, 0, 0, 0, 0, 0, 0, 6.14087, 1, -4.80153, 0, 0, 0, 0, 0, 0, 7.82472, 0.202381, -4.54385),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gwpft"]
+points = PackedVector3Array(12.5, 7.5, 0.5, 12.5, 7.5, -0.5, -12.5, 7.5, 0.5, 12.5, -7.5, 0.5, 12.5, -7.5, -0.5, -12.5, 7.5, -0.5, -12.5, -7.5, 0.5, -12.5, -7.5, -0.5)
 
 [node name="PlatformerWorld" type="Node3D"]
 
@@ -29,7 +21,15 @@ point_count = 7
 mesh = SubResource("PlaneMesh_43ysm")
 
 [node name="Path3D" parent="." instance=ExtResource("2_rmoe1")]
-curve = SubResource("Curve3D_imitq")
 
 [node name="Path3D2" parent="." instance=ExtResource("2_rmoe1")]
-curve = SubResource("Curve3D_kd2wh")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37353, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_136hg")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gwpft")
