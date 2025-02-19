@@ -5,6 +5,10 @@ const JUMP_VELOCITY = 4.5
 const JUMP_H_BOOST := 4.0
 const GRAVITY := 90.0
 const MAX_FALL := 20
+const MAX_RUN := 20.0
+
+const MIN_HORIZ_WALLRUN_VELOCITY = 10.0
+
 
 var var_jump_timer := 0.0
 var var_jump_speed := 0.0
@@ -33,7 +37,7 @@ func _ready():
 	$"Rogue/Rig/Skeleton3D/Knife_Offhand".hide()
 
 func _physics_process(delta):
-	var jump = false
+	var jump = 0.0
 	if movement is RailGrind:
 		jump = process_grind(movement, delta)
 	elif movement is WallRun:
@@ -49,8 +53,8 @@ func _physics_process(delta):
 		$Rogue/AnimationPlayer.stop()
 		$Rogue/AnimationPlayer.play("Jump_Start")
 		$Rogue/AnimationPlayer.queue("Jump_Full_Long")
-		var_jump_timer = VAR_JUMP_TIME
-		velocity.y = JUMP_SPEED
+		var_jump_timer = VAR_JUMP_TIME * jump
+		velocity.y = JUMP_SPEED * jump
 		#velocity += lift_boost
 		var_jump_speed = velocity.y
 
@@ -122,10 +126,10 @@ func process_grind(grind: RailGrind, delta):
 		movement = null
 		%Camera.apply_shake(CAMERA_SHAKE)
 		
-		return true
+		return 1.0
 
 
-	return false
+	return 0.0
 
 
 
@@ -148,7 +152,6 @@ func process_skating(delta):
 		else:
 			$Rogue/AnimationPlayer.play("Idle")
 
-	const MAX_RUN := 20.0
 	const RUN_ACCEL := 70.0
 	const RUN_REDUCE := 70.0
 	const MIDAIR_CONTROL_PERCENT := 0.2
@@ -168,6 +171,10 @@ func process_skating(delta):
 		
 	if not is_on_floor():
 		a_ground *= MIDAIR_CONTROL_PERCENT
+		if move.x == 0:
+			a_ground.x = 0
+		if move.y == 0:
+			a_ground.y = 0
 	v_ground.x = Util.approach(v_ground.x, MAX_RUN * move.x, a_ground.x * delta)
 	v_ground.y = Util.approach(v_ground.y, MAX_RUN * move.y, a_ground.y * delta)
 
@@ -233,6 +240,10 @@ func process_skating(delta):
 				offset=offset
 			}
 			
+	const GRIND_BOOST = 10.0
+	const WALL_BOOST = GRIND_BOOST
+
+	var jump = false
 
 	if closest_rail:
 		%GrindTarget.global_position = closest_rail.latch_point
@@ -240,7 +251,6 @@ func process_skating(delta):
 
 		if not is_on_floor() and Input.is_action_just_pressed("Jump"):
 			%Camera.apply_shake(CAMERA_SHAKE)
-			const GRIND_BOOST = 10.0
 			var rail_grind = RailGrind.new()
 			rail_grind.offset = closest_rail.offset
 			rail_grind.rail = closest_rail.rail
@@ -249,15 +259,28 @@ func process_skating(delta):
 			movement = rail_grind
 
 	else:
+		var horiz_velocity = Vector3(velocity.x, 0, velocity.z)
+		var fast_enough = horiz_velocity.length() >= MIN_HORIZ_WALLRUN_VELOCITY
+		
 		if is_on_wall_only() and Input.is_action_pressed("Jump"):
-			%Camera.apply_shake(CAMERA_SHAKE)
-			var wallrun = WallRun.new()
-			wallrun.normal = get_wall_normal()
-			print(wallrun.normal)
-			velocity += wallrun.normal.dot(velocity) * velocity
-			#$Rogue.look_at()
-			up_direction = wallrun.normal
-			movement = wallrun
+			if fast_enough:
+				%Camera.apply_shake(CAMERA_SHAKE)
+				var wallrun = WallRun.new()
+				wallrun.normal = get_wall_normal()
+				print(wallrun.normal)
+				
+				velocity += wallrun.normal.dot(velocity) * velocity
+				var horiz_velocity_normal = velocity.normalized()
+				horiz_velocity_normal.y = 0.0
+				velocity += horiz_velocity_normal * WALL_BOOST
+				#$Rogue.look_at()
+				up_direction = wallrun.normal
+				movement = wallrun
+			else:
+				const WALLJUMP_BOOST = 15.0
+				var normal = get_wall_normal()
+				velocity += normal.dot(velocity) * velocity + normal * WALLJUMP_BOOST
+				jump = true
 			#velocity *= CAMERA_SHAKE
 			
 			
@@ -265,7 +288,10 @@ func process_skating(delta):
 			
 		%GrindTarget.hide()
 
-	return Input.is_action_just_released("Jump") and is_on_floor()
+	if Input.is_action_just_released("Jump") and is_on_floor():
+		jump = true
+
+	return 1.0 if jump else 0.0
 
 
 func process_wallrun(wallrun: WallRun, delta: float):
@@ -277,7 +303,11 @@ func process_wallrun(wallrun: WallRun, delta: float):
 	
 	var collision = get_last_slide_collision()
 	
-	if is_on_floor() and Input.is_action_pressed("Jump"):
+	
+	var horiz_velocity = Vector3(velocity.x, 0, velocity.z)
+	var fast_enough = horiz_velocity.length() >= MIN_HORIZ_WALLRUN_VELOCITY
+	
+	if fast_enough and is_on_floor() and Input.is_action_pressed("Jump"):
 		wallrun.normal = get_floor_normal()
 		last_ground_y = global_position.y
 		#wallrun.normal = collision.get_normal() 
@@ -288,10 +318,13 @@ func process_wallrun(wallrun: WallRun, delta: float):
 		movement = null
 		var jump = not is_on_wall()
 		if jump:
-			const WALLRUN_JUMP_OFF = 20.0
+			const WALLRUN_JUMP_OFF = 10.0
+			const WALL_FALLOFF = 0.5
+			
+			velocity -= velocity.normalized() * WALL_FALLOFF
 			%Camera.apply_shake(CAMERA_SHAKE)
 			velocity += wallrun.normal * WALLRUN_JUMP_OFF
 		up_direction = Vector3.UP
-		return jump
+		return 0.75 if jump else 0.0
 		
 	
