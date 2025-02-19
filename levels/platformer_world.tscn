@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bos0kgufkj7rm"]
+[gd_scene load_steps=8 format=3 uid="uid://bos0kgufkj7rm"]
 
 [ext_resource type="PackedScene" uid="uid://du7xjyugkrgid" path="res://entity/rail.tscn" id="2_rmoe1"]
 
@@ -8,6 +8,20 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_43ysm"]
 material = SubResource("StandardMaterial3D_buo45")
 size = Vector2(300, 300)
+
+[sub_resource type="Curve3D" id="Curve3D_qik8j"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.4485, 0.0561534, 20.3752, 0, 0, 0, 0, 0, 0, 2.77011, 2.19712, 10.7719, 0, 0, 0, 0, 0, 0, 7.02201, 8.28032, 4.60869, 0, 0, 0, 0, 0, 0, 12.0469, 6.21186, -1.10966, 0, 0, 0, 0, 0, 0, 14.0832, 6.6356, -5.58916, 0, 0, 0, 0, 0, 0, 19.9519, 4.37819, -12.5702, 0, 0, 0, 0, 0, 0, 20.1608, 5.03994, -15.3977, 0, 0, 0, 0, 0, 0, 18.744, 5.03994, -23.5646, 0, 0, 0, 0, 0, 0, -8.74043, 5.03994, -29.2759, 0, 0, 0, 0, 0, 0, -13.7314, 5.03994, -24.9117, 0, 0, 0, 0, 0, 0, -15.9374, 5.03994, -13.5037, 0, 0, 0, 0, 0, 0, -11.8458, 6.82236, -8.16269, 0, 0, 0, 0, 0, 0, -2.14337, 10.1094, -6.17407, 0, 0, 0, 0, 0, 0, 8.65144, 12.2919, -8.64061, 0, 0, 0, 0, 0, 0, 11.5336, 14.7323, -13.4817, 0, 0, 0, 0, 0, 0, 10.8955, 14.7323, -16.38),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 16
+
+[sub_resource type="Curve3D" id="Curve3D_nv0ij"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -24.6009, -0.324674, -7.22327, 0, 0, 0, 0, 0, 0, -14.586, 2, 3.18291, 0, 0, 0, 0, 0, 0, -6.13795, 2, 2.64716, 0, 0, 0, 0, 0, 0, 3.07129, 4.0205, 4.76267, 0, 0, 0, 0, 0, 0, 14.4832, 3.61245, 1.27777, 0, 0, 0, 0, 0, 0, 21.3365, 2.94405, 7.08295, 0, 0, 0, 0, 0, 0, 23.0069, 2.94405, 6.18826, 0, 0, 0, 0, 0, 0, 23.9503, 2, -3.43708, 0, 0, 0, 0, 0, 0, 29.5084, 2, -3.869, 0, 0, 0, 0, 0, 0, 31.453, 2, -5.27797, 0, 0, 0, 0, 0, 0, 39.5595, 2, -24.0267, 0, 0, 0, 0, 0, 0, 53.8858, -0.384498, -7.31343),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
 
 [sub_resource type="BoxMesh" id="BoxMesh_136hg"]
 size = Vector3(25, 15, 1)
@@ -21,8 +35,10 @@ points = PackedVector3Array(12.5, 7.5, 0.5, 12.5, 7.5, -0.5, -12.5, 7.5, 0.5, 12
 mesh = SubResource("PlaneMesh_43ysm")
 
 [node name="Path3D" parent="." instance=ExtResource("2_rmoe1")]
+curve = SubResource("Curve3D_qik8j")
 
 [node name="Path3D2" parent="." instance=ExtResource("2_rmoe1")]
+curve = SubResource("Curve3D_nv0ij")
 
 [node name="Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37353, -16.2677)
