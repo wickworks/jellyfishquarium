@@ -65,7 +65,21 @@ func _physics_process(delta):
 		var target_pos := player_base_pos + follow_offset
 		%Camera.global_position = cam_pos.lerp(Vector3(target_pos.x, cam_pos.y, target_pos.y), LERP_WEIGHT * delta)
 
-	#if cam_pos.distance_to(closest_point) > 5:
+
+	var camera_move := Input.get_axis("camera_left", "camera_right")
+	
+	const CAMERA_SPEED := 0.5
+	if camera_move != 0.0:
+		var relative_camera_vector: Vector3 = %Camera.global_position - $Rogue.global_position
+		var rotated_camera_vector: Vector3 = relative_camera_vector.rotated(
+			Vector3.UP, -TAU * CAMERA_SPEED * camera_move * delta
+		)
+		%Camera.global_position = rotated_camera_vector + $Rogue.global_position
+		
+		
+	
+	%Camera.global_position
+		
 	%Camera.look_at($Rogue.global_position)
 
 func process_grind(grind: RailGrind, delta):

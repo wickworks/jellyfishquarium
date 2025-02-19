@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bos0kgufkj7rm"]
+[gd_scene load_steps=7 format=3 uid="uid://bos0kgufkj7rm"]
 
 [ext_resource type="PackedScene" uid="uid://du7xjyugkrgid" path="res://entity/rail.tscn" id="2_rmoe1"]
 
@@ -17,6 +17,12 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_buo45")
 size = Vector2(300, 300)
 
+[sub_resource type="BoxMesh" id="BoxMesh_h7j88"]
+size = Vector3(20, 10, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5jdcc"]
+points = PackedVector3Array(10, 5, 0.25, 10, 5, -0.25, -10, 5, 0.25, 10, -5, 0.25, 10, -5, -0.25, -10, 5, -0.25, -10, -5, 0.25, -10, -5, -0.25)
+
 [node name="PlatformerWorld" type="Node3D"]
 
 [node name="Rail" parent="." instance=ExtResource("2_rmoe1")]
@@ -28,5 +34,16 @@ curve = SubResource("Curve3D_wjy8o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_43ysm")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.66309, -6.04776)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27292, 0)
+mesh = SubResource("BoxMesh_h7j88")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27292, 0)
+shape = SubResource("ConvexPolygonShape3D_5jdcc")
 
 [editable path="Rail"]
