@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bos0kgufkj7rm"]
+[gd_scene load_steps=10 format=3 uid="uid://bos0kgufkj7rm"]
 
 [ext_resource type="PackedScene" uid="uid://du7xjyugkrgid" path="res://entity/environment/rail.tscn" id="2_rmoe1"]
+[ext_resource type="PackedScene" uid="uid://m3n3e4r5gvqw" path="res://entity/environment/greybox.tscn" id="2_te7qo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buo45"]
 albedo_color = Color(0, 0, 0, 1)
@@ -23,11 +24,14 @@ _data = {
 }
 point_count = 12
 
-[sub_resource type="BoxMesh" id="BoxMesh_136hg"]
-size = Vector3(25, 15, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_gpjlf"]
+size = Vector3(20, 15, 3)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gwpft"]
-points = PackedVector3Array(12.5, 7.5, 0.5, 12.5, 7.5, -0.5, -12.5, 7.5, 0.5, 12.5, -7.5, 0.5, 12.5, -7.5, -0.5, -12.5, 7.5, -0.5, -12.5, -7.5, 0.5, -12.5, -7.5, -0.5)
+[sub_resource type="BoxMesh" id="BoxMesh_ys27g"]
+size = Vector3(4, 8, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bb11i"]
+size = Vector3(4, 3, 4)
 
 [node name="PlatformerWorld" type="Node3D"]
 
@@ -40,12 +44,30 @@ curve = SubResource("Curve3D_qik8j")
 [node name="Path3D2" parent="." instance=ExtResource("2_rmoe1")]
 curve = SubResource("Curve3D_nv0ij")
 
-[node name="Wall" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37353, -16.2677)
+[node name="Wall" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37301, 6.99073, -18.1583)
+mesh = SubResource("BoxMesh_gpjlf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
-mesh = SubResource("BoxMesh_136hg")
-skeleton = NodePath("../..")
+[node name="Column" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7134, 3.9182, 15.447)
+mesh = SubResource("BoxMesh_ys27g")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
-shape = SubResource("ConvexPolygonShape3D_gwpft")
+[node name="Column2" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.79317, 3.9182, 22.9721)
+mesh = SubResource("BoxMesh_ys27g")
+
+[node name="Column3" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7738, 3.9182, 37.2104)
+mesh = SubResource("BoxMesh_ys27g")
+
+[node name="Column4" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.09329, 3.9182, 46.3206)
+mesh = SubResource("BoxMesh_ys27g")
+
+[node name="Column5" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11171, 4.01697, 59.3065)
+mesh = SubResource("BoxMesh_ys27g")
+
+[node name="Stepstool" parent="." instance=ExtResource("2_te7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.34976, 8.97393)
+mesh = SubResource("BoxMesh_bb11i")
