@@ -4,16 +4,23 @@ extends CharacterBody3D
 const JUMP_VELOCITY = 4.5
 const JUMP_H_BOOST := 4.0
 const GRAVITY := 90.0
+const MAX_FALL := 20
 
 var var_jump_timer := 0.0
 var var_jump_speed := 0.0
 
-class RailGrind:
+class Movement:
+	pass
+
+class RailGrind extends Movement:
 	var rail:Rail
 	var offset: float
 	var velocity: float
+	
+class WallRun extends Movement:
+	var normal:Vector3
 
-var rail_grind: RailGrind = null
+var movement: Movement = null
 
 func _ready():
 	$"Rogue/Rig/Skeleton3D/1H_Crossbow".hide()
@@ -23,8 +30,10 @@ func _ready():
 
 func _physics_process(delta):
 	var jump = false
-	if rail_grind:
-		jump = process_grind(rail_grind, delta)
+	if movement is RailGrind:
+		jump = process_grind(movement, delta)
+	elif movement is WallRun:
+		jump = process_wallrun(movement, delta)
 	else:
 		jump = process_skating(delta)
 
@@ -98,9 +107,9 @@ func process_grind(grind: RailGrind, delta):
 
 
 
-	if Input.is_action_just_pressed("Jump") or hit_end or collided:
+	if not Input.is_action_pressed("Jump") or hit_end or collided:
 		velocity = curve_transform.basis.z * grind.velocity
-		rail_grind = null
+		movement = null
 		return true
 
 
@@ -130,6 +139,7 @@ func process_skating(delta):
 	const MAX_RUN := 20.0
 	const RUN_ACCEL := 70.0
 	const RUN_REDUCE := 70.0
+	const MIDAIR_CONTROL_PERCENT := 0.2
 #
 
 	var v_ground = Vector2(velocity.x, velocity.z).rotated(+%Camera.rotation.y)
@@ -143,6 +153,9 @@ func process_skating(delta):
 		a_ground.y = RUN_REDUCE
 	else:
 		a_ground.y = RUN_ACCEL
+		
+	if not is_on_floor():
+		a_ground *= MIDAIR_CONTROL_PERCENT
 	v_ground.x = Util.approach(v_ground.x, MAX_RUN * move.x, a_ground.x * delta)
 	v_ground.y = Util.approach(v_ground.y, MAX_RUN * move.y, a_ground.y * delta)
 
@@ -151,7 +164,6 @@ func process_skating(delta):
 
 
 
-	const MAX_FALL := 20
 	const HALF_GRAV_THRESHOLD := 40.0
 # vertical movement
 	#if wallslide_x != 0: target_max_fall *= WALLSLIDE_V_MULT
@@ -163,7 +175,7 @@ func process_skating(delta):
 	if !is_on_floor():
 		var jump_mult := 1.0
 		# hold jump to get a bit o anti gravity
-		if (absf(velocity.y) < HALF_GRAV_THRESHOLD && (Input.is_action_pressed("Jump"))): jump_mult = 0.5
+		if absf(velocity.y) < HALF_GRAV_THRESHOLD: jump_mult = 0.5
 
 		velocity.y = Util.approach(velocity.y, -MAX_FALL, GRAVITY * jump_mult * delta)
 		if velocity.y < 0:
@@ -172,10 +184,10 @@ func process_skating(delta):
 
 #
 	if var_jump_timer > 0:
-		if Input.is_action_pressed("Jump"):
-			velocity.y = minf(velocity.y, var_jump_speed)
-		else:
-			var_jump_timer = 0
+		#if Input.is_action_pressed("Jump"):
+		velocity.y = minf(velocity.y, var_jump_speed)
+		#else:
+			#var_jump_timer = 0
 			#$Rogue/AnimationPlayer.play("Jump_Full_Short")
 
 
@@ -205,6 +217,7 @@ func process_skating(delta):
 				forward=attach_info.basis.z,
 				offset=offset
 			}
+			
 
 	if closest_rail:
 		%GrindTarget.global_position = closest_rail.latch_point
@@ -212,13 +225,55 @@ func process_skating(delta):
 
 		if not is_on_floor() and Input.is_action_just_pressed("Jump"):
 			const GRIND_BOOST = 10.0
-			rail_grind = RailGrind.new()
+			var rail_grind = RailGrind.new()
 			rail_grind.offset = closest_rail.offset
 			rail_grind.rail = closest_rail.rail
 			rail_grind.velocity = closest_rail.forward.dot(velocity)
 			rail_grind.velocity += GRIND_BOOST * signf(rail_grind.velocity)
+			movement = rail_grind
 
 	else:
+		if is_on_wall_only() and Input.is_action_pressed("Jump"):
+			var wallrun = WallRun.new()
+			wallrun.normal = get_wall_normal()
+			print(wallrun.normal)
+			velocity += wallrun.normal.dot(velocity) * velocity
+			#$Rogue.look_at()
+			up_direction = wallrun.normal
+			movement = wallrun
+			#velocity *= 1.2
+			
+			
+			
+			
 		%GrindTarget.hide()
 
-	return Input.is_action_just_pressed("Jump") and is_on_floor()
+	return Input.is_action_just_released("Jump") and is_on_floor()
+
+
+func process_wallrun(wallrun: WallRun, delta: float):
+	velocity.y = Util.approach(velocity.y, -MAX_FALL, GRAVITY * 0.1 * delta)
+	velocity -= wallrun.normal * 0.1
+	$Rogue/AnimationPlayer.play("Jump_Idle")
+	move_and_slide()
+	
+	
+	var collision = get_last_slide_collision()
+	
+	if is_on_floor() and Input.is_action_pressed("Jump"):
+		wallrun.normal = get_floor_normal()
+		#wallrun.normal = collision.get_normal() 
+		#$Rogue.look_at(-velocity - Vector3(0, velocity.y, 0))
+		#up_direction = wallrun.normal
+	else:
+		print("%s, %s, %s, %s" % [velocity, wallrun.normal, is_on_floor(), Input.is_action_pressed("Jump")])
+		movement = null
+		var jump = not is_on_wall()
+		if jump:
+			
+			const WALLRUN_JUMP_OFF = 20.0
+			velocity += wallrun.normal * WALLRUN_JUMP_OFF
+		up_direction = Vector3.UP
+		return jump
+		
+	
