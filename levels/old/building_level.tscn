@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3gglkdy1hywi"]
 
-[ext_resource type="PackedScene" uid="uid://b654io1hse74w" path="res://levels/clothes.tscn" id="1_gjchm"]
-[ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/awning.tscn" id="2_41akt"]
+[ext_resource type="PackedScene" uid="uid://b654io1hse74w" path="res://levels/old/clothes.tscn" id="1_gjchm"]
+[ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/old/awning.tscn" id="2_41akt"]
 
 [node name="Level" type="Node2D"]
 

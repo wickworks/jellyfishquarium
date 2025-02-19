@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://3kgbntpjxrle"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_csyl4"]
-[ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/platformer_background.tscn" id="2_5vl4y"]
+[ext_resource type="PackedScene" uid="uid://bmiv3cig62rk0" path="res://levels/old/platformer_background.tscn" id="2_5vl4y"]
 [ext_resource type="Texture2D" uid="uid://gib7egolxtv8" path="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_27.png" id="4_0g51u"]
 [ext_resource type="Texture2D" uid="uid://bg500wf6fo0je" path="res://assets/defenestration/building_bg.png" id="4_6x6vh"]
 [ext_resource type="Texture2D" uid="uid://mykw304gfoe6" path="res://assets/defenestration/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png" id="5_sbtx8"]
@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bd4jfivh0khbw" path="res://assets/defenestration/water_tower.png" id="9_l01q3"]
 [ext_resource type="Texture2D" uid="uid://dj2wnh3xm6gm2" path="res://assets/defenestration/ac.png" id="10_eis5m"]
 [ext_resource type="Texture2D" uid="uid://d2d0lryyqcx71" path="res://assets/defenestration/ME_Singles_Office_48x48_Building_Sign_1.png" id="11_hu8m1"]
-[ext_resource type="PackedScene" uid="uid://veebp23egfrq" path="res://levels/shatterable_window.tscn" id="11_lv64s"]
-[ext_resource type="PackedScene" uid="uid://b654io1hse74w" path="res://levels/clothes.tscn" id="13_b44ki"]
-[ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/awning.tscn" id="14_n3h4y"]
+[ext_resource type="PackedScene" uid="uid://veebp23egfrq" path="res://levels/old/shatterable_window.tscn" id="11_lv64s"]
+[ext_resource type="PackedScene" uid="uid://b654io1hse74w" path="res://levels/old/clothes.tscn" id="13_b44ki"]
+[ext_resource type="PackedScene" uid="uid://bcrm58yo5guki" path="res://levels/old/awning.tscn" id="14_n3h4y"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_woqrr"]
 

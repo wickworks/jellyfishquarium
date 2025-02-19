@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://du7xjyugkrgid"]
 
-[ext_resource type="Script" path="res://entity/rail.gd" id="1_fqjp3"]
+[ext_resource type="Script" path="res://entity/environment/rail.gd" id="1_fqjp3"]
 
 [node name="Path3D" type="Path3D" groups=["rails"]]
 script = ExtResource("1_fqjp3")

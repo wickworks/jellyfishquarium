@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://dihqyuvj833qo"]
 
 [ext_resource type="TileSet" uid="uid://btsul1rodpbea" path="res://assets/platformer_env/main_tileset.tres" id="1_x5rrc"]
-[ext_resource type="PackedScene" uid="uid://bxvd8usqdadrs" path="res://entity/fish.tscn" id="2_q3p1k"]
+[ext_resource type="PackedScene" uid="uid://bxvd8usqdadrs" path="res://entity/old/fish.tscn" id="2_q3p1k"]
 
 [node name="Map" type="Node2D"]
 

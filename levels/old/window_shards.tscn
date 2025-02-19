@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ca4papvgnth28"]
 
-[ext_resource type="PackedScene" uid="uid://2tvquyefi3j2" path="res://levels/clothes_loose.tscn" id="1_vamor"]
+[ext_resource type="PackedScene" uid="uid://2tvquyefi3j2" path="res://levels/old/clothes_loose.tscn" id="1_vamor"]
 [ext_resource type="Texture2D" uid="uid://cbxedeygoj2mx" path="res://assets/defenestration/shards/shard1.png" id="2_7nbko"]
 [ext_resource type="Texture2D" uid="uid://lbf5js8v22nn" path="res://assets/defenestration/shards/shard2.png" id="3_utr6s"]
 [ext_resource type="Texture2D" uid="uid://c5nxu1bblgatl" path="res://assets/defenestration/shards/shard3.png" id="4_sc1to"]

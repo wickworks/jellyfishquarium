@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bcrm58yo5guki"]
 
-[ext_resource type="Script" path="res://levels/awning.gd" id="1_bakon"]
+[ext_resource type="Script" path="res://levels/old/awning.gd" id="1_bakon"]
 [ext_resource type="Texture2D" uid="uid://03oedqegoq7f" path="res://assets/defenestration/Shop_Tent_4.png" id="2_4xupe"]
 [ext_resource type="Texture2D" uid="uid://di0qxr81v5arn" path="res://assets/defenestration/Shop_Tent_1.png" id="2_lb1fr"]
 [ext_resource type="Texture2D" uid="uid://la6j2xjj3t70" path="res://assets/defenestration/Shop_Tent_2.png" id="3_wohg6"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt4di6qmykoj5"]
 
-[ext_resource type="Script" path="res://entity/larvae.gd" id="1_wdpnc"]
-[ext_resource type="Texture2D" uid="uid://cmo8f1eaq2ftl" path="res://entity/larva.png" id="2_lyhcs"]
+[ext_resource type="Script" path="res://entity/old/larvae.gd" id="1_wdpnc"]
+[ext_resource type="Texture2D" uid="uid://cmo8f1eaq2ftl" path="res://entity/old/larva.png" id="2_lyhcs"]
 
 [node name="Larvae" type="Node2D" groups=["larvae"]]
 script = ExtResource("1_wdpnc")

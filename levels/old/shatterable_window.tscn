@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dq1p246722lcx" path="res://assets/defenestration/roundSG3_sprite.png" id="1_2lfe3"]
 [ext_resource type="Texture2D" uid="uid://bndqquiyskjl0" path="res://assets/defenestration/roundSG3_open.png" id="1_3dc1n"]
-[ext_resource type="Script" path="res://levels/shatterable_window.gd" id="1_c1byq"]
+[ext_resource type="Script" path="res://levels/old/shatterable_window.gd" id="1_c1byq"]
 
 [node name="ShatterableWindow" type="Control"]
 layout_mode = 3

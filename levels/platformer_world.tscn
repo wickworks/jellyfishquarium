@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bos0kgufkj7rm"]
 
-[ext_resource type="PackedScene" uid="uid://du7xjyugkrgid" path="res://entity/rail.tscn" id="2_rmoe1"]
+[ext_resource type="PackedScene" uid="uid://du7xjyugkrgid" path="res://entity/environment/rail.tscn" id="2_rmoe1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buo45"]
 albedo_color = Color(0, 0, 0, 1)
