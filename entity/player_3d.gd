@@ -85,7 +85,7 @@ func _physics_process(delta):
 func process_grind(grind: RailGrind, delta):
 	%GrindTarget.hide()
 	const GRIND_SPEED = 20.0
-	var curve_transform = grind.rail.path.sample_baked_with_rotation(grind.offset)
+	var curve_transform = grind.rail.curve.sample_baked_with_rotation(grind.offset)
 	var gravity_accel = curve_transform.basis.z.dot(Vector3.DOWN) * GRAVITY
 
 	grind.velocity += gravity_accel * delta
@@ -95,7 +95,7 @@ func process_grind(grind: RailGrind, delta):
 	move_and_slide()
 
 	var collided = get_slide_collision_count() > 0
-	var hit_end = grind.offset >= grind.rail.path.get_baked_length() or grind.offset <= 0
+	var hit_end = grind.offset >= grind.rail.curve.get_baked_length() or grind.offset <= 0
 
 
 
@@ -195,8 +195,8 @@ func process_skating(delta):
 	var closest_rail = null
 	for rail in get_tree().get_nodes_in_group("rails"):
 		var position_in_railspace = rail.to_local(self.global_position)
-		var offset = rail.path.get_closest_offset(position_in_railspace)
-		var attach_info: Transform3D = rail.path.sample_baked_with_rotation(offset)
+		var offset = rail.curve.get_closest_offset(position_in_railspace)
+		var attach_info: Transform3D = rail.curve.sample_baked_with_rotation(offset)
 		var closest_point = rail.to_global(attach_info.origin)
 		var distance = (closest_point - global_position).length()
 		if distance < MAX_RAIL_LATCH and (not closest_rail or distance < closest_rail.distance):
