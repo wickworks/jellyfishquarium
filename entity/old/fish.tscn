@@ -86,6 +86,7 @@ width = 1
 
 [node name="Fish" type="Node2D" groups=["fish"]]
 script = ExtResource("1_sxfor")
+fish_scene = null
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4klu8")

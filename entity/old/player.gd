@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-const HOOK_SCENE:PackedScene = preload("res://entity/hook.tscn")
+@export var hook_scene:PackedScene
 
 var initial_position: Vector2
 

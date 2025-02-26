@@ -1,8 +1,7 @@
 extends Node2D
 class_name Larvae
 
-const JELLYFISH_SCENE:PackedScene = preload("res://entity/jellyfish.tscn")
-
+@export var jellyfish_scene:PackedScene
 
 var angle:float
 var speed:float
@@ -37,7 +36,7 @@ func _process(delta: float) -> void:
 	position += Util.vector_from_angle(speed, angle)
 
 func grow_up_and_move_out() -> void:
-	var jellyfish:Jellyfish = JELLYFISH_SCENE.instantiate()
+	var jellyfish:Jellyfish = jellyfish_scene.instantiate()
 	jellyfish.position = position
 	Main.scene.add_child(jellyfish)
 

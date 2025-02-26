@@ -4,7 +4,7 @@ class_name Fish
 const EAT_DIST:float = 3
 const EAT_TO_LAY_TIME:float = 1.5
 #const LAY_MAX:int = 3
-const FISH_SCENE:PackedScene = preload("res://entity/fish.tscn")
+@export var fish_scene:PackedScene
 
 const PERCEPTION_RADIUS:float = 40
 const SEPARATION_DISTANCE:float = 25

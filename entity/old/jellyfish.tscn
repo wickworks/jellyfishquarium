@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk5xnhrtci2b2"]
+[gd_scene load_steps=9 format=3 uid="uid://bk5xnhrtci2b2"]
 
 [ext_resource type="Script" path="res://entity/old/jellyfish.gd" id="1_qx2it"]
 [ext_resource type="Texture2D" uid="uid://baepuhvs4qej" path="res://entity/old/jellyfish.png" id="2_eh41o"]
+[ext_resource type="PackedScene" uid="uid://dt4di6qmykoj5" path="res://entity/old/larvae.tscn" id="2_nssxw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fujhg"]
 atlas = ExtResource("2_eh41o")
@@ -41,6 +42,7 @@ animations = [{
 
 [node name="Jellyfish" type="Node2D" groups=["jellyfish"]]
 script = ExtResource("1_qx2it")
+larvae_scene = ExtResource("2_nssxw")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4s1o1")
