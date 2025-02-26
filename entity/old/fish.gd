@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 	elif orbit < 0: orbit += TAU
 	var variation_offset := Util.vector_from_angle(variation_seed, orbit) * 60
 
-	var player:Player = get_tree().get_first_node_in_group("player")
+	var player:Player2D = get_tree().get_first_node_in_group("player")
 	var player_diff := (player.position + variation_offset) - position
 
 	var follow_diff := Vector2.ZERO

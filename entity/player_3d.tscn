@@ -9,7 +9,7 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xg46q"]
 height = 1.0
 
-[node name="Player3d" type="CharacterBody3D"]
+[node name="Player3d" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_vhsut")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

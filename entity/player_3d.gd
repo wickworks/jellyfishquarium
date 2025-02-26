@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name Player
 
 const JUMP_VELOCITY = 4.5
 const JUMP_H_BOOST := 4.0

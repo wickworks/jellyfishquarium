@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6wvcygbytx67"]
+[gd_scene load_steps=11 format=3 uid="uid://b6wvcygbytx67"]
 
 [ext_resource type="Script" path="res://main_3d.gd" id="1_hdd3x"]
 [ext_resource type="PackedScene" uid="uid://cxvdfcoc4l3fo" path="res://entity/player_3d.tscn" id="1_no513"]
 [ext_resource type="PackedScene" uid="uid://bos0kgufkj7rm" path="res://levels/platformer_world.tscn" id="3_454tx"]
+[ext_resource type="PackedScene" uid="uid://covot5f4n0tpf" path="res://entity/fairy/fairy.tscn" id="4_3m2uo"]
 
 [sub_resource type="Gradient" id="Gradient_6syi3"]
 colors = PackedColorArray(0.854902, 0.545098, 0, 1, 1, 0, 0.737255, 1)
@@ -43,7 +44,7 @@ fog_depth_end = 53.0
 script = ExtResource("1_hdd3x")
 
 [node name="Player3d" parent="." instance=ExtResource("1_no513")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.0785, 6.7193, -35.1566)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.5019, 6.7193, -21.9015)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ty4lp")
@@ -59,3 +60,29 @@ shape = SubResource("WorldBoundaryShape3D_v4ga2")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.59912, -0.492232, 0.631478, -0.266282, 0.866299, 0.422635, -0.755083, 0.0850577, -0.650089, 0, 13.5407, 0)
 shadow_enabled = true
+
+[node name="Fairies" type="Node3D" parent="."]
+
+[node name="Fairy1" parent="Fairies" instance=ExtResource("4_3m2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.0995, 4.03053, -24.5179)
+
+[node name="Fairy2" parent="Fairies" instance=ExtResource("4_3m2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.131, 2.55374, -27.926)
+
+[node name="Fairy3" parent="Fairies" instance=ExtResource("4_3m2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.8183, 2.62044, -31.1693)
+
+[node name="Fairy4" parent="Fairies" instance=ExtResource("4_3m2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.0511, 3.31372, -27.9144)
+
+[node name="Fairy5" parent="Fairies" instance=ExtResource("4_3m2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.7011, 2.92978, -25.3566)
+
+[node name="Fairy6" parent="Fairies" instance=ExtResource("4_3m2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.352, 2.92978, -25.5311)
+
+[node name="Fairy7" parent="Fairies" instance=ExtResource("4_3m2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.797, 2.92978, -30.3359)
+
+[node name="Fairy8" parent="Fairies" instance=ExtResource("4_3m2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.7038, 2.92978, -31.3169)

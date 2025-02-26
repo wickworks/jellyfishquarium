@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name Player2D
 
 @export var hook_scene:PackedScene
 

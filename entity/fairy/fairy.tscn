@@ -1,0 +1,125 @@
+[gd_scene load_steps=15 format=3 uid="uid://covot5f4n0tpf"]
+
+[ext_resource type="Script" path="res://entity/fairy/fairy.gd" id="1_bolki"]
+[ext_resource type="Material" uid="uid://bidryl26hcsgo" path="res://entity/fairy/fairy_material.tres" id="2_0li4r"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mgrey"]
+material = ExtResource("2_0li4r")
+radius = 0.2
+height = 0.4
+radial_segments = 12
+rings = 12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w1esy"]
+material = ExtResource("2_0li4r")
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.2
+radial_segments = 4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7q8r2"]
+material = ExtResource("2_0li4r")
+radius = 0.1
+height = 0.5
+
+[sub_resource type="Curve" id="Curve_jm4it"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gp660"]
+width = 32
+curve = SubResource("Curve_jm4it")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aaucq"]
+spread = 180.0
+initial_velocity_max = 0.4
+gravity = Vector3(0, 0.2, 0)
+alpha_curve = SubResource("CurveTexture_gp660")
+
+[sub_resource type="Gradient" id="Gradient_8epx4"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.213552, 0.542094, 0.804928, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 0.213552, 0.542094, 0.542094, 0.542094, 0.542094, 0.804928, 0.804928, 0.804928, 0.804928, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iqlfb"]
+noise_type = 2
+frequency = 0.0002
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dl8rr"]
+width = 64
+height = 64
+color_ramp = SubResource("Gradient_8epx4")
+noise = SubResource("FastNoiseLite_iqlfb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85ms7"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.27451, 0.533333, 0.811765, 1)
+albedo_texture = SubResource("NoiseTexture2D_dl8rr")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_phkm7"]
+material = SubResource("StandardMaterial3D_85ms7")
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1o4c3"]
+
+[node name="Fairy" type="CharacterBody3D" groups=["fairy"]]
+script = ExtResource("1_bolki")
+
+[node name="Body" type="Node3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197763, 0)
+mesh = SubResource("SphereMesh_mgrey")
+skeleton = NodePath("../RingMesh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-0.701046, 0.713116, 0, -0.713116, -0.701046, 0, 0, 0, 1, 0.701253, -0.200726, -0.0111253)
+mesh = SubResource("CylinderMesh_w1esy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.181444, -0.184568, 0.965926, -0.713116, -0.701046, -6.90523e-08, 0.677159, -0.688817, -0.258819, -0.217097, -0.200726, -0.74116)
+mesh = SubResource("CylinderMesh_w1esy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-0.381458, 0.388025, 0.839003, -0.713116, -0.701046, -1.00302e-07, 0.58818, -0.598307, 0.544127, 0.390994, -0.200726, -0.634427)
+mesh = SubResource("CylinderMesh_w1esy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.701046, -0.713116, -8.74228e-08, -0.713116, -0.701046, 7.64274e-15, -6.12874e-08, 6.23426e-08, -1, -0.765197, -0.200726, -0.0836705)
+mesh = SubResource("CylinderMesh_w1esy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-0.181444, 0.184568, -0.965926, -0.713116, -0.701046, 9.39496e-08, -0.677159, 0.688817, 0.258819, 0.153154, -0.200726, 0.646364)
+mesh = SubResource("CylinderMesh_w1esy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.381458, -0.388025, -0.839003, -0.713116, -0.701046, 9.62282e-08, -0.58818, 0.598306, -0.544127, -0.454937, -0.200726, 0.539631)
+mesh = SubResource("CylinderMesh_w1esy")
+skeleton = NodePath("../..")
+
+[node name="RingMesh" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0966926, 0)
+mesh = SubResource("CapsuleMesh_7q8r2")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 20
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_aaucq")
+draw_pass_1 = SubResource("QuadMesh_phkm7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_1o4c3")
