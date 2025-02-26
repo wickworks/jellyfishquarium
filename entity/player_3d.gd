@@ -35,6 +35,9 @@ func _ready():
 	$"Rogue/Rig/Skeleton3D/2H_Crossbow".hide()
 	$"Rogue/Rig/Skeleton3D/Knife".hide()
 	$"Rogue/Rig/Skeleton3D/Knife_Offhand".hide()
+	
+	# start the camera wherever we put the player
+	%Camera.global_position = global_position + %Camera.position
 
 func _physics_process(delta):
 	var jump = 0.0

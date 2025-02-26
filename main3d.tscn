@@ -43,7 +43,7 @@ fog_depth_end = 53.0
 script = ExtResource("1_hdd3x")
 
 [node name="Player3d" parent="." instance=ExtResource("1_no513")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7193, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.0785, 6.7193, -35.1566)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ty4lp")
